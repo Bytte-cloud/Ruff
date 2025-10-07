@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Observers;
+namespace Ruff\Observers;
 
-use Pterodactyl\Events;
-use Pterodactyl\Models\Server;
+use Ruff\Events;
+use Ruff\Models\Server;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class ServerObserver

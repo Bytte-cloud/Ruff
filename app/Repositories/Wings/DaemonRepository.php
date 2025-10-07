@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Repositories\Wings;
+namespace Ruff\Repositories\Wings;
 
 use GuzzleHttp\Client;
-use Pterodactyl\Models\Node;
+use Ruff\Models\Node;
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Server;
+use Ruff\Models\Server;
 use Illuminate\Contracts\Foundation\Application;
 
 /**
- * @method \Pterodactyl\Repositories\Wings\DaemonRepository setNode(\Pterodactyl\Models\Node $node)
- * @method \Pterodactyl\Repositories\Wings\DaemonRepository setServer(\Pterodactyl\Models\Server $server)
+ * @method \Ruff\Repositories\Wings\DaemonRepository setNode(\Ruff\Models\Node $node)
+ * @method \Ruff\Repositories\Wings\DaemonRepository setServer(\Ruff\Models\Server $server)
  */
 abstract class DaemonRepository
 {
@@ -57,8 +57,8 @@ abstract class DaemonRepository
         return new Client([
             'verify' => $this->app->environment('production'),
             'base_uri' => $this->node->getConnectionAddress(),
-            'timeout' => config('pterodactyl.guzzle.timeout'),
-            'connect_timeout' => config('pterodactyl.guzzle.connect_timeout'),
+            'timeout' => config('Ruff.guzzle.timeout'),
+            'connect_timeout' => config('Ruff.guzzle.connect_timeout'),
             'headers' => array_merge($headers, [
                 'Authorization' => 'Bearer ' . $this->node->getDecryptedKey(),
                 'Accept' => 'application/json',

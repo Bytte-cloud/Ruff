@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Repositories\Eloquent;
+namespace Ruff\Repositories\Eloquent;
 
-use Pterodactyl\Models\Mount;
-use Pterodactyl\Models\Server;
+use Ruff\Models\Mount;
+use Ruff\Models\Server;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Ruff\Exceptions\Repository\RecordNotFoundException;
 
 class MountRepository extends EloquentRepository
 {

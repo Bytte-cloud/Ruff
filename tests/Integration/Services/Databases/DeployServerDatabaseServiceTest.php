@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Databases;
+namespace Ruff\Tests\Integration\Services\Databases;
 
 use Mockery\MockInterface;
-use Pterodactyl\Models\Node;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\DatabaseHost;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
-use Pterodactyl\Services\Databases\DeployServerDatabaseService;
-use Pterodactyl\Exceptions\Service\Database\NoSuitableDatabaseHostException;
+use Ruff\Models\Node;
+use Ruff\Models\Database;
+use Ruff\Models\DatabaseHost;
+use Ruff\Tests\Integration\IntegrationTestCase;
+use Ruff\Services\Databases\DatabaseManagementService;
+use Ruff\Services\Databases\DeployServerDatabaseService;
+use Ruff\Exceptions\Service\Database\NoSuitableDatabaseHostException;
 
 class DeployServerDatabaseServiceTest extends IntegrationTestCase
 {
@@ -31,7 +31,7 @@ class DeployServerDatabaseServiceTest extends IntegrationTestCase
      */
     protected function tearDown(): void
     {
-        config()->set('pterodactyl.client_features.databases.allow_random', true);
+        config()->set('Ruff.client_features.databases.allow_random', true);
 
         Database::query()->delete();
         DatabaseHost::query()->delete();
@@ -63,7 +63,7 @@ class DeployServerDatabaseServiceTest extends IntegrationTestCase
         $node = Node::factory()->create(['location_id' => $server->location->id]);
         DatabaseHost::factory()->create(['node_id' => $node->id]);
 
-        config()->set('pterodactyl.client_features.databases.allow_random', false);
+        config()->set('Ruff.client_features.databases.allow_random', false);
 
         $this->expectException(NoSuitableDatabaseHostException::class);
 

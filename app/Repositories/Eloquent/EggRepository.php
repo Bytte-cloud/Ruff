@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Repositories\Eloquent;
+namespace Ruff\Repositories\Eloquent;
 
-use Pterodactyl\Models\Egg;
+use Ruff\Models\Egg;
 use Webmozart\Assert\Assert;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Ruff\Contracts\Repository\EggRepositoryInterface;
+use Ruff\Exceptions\Repository\RecordNotFoundException;
 
 class EggRepository extends EloquentRepository implements EggRepositoryInterface
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Deployment;
+namespace Ruff\Tests\Integration\Services\Deployment;
 
-use Pterodactyl\Models\Node;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\Location;
+use Ruff\Models\Node;
+use Ruff\Models\Server;
+use Ruff\Models\Database;
+use Ruff\Models\Location;
 use Illuminate\Support\Collection;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Deployment\FindViableNodesService;
-use Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException;
+use Ruff\Tests\Integration\IntegrationTestCase;
+use Ruff\Services\Deployment\FindViableNodesService;
+use Ruff\Exceptions\Service\Deployment\NoViableNodeException;
 
 class FindViableNodesServiceTest extends IntegrationTestCase
 {
@@ -41,7 +41,7 @@ class FindViableNodesServiceTest extends IntegrationTestCase
     /**
      * Ensure that errors are not thrown back when passing in expected values.
      *
-     * @see https://github.com/pterodactyl/panel/issues/2529
+     * @see https://github.com/Ruff/panel/issues/2529
      */
     public function testNoExceptionIsThrownIfStringifiedIntegersArePassedForLocations()
     {
@@ -68,10 +68,10 @@ class FindViableNodesServiceTest extends IntegrationTestCase
 
     public function testExpectedNodeIsReturnedForLocation()
     {
-        /** @var \Pterodactyl\Models\Location[] $locations */
+        /** @var \Ruff\Models\Location[] $locations */
         $locations = Location::factory()->times(2)->create();
 
-        /** @var \Pterodactyl\Models\Node[] $nodes */
+        /** @var \Ruff\Models\Node[] $nodes */
         $nodes = [
             // This node should never be returned once we've completed the initial test which
             // runs without a location filter.

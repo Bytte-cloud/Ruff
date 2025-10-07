@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Subuser;
+namespace Ruff\Tests\Integration\Api\Client\Server\Subuser;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Subuser;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Ruff\Models\User;
+use Ruff\Models\Subuser;
+use Ruff\Repositories\Wings\DaemonServerRepository;
+use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class SubuserAuthorizationTest extends ClientApiIntegrationTestCase
 {

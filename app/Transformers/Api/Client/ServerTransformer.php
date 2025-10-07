@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Client;
+namespace Ruff\Transformers\Api\Client;
 
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Subuser;
+use Ruff\Models\Egg;
+use Ruff\Models\Server;
+use Ruff\Models\Subuser;
 use League\Fractal\Resource\Item;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Models\Permission;
+use Ruff\Models\Allocation;
+use Ruff\Models\Permission;
 use Illuminate\Container\Container;
-use Pterodactyl\Models\EggVariable;
+use Ruff\Models\EggVariable;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\NullResource;
-use Pterodactyl\Services\Servers\StartupCommandService;
+use Ruff\Services\Servers\StartupCommandService;
 
 class ServerTransformer extends BaseClientTransformer
 {
@@ -78,7 +78,7 @@ class ServerTransformer extends BaseClientTransformer
     /**
      * Returns the allocations associated with this server.
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Ruff\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeAllocations(Server $server): Collection
     {
@@ -103,7 +103,7 @@ class ServerTransformer extends BaseClientTransformer
     }
 
     /**
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Ruff\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeVariables(Server $server): Collection|NullResource
     {
@@ -121,7 +121,7 @@ class ServerTransformer extends BaseClientTransformer
     /**
      * Returns the egg associated with this server.
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Ruff\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeEgg(Server $server): Item
     {
@@ -131,7 +131,7 @@ class ServerTransformer extends BaseClientTransformer
     /**
      * Returns the subusers associated with this server.
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Ruff\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeSubusers(Server $server): Collection|NullResource
     {

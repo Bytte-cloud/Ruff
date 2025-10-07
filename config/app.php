@@ -7,11 +7,11 @@ return [
     |--------------------------------------------------------------------------
     | Application Version
     |--------------------------------------------------------------------------
-    | This value is set when creating a Pterodactyl release. You should not
+    | This value is set when creating a Ruff release. You should not
     | change this value if you are not maintaining your own internal versions.
     */
 
-    'version' => 'canary',
+    'version' => '1.0-dev',
 
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Pterodactyl'),
+    'name' => env('APP_NAME', 'Ruff'),
 
     /*
     |--------------------------------------------------------------------------
@@ -191,16 +191,16 @@ return [
         /*
          * Application Service Providers...
          */
-        Pterodactyl\Providers\ActivityLogServiceProvider::class,
-        Pterodactyl\Providers\AppServiceProvider::class,
-        Pterodactyl\Providers\AuthServiceProvider::class,
-        Pterodactyl\Providers\BackupsServiceProvider::class,
-        Pterodactyl\Providers\BladeServiceProvider::class,
-        Pterodactyl\Providers\EventServiceProvider::class,
-        Pterodactyl\Providers\HashidsServiceProvider::class,
-        Pterodactyl\Providers\RouteServiceProvider::class,
-        Pterodactyl\Providers\RepositoryServiceProvider::class,
-        Pterodactyl\Providers\ViewComposerServiceProvider::class,
+        Ruff\Providers\ActivityLogServiceProvider::class,
+        Ruff\Providers\AppServiceProvider::class,
+        Ruff\Providers\AuthServiceProvider::class,
+        Ruff\Providers\BackupsServiceProvider::class,
+        Ruff\Providers\BladeServiceProvider::class,
+        Ruff\Providers\EventServiceProvider::class,
+        Ruff\Providers\HashidsServiceProvider::class,
+        Ruff\Providers\RouteServiceProvider::class,
+        Ruff\Providers\RepositoryServiceProvider::class,
+        Ruff\Providers\ViewComposerServiceProvider::class,
 
         /*
          * Additional Dependencies
@@ -223,11 +223,11 @@ return [
         'Alert' => Prologue\Alerts\Facades\Alert::class,
         'Carbon' => Carbon\Carbon::class,
         'JavaScript' => Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
-        'Theme' => Pterodactyl\Extensions\Facades\Theme::class,
+        'Theme' => Ruff\Extensions\Facades\Theme::class,
 
         // Custom Facades
-        'Activity' => Pterodactyl\Facades\Activity::class,
-        'LogBatch' => Pterodactyl\Facades\LogBatch::class,
-        'LogTarget' => Pterodactyl\Facades\LogTarget::class,
+        'Activity' => Ruff\Facades\Activity::class,
+        'LogBatch' => Ruff\Facades\LogBatch::class,
+        'LogTarget' => Ruff\Facades\LogTarget::class,
     ])->toArray(),
 ];

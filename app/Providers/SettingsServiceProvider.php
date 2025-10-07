@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Providers;
+namespace Ruff\Providers;
 
 use Psr\Log\LoggerInterface as Log;
 use Illuminate\Database\QueryException;
@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
+use Ruff\Contracts\Repository\SettingsRepositoryInterface;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -22,14 +22,14 @@ class SettingsServiceProvider extends ServiceProvider
         'recaptcha:enabled',
         'recaptcha:secret_key',
         'recaptcha:website_key',
-        'pterodactyl:guzzle:timeout',
-        'pterodactyl:guzzle:connect_timeout',
-        'pterodactyl:console:count',
-        'pterodactyl:console:frequency',
-        'pterodactyl:auth:2fa_required',
-        'pterodactyl:client_features:allocations:enabled',
-        'pterodactyl:client_features:allocations:range_start',
-        'pterodactyl:client_features:allocations:range_end',
+        'Ruff:guzzle:timeout',
+        'Ruff:guzzle:connect_timeout',
+        'Ruff:console:count',
+        'Ruff:console:frequency',
+        'Ruff:auth:2fa_required',
+        'Ruff:client_features:allocations:enabled',
+        'Ruff:client_features:allocations:range_start',
+        'Ruff:client_features:allocations:range_end',
     ];
 
     /**

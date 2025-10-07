@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Client\Servers\Network;
+namespace Ruff\Http\Requests\Api\Client\Servers\Network;
 
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Http\Requests\Api\Client\ClientApiRequest;
+use Ruff\Models\Allocation;
+use Ruff\Models\Permission;
+use Ruff\Http\Requests\Api\Client\ClientApiRequest;
 
 class UpdateAllocationRequest extends ClientApiRequest
 {

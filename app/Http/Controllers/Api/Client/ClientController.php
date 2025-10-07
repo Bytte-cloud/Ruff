@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client;
+namespace Ruff\Http\Controllers\Api\Client;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Permission;
+use Ruff\Models\Server;
+use Ruff\Models\Permission;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-use Pterodactyl\Models\Filters\MultiFieldServerFilter;
-use Pterodactyl\Transformers\Api\Client\ServerTransformer;
-use Pterodactyl\Http\Requests\Api\Client\GetServersRequest;
+use Ruff\Models\Filters\MultiFieldServerFilter;
+use Ruff\Transformers\Api\Client\ServerTransformer;
+use Ruff\Http\Requests\Api\Client\GetServersRequest;
 
 class ClientController extends ClientApiController
 {

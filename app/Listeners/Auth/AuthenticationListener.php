@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Listeners\Auth;
+namespace Ruff\Listeners\Auth;
 
-use Pterodactyl\Facades\Activity;
+use Ruff\Facades\Activity;
 use Illuminate\Auth\Events\Failed;
-use Pterodactyl\Events\Auth\DirectLogin;
+use Ruff\Events\Auth\DirectLogin;
 use Illuminate\Contracts\Events\Dispatcher;
-use Pterodactyl\Extensions\Illuminate\Events\Contracts\SubscribesToEvents;
+use Ruff\Extensions\Illuminate\Events\Contracts\SubscribesToEvents;
 
 class AuthenticationListener implements SubscribesToEvents
 {

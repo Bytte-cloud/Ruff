@@ -20,11 +20,19 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
     const ref = useRef<Reaptcha>(null);
     const [token, setToken] = useState('');
 
-    const { clearFlashes, clearAndAddHttpError } = useFlash();
+    const { clearFlashes, clearAndAddHttpError, addFlash } = useFlash();
     const { enabled: recaptchaEnabled, siteKey } = useStoreState((state) => state.settings.data!.recaptcha);
 
     useEffect(() => {
         clearFlashes();
+        if (window.location.search.includes('register=true')) {
+            addFlash({
+                type: 'success',
+                title: 'Success',
+                message: 'Your account has been successfully created! Login to continue.'
+            })
+            return;
+        }
     }, []);
 
     const onSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {

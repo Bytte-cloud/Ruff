@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Services\Subusers;
+namespace Ruff\Services\Subusers;
 
 use Illuminate\Support\Str;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Subuser;
+use Ruff\Models\Server;
+use Ruff\Models\Subuser;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Services\Users\UserCreationService;
-use Pterodactyl\Repositories\Eloquent\SubuserRepository;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Exceptions\Service\Subuser\UserIsServerOwnerException;
-use Pterodactyl\Exceptions\Service\Subuser\ServerSubuserExistsException;
+use Ruff\Services\Users\UserCreationService;
+use Ruff\Repositories\Eloquent\SubuserRepository;
+use Ruff\Contracts\Repository\UserRepositoryInterface;
+use Ruff\Exceptions\Repository\RecordNotFoundException;
+use Ruff\Exceptions\Service\Subuser\UserIsServerOwnerException;
+use Ruff\Exceptions\Service\Subuser\ServerSubuserExistsException;
 
 class SubuserCreationService
 {
@@ -31,7 +31,7 @@ class SubuserCreationService
      * If the email address already belongs to a user on the system a new user will not
      * be created.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
      * @throws ServerSubuserExistsException
      * @throws UserIsServerOwnerException
      * @throws \Throwable

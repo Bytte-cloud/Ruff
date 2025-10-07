@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Services\Nodes;
+namespace Ruff\Services\Nodes;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Str;
-use Pterodactyl\Models\Node;
+use Ruff\Models\Node;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Contracts\Repository\NodeRepositoryInterface;
+use Ruff\Contracts\Repository\NodeRepositoryInterface;
 
 class NodeCreationService
 {
@@ -20,7 +20,7 @@ class NodeCreationService
     /**
      * Create a new node on the panel.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
      */
     public function handle(array $data): Node
     {

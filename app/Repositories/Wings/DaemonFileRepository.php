@@ -1,19 +1,19 @@
 <?php
 
-namespace Pterodactyl\Repositories\Wings;
+namespace Ruff\Repositories\Wings;
 
 use Illuminate\Support\Arr;
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Server;
+use Ruff\Models\Server;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\TransferException;
-use Pterodactyl\Exceptions\Http\Server\FileSizeTooLargeException;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Ruff\Exceptions\Http\Server\FileSizeTooLargeException;
+use Ruff\Exceptions\Http\Connection\DaemonConnectionException;
 
 /**
- * @method \Pterodactyl\Repositories\Wings\DaemonFileRepository setNode(\Pterodactyl\Models\Node $node)
- * @method \Pterodactyl\Repositories\Wings\DaemonFileRepository setServer(\Pterodactyl\Models\Server $server)
+ * @method \Ruff\Repositories\Wings\DaemonFileRepository setNode(\Ruff\Models\Node $node)
+ * @method \Ruff\Repositories\Wings\DaemonFileRepository setServer(\Ruff\Models\Server $server)
  */
 class DaemonFileRepository extends DaemonRepository
 {

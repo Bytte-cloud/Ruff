@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Services\Deployment;
+namespace Ruff\Services\Deployment;
 
-use Pterodactyl\Models\Node;
+use Ruff\Models\Node;
 use Webmozart\Assert\Assert;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException;
+use Ruff\Exceptions\Service\Deployment\NoViableNodeException;
 
 class FindViableNodesService
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Service\Allocation;
+namespace Ruff\Exceptions\Service\Allocation;
 
-use Pterodactyl\Exceptions\PterodactylException;
+use Ruff\Exceptions\RuffException;
 
-class AllocationDoesNotBelongToServerException extends PterodactylException
+class AllocationDoesNotBelongToServerException extends RuffException
 {
 }

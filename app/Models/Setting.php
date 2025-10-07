@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Ruff\Models;
 
 /**
- * Pterodactyl\Models\Setting.
+ * Ruff\Models\Setting.
  *
  * @property int $id
  * @property string $key

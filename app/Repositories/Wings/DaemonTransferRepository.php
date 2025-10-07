@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Repositories\Wings;
+namespace Ruff\Repositories\Wings;
 
-use Pterodactyl\Models\Node;
+use Ruff\Models\Node;
 use Lcobucci\JWT\Token\Plain;
 use GuzzleHttp\Exception\GuzzleException;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Ruff\Exceptions\Http\Connection\DaemonConnectionException;
 
 /**
- * @method \Pterodactyl\Repositories\Wings\DaemonTransferRepository setNode(\Pterodactyl\Models\Node $node)
- * @method \Pterodactyl\Repositories\Wings\DaemonTransferRepository setServer(\Pterodactyl\Models\Server $server)
+ * @method \Ruff\Repositories\Wings\DaemonTransferRepository setNode(\Ruff\Models\Node $node)
+ * @method \Ruff\Repositories\Wings\DaemonTransferRepository setServer(\Ruff\Models\Server $server)
  */
 class DaemonTransferRepository extends DaemonRepository
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Nests;
+namespace Ruff\Http\Controllers\Admin\Nests;
 
 use Illuminate\View\View;
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\EggVariable;
+use Ruff\Models\Egg;
+use Ruff\Models\EggVariable;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
 use Illuminate\View\Factory as ViewFactory;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Services\Eggs\Variables\VariableUpdateService;
-use Pterodactyl\Http\Requests\Admin\Egg\EggVariableFormRequest;
-use Pterodactyl\Services\Eggs\Variables\VariableCreationService;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
+use Ruff\Http\Controllers\Controller;
+use Ruff\Contracts\Repository\EggRepositoryInterface;
+use Ruff\Services\Eggs\Variables\VariableUpdateService;
+use Ruff\Http\Requests\Admin\Egg\EggVariableFormRequest;
+use Ruff\Services\Eggs\Variables\VariableCreationService;
+use Ruff\Contracts\Repository\EggVariableRepositoryInterface;
 
 class EggVariableController extends Controller
 {
@@ -33,7 +33,7 @@ class EggVariableController extends Controller
     /**
      * Handle request to view the variables attached to an Egg.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      */
     public function view(int $egg): View
     {
@@ -45,9 +45,9 @@ class EggVariableController extends Controller
     /**
      * Handle a request to create a new Egg variable.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\BadValidationRuleException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Service\Egg\Variable\BadValidationRuleException
+     * @throws \Ruff\Exceptions\Service\Egg\Variable\ReservedVariableNameException
      */
     public function store(EggVariableFormRequest $request, Egg $egg): RedirectResponse
     {
@@ -60,10 +60,10 @@ class EggVariableController extends Controller
     /**
      * Handle a request to update an existing Egg variable.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException
+     * @throws \Ruff\Exceptions\DisplayException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Service\Egg\Variable\ReservedVariableNameException
      */
     public function update(EggVariableFormRequest $request, Egg $egg, EggVariable $variable): RedirectResponse
     {

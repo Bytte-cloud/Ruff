@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Repository;
+namespace Ruff\Exceptions\Repository;
 
-use Pterodactyl\Exceptions\PterodactylException;
+use Ruff\Exceptions\RuffException;
 
-class RepositoryException extends PterodactylException
+class RepositoryException extends RuffException
 {
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Ruff\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
- * \Pterodactyl\Models\ActivityLogSubject.
+ * \Ruff\Models\ActivityLogSubject.
  *
  * @property int $id
  * @property int $activity_log_id

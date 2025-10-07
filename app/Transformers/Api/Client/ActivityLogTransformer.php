@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Client;
+namespace Ruff\Transformers\Api\Client;
 
 use Illuminate\Support\Str;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\ActivityLog;
+use Ruff\Models\User;
+use Ruff\Models\ActivityLog;
 use Illuminate\Database\Eloquent\Model;
 
 class ActivityLogTransformer extends BaseClientTransformer

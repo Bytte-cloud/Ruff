@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Service\Egg;
+namespace Ruff\Exceptions\Service\Egg;
 
-use Pterodactyl\Exceptions\DisplayException;
+use Ruff\Exceptions\DisplayException;
 
 class InvalidCopyFromException extends DisplayException
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Schedule;
+namespace Ruff\Tests\Integration\Api\Client\Server\Schedule;
 
-use Pterodactyl\Models\Task;
-use Pterodactyl\Models\Schedule;
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Ruff\Models\Task;
+use Ruff\Models\Schedule;
+use Ruff\Models\Permission;
+use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class GetServerSchedulesTest extends ClientApiIntegrationTestCase
 {

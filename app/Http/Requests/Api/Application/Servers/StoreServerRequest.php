@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Application\Servers;
+namespace Ruff\Http\Requests\Api\Application\Servers;
 
-use Pterodactyl\Models\Server;
+use Ruff\Models\Server;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Models\Objects\DeploymentObject;
-use Pterodactyl\Http\Requests\Api\Application\ApplicationApiRequest;
+use Ruff\Services\Acl\Api\AdminAcl;
+use Ruff\Models\Objects\DeploymentObject;
+use Ruff\Http\Requests\Api\Application\ApplicationApiRequest;
 
 class StoreServerRequest extends ApplicationApiRequest
 {

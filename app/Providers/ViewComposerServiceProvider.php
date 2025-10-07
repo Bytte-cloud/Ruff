@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Providers;
+namespace Ruff\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Pterodactyl\Http\ViewComposers\AssetComposer;
+use Ruff\Http\ViewComposers\AssetComposer;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {

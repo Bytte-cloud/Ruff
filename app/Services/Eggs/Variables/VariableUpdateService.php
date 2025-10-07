@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Services\Eggs\Variables;
+namespace Ruff\Services\Eggs\Variables;
 
 use Illuminate\Support\Str;
-use Pterodactyl\Models\EggVariable;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Traits\Services\ValidatesValidationRules;
+use Ruff\Models\EggVariable;
+use Ruff\Exceptions\DisplayException;
+use Ruff\Traits\Services\ValidatesValidationRules;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException;
+use Ruff\Contracts\Repository\EggVariableRepositoryInterface;
+use Ruff\Exceptions\Service\Egg\Variable\ReservedVariableNameException;
 
 class VariableUpdateService
 {
@@ -34,8 +34,8 @@ class VariableUpdateService
      * Update a specific egg variable.
      *
      * @throws DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      * @throws ReservedVariableNameException
      */
     public function handle(EggVariable $variable, array $data): mixed

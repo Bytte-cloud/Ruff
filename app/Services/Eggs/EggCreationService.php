@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Services\Eggs;
+namespace Ruff\Services\Eggs;
 
 use Ramsey\Uuid\Uuid;
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
+use Ruff\Models\Egg;
+use Ruff\Contracts\Repository\EggRepositoryInterface;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use Pterodactyl\Exceptions\Service\Egg\NoParentConfigurationFoundException;
+use Ruff\Exceptions\Service\Egg\NoParentConfigurationFoundException;
 
-// When a mommy and a daddy pterodactyl really like each other...
+// When a mommy and a daddy Ruff really like each other...
 class EggCreationService
 {
     /**
@@ -21,7 +21,7 @@ class EggCreationService
     /**
      * Create a new service option and assign it to the given service.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
      * @throws NoParentConfigurationFoundException
      */
     public function handle(array $data): Egg
@@ -40,7 +40,7 @@ class EggCreationService
 
         return $this->repository->create(array_merge($data, [
             'uuid' => Uuid::uuid4()->toString(),
-            'author' => $this->config->get('pterodactyl.service.author'),
+            'author' => $this->config->get('Ruff.service.author'),
         ]), true, true);
     }
 }

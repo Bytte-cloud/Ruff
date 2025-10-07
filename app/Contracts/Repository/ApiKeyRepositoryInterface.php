@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Contracts\Repository;
+namespace Ruff\Contracts\Repository;
 
-use Pterodactyl\Models\User;
+use Ruff\Models\User;
 use Illuminate\Support\Collection;
 
 interface ApiKeyRepositoryInterface extends RepositoryInterface

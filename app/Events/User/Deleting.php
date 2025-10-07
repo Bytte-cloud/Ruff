@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Events\User;
+namespace Ruff\Events\User;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Events\Event;
+use Ruff\Models\User;
+use Ruff\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
 class Deleting extends Event

@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Database;
+namespace Ruff\Tests\Integration\Api\Client\Server\Database;
 
-use Pterodactyl\Models\Subuser;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\DatabaseHost;
-use Pterodactyl\Contracts\Extensions\HashidsInterface;
-use Pterodactyl\Services\Databases\DatabasePasswordService;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Ruff\Models\Subuser;
+use Ruff\Models\Database;
+use Ruff\Models\DatabaseHost;
+use Ruff\Contracts\Extensions\HashidsInterface;
+use Ruff\Services\Databases\DatabasePasswordService;
+use Ruff\Services\Databases\DatabaseManagementService;
+use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class DatabaseAuthorizationTest extends ClientApiIntegrationTestCase
 {

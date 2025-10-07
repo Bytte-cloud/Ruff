@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Admin\Node;
+namespace Ruff\Http\Requests\Admin\Node;
 
-use Pterodactyl\Http\Requests\Admin\AdminFormRequest;
+use Ruff\Http\Requests\Admin\AdminFormRequest;
 
 class AllocationAliasFormRequest extends AdminFormRequest
 {

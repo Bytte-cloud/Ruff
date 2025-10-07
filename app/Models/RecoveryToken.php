@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Ruff\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

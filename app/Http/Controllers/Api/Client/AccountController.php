@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client;
+namespace Ruff\Http\Controllers\Api\Client;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Facades\Activity;
-use Pterodactyl\Services\Users\UserUpdateService;
-use Pterodactyl\Transformers\Api\Client\AccountTransformer;
-use Pterodactyl\Http\Requests\Api\Client\Account\UpdateEmailRequest;
-use Pterodactyl\Http\Requests\Api\Client\Account\UpdatePasswordRequest;
+use Ruff\Facades\Activity;
+use Ruff\Services\Users\UserUpdateService;
+use Ruff\Transformers\Api\Client\AccountTransformer;
+use Ruff\Http\Requests\Api\Client\Account\UpdateEmailRequest;
+use Ruff\Http\Requests\Api\Client\Account\UpdatePasswordRequest;
 
 class AccountController extends ClientApiController
 {

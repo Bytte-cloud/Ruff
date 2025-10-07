@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Repositories\Eloquent;
+namespace Ruff\Repositories\Eloquent;
 
-use Pterodactyl\Models\Location;
+use Ruff\Models\Location;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
+use Ruff\Exceptions\Repository\RecordNotFoundException;
+use Ruff\Contracts\Repository\LocationRepositoryInterface;
 
 class LocationRepository extends EloquentRepository implements LocationRepositoryInterface
 {

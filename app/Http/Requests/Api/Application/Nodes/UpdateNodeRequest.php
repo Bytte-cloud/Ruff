@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Application\Nodes;
+namespace Ruff\Http\Requests\Api\Application\Nodes;
 
-use Pterodactyl\Models\Node;
+use Ruff\Models\Node;
 
 class UpdateNodeRequest extends StoreNodeRequest
 {

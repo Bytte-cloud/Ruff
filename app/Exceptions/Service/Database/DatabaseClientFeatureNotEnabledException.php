@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Service\Database;
+namespace Ruff\Exceptions\Service\Database;
 
-use Pterodactyl\Exceptions\PterodactylException;
+use Ruff\Exceptions\RuffException;
 
-class DatabaseClientFeatureNotEnabledException extends PterodactylException
+class DatabaseClientFeatureNotEnabledException extends RuffException
 {
     public function __construct()
     {

@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Servers;
+namespace Ruff\Tests\Integration\Services\Servers;
 
 use Mockery\MockInterface;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\DatabaseHost;
+use Ruff\Models\Database;
+use Ruff\Models\DatabaseHost;
 use GuzzleHttp\Exception\BadResponseException;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Servers\ServerDeletionService;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Ruff\Tests\Integration\IntegrationTestCase;
+use Ruff\Services\Servers\ServerDeletionService;
+use Ruff\Repositories\Wings\DaemonServerRepository;
+use Ruff\Services\Databases\DatabaseManagementService;
+use Ruff\Exceptions\Http\Connection\DaemonConnectionException;
 
 class ServerDeletionServiceTest extends IntegrationTestCase
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Servers;
+namespace Ruff\Http\Controllers\Api\Application\Servers;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Servers\StartupModificationService;
-use Pterodactyl\Transformers\Api\Application\ServerTransformer;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
-use Pterodactyl\Http\Requests\Api\Application\Servers\UpdateServerStartupRequest;
+use Ruff\Models\User;
+use Ruff\Models\Server;
+use Ruff\Services\Servers\StartupModificationService;
+use Ruff\Transformers\Api\Application\ServerTransformer;
+use Ruff\Http\Controllers\Api\Application\ApplicationApiController;
+use Ruff\Http\Requests\Api\Application\Servers\UpdateServerStartupRequest;
 
 class StartupController extends ApplicationApiController
 {
@@ -23,9 +23,9 @@ class StartupController extends ApplicationApiController
      * Update the startup and environment settings for a specific server.
      *
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      */
     public function index(UpdateServerStartupRequest $request, Server $server): array
     {

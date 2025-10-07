@@ -1,21 +1,21 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Ruff\Http\Controllers\Api\Client\Servers;
 
-use Pterodactyl\Models\Server;
+use Ruff\Models\Server;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Facades\Activity;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Transformers\Api\Client\AllocationTransformer;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
-use Pterodactyl\Services\Allocations\FindAssignableAllocationService;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\GetNetworkRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\NewAllocationRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\DeleteAllocationRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\UpdateAllocationRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\SetPrimaryAllocationRequest;
+use Ruff\Facades\Activity;
+use Ruff\Models\Allocation;
+use Ruff\Exceptions\DisplayException;
+use Ruff\Repositories\Eloquent\ServerRepository;
+use Ruff\Transformers\Api\Client\AllocationTransformer;
+use Ruff\Http\Controllers\Api\Client\ClientApiController;
+use Ruff\Services\Allocations\FindAssignableAllocationService;
+use Ruff\Http\Requests\Api\Client\Servers\Network\GetNetworkRequest;
+use Ruff\Http\Requests\Api\Client\Servers\Network\NewAllocationRequest;
+use Ruff\Http\Requests\Api\Client\Servers\Network\DeleteAllocationRequest;
+use Ruff\Http\Requests\Api\Client\Servers\Network\UpdateAllocationRequest;
+use Ruff\Http\Requests\Api\Client\Servers\Network\SetPrimaryAllocationRequest;
 
 class NetworkAllocationController extends ClientApiController
 {
@@ -43,8 +43,8 @@ class NetworkAllocationController extends ClientApiController
     /**
      * Set the primary allocation for a server.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UpdateAllocationRequest $request, Server $server, Allocation $allocation): array
     {
@@ -67,8 +67,8 @@ class NetworkAllocationController extends ClientApiController
     /**
      * Set the primary allocation for a server.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      */
     public function setPrimary(SetPrimaryAllocationRequest $request, Server $server, Allocation $allocation): array
     {

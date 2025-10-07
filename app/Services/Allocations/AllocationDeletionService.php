@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Services\Allocations;
+namespace Ruff\Services\Allocations;
 
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Allocation\ServerUsingAllocationException;
+use Ruff\Models\Allocation;
+use Ruff\Contracts\Repository\AllocationRepositoryInterface;
+use Ruff\Exceptions\Service\Allocation\ServerUsingAllocationException;
 
 class AllocationDeletionService
 {

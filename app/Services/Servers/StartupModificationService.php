@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Ruff\Services\Servers;
 
 use Illuminate\Support\Arr;
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\ServerVariable;
+use Ruff\Models\Egg;
+use Ruff\Models\User;
+use Ruff\Models\Server;
+use Ruff\Models\ServerVariable;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Traits\Services\HasUserLevels;
+use Ruff\Traits\Services\HasUserLevels;
 
 class StartupModificationService
 {

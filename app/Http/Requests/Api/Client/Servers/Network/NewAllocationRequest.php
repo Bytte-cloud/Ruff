@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Client\Servers\Network;
+namespace Ruff\Http\Requests\Api\Client\Servers\Network;
 
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Http\Requests\Api\Client\ClientApiRequest;
+use Ruff\Models\Permission;
+use Ruff\Http\Requests\Api\Client\ClientApiRequest;
 
 class NewAllocationRequest extends ClientApiRequest
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Services\Nests;
+namespace Ruff\Services\Nests;
 
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
+use Ruff\Contracts\Repository\NestRepositoryInterface;
 
 class NestUpdateService
 {
@@ -16,8 +16,8 @@ class NestUpdateService
     /**
      * Update a nest and prevent changing the author once it is set.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      */
     public function handle(int $nest, array $data): void
     {

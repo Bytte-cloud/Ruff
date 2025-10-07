@@ -1,5 +1,5 @@
 {
-    "name": "Ruff-panel",
+    "name": "ruff-panel",
     "engines": {
         "node": ">=14"
     },
@@ -153,5 +153,21 @@
             "displayName": true,
             "fileName": true
         }
-    }
+    },
+    "version": "1.0.0",
+    "description": "[![Logo Image](https://cdn.Ruff.io/logos/new/Ruff_logo.png)](https://Ruff.io)",
+    "main": ".eslintrc.js",
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Bytte-cloud/Ruff.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Bytte-cloud/Ruff/issues"
+    },
+    "homepage": "https://github.com/Bytte-cloud/Ruff#readme"
 }

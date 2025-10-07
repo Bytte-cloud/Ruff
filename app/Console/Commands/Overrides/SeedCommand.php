@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Console\Commands\Overrides;
+namespace Ruff\Console\Commands\Overrides;
 
-use Pterodactyl\Console\RequiresDatabaseMigrations;
+use Ruff\Console\RequiresDatabaseMigrations;
 use Illuminate\Database\Console\Seeds\SeedCommand as BaseSeedCommand;
 
 class SeedCommand extends BaseSeedCommand

@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server;
+namespace Ruff\Tests\Integration\Api\Client\Server;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Ruff\Models\Server;
+use Ruff\Models\Permission;
+use Ruff\Repositories\Wings\DaemonServerRepository;
+use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class SettingsControllerTest extends ClientApiIntegrationTestCase
 {

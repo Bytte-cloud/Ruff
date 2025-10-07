@@ -1,19 +1,19 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Servers;
+namespace Ruff\Http\Controllers\Api\Application\Servers;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
+use Ruff\Models\Server;
 use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
-use Pterodactyl\Services\Servers\ServerCreationService;
-use Pterodactyl\Services\Servers\ServerDeletionService;
-use Pterodactyl\Transformers\Api\Application\ServerTransformer;
-use Pterodactyl\Http\Requests\Api\Application\Servers\GetServerRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\GetServersRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\ServerWriteRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\StoreServerRequest;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
+use Ruff\Services\Servers\ServerCreationService;
+use Ruff\Services\Servers\ServerDeletionService;
+use Ruff\Transformers\Api\Application\ServerTransformer;
+use Ruff\Http\Requests\Api\Application\Servers\GetServerRequest;
+use Ruff\Http\Requests\Api\Application\Servers\GetServersRequest;
+use Ruff\Http\Requests\Api\Application\Servers\ServerWriteRequest;
+use Ruff\Http\Requests\Api\Application\Servers\StoreServerRequest;
+use Ruff\Http\Controllers\Api\Application\ApplicationApiController;
 
 class ServerController extends ApplicationApiController
 {
@@ -47,11 +47,11 @@ class ServerController extends ApplicationApiController
      *
      * @throws \Throwable
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableAllocationException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException
+     * @throws \Ruff\Exceptions\DisplayException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Service\Deployment\NoViableAllocationException
+     * @throws \Ruff\Exceptions\Service\Deployment\NoViableNodeException
      */
     public function store(StoreServerRequest $request): JsonResponse
     {
@@ -75,7 +75,7 @@ class ServerController extends ApplicationApiController
     /**
      * Deletes a server.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Ruff\Exceptions\DisplayException
      */
     public function delete(ServerWriteRequest $request, Server $server, string $force = ''): Response
     {

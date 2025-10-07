@@ -1,10 +1,11 @@
 # Stage 0:
 # Build the assets that are needed for the frontend. This build stage is then discarded
 # since we won't need NodeJS anymore in the future. This Docker image ships a final production
-# level distribution of Pterodactyl.
-FROM --platform=$TARGETOS/$TARGETARCH mhart/alpine-node:14
+# level distribution of Ruff.
+FROM --platform=$TARGETOS/$TARGETARCH node:20-alpine
 WORKDIR /app
 COPY . ./
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN yarn install --frozen-lockfile \
     && yarn run build:production
 

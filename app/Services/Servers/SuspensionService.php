@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Ruff\Services\Servers;
 
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
+use Ruff\Models\Server;
+use Ruff\Repositories\Wings\DaemonServerRepository;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class SuspensionService

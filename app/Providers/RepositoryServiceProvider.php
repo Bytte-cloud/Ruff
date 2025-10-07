@@ -1,42 +1,42 @@
 <?php
 
-namespace Pterodactyl\Providers;
+namespace Ruff\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Pterodactyl\Repositories\Eloquent\EggRepository;
-use Pterodactyl\Repositories\Eloquent\NestRepository;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Repositories\Eloquent\TaskRepository;
-use Pterodactyl\Repositories\Eloquent\UserRepository;
-use Pterodactyl\Repositories\Eloquent\ApiKeyRepository;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Repositories\Eloquent\SessionRepository;
-use Pterodactyl\Repositories\Eloquent\SubuserRepository;
-use Pterodactyl\Repositories\Eloquent\DatabaseRepository;
-use Pterodactyl\Repositories\Eloquent\LocationRepository;
-use Pterodactyl\Repositories\Eloquent\ScheduleRepository;
-use Pterodactyl\Repositories\Eloquent\SettingsRepository;
-use Pterodactyl\Repositories\Eloquent\AllocationRepository;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Repositories\Eloquent\EggVariableRepository;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Contracts\Repository\NodeRepositoryInterface;
-use Pterodactyl\Contracts\Repository\TaskRepositoryInterface;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Repositories\Eloquent\DatabaseHostRepository;
-use Pterodactyl\Contracts\Repository\ApiKeyRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
-use Pterodactyl\Repositories\Eloquent\ServerVariableRepository;
-use Pterodactyl\Contracts\Repository\SessionRepositoryInterface;
-use Pterodactyl\Contracts\Repository\SubuserRepositoryInterface;
-use Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ScheduleRepositoryInterface;
-use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
-use Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ServerVariableRepositoryInterface;
+use Ruff\Repositories\Eloquent\EggRepository;
+use Ruff\Repositories\Eloquent\NestRepository;
+use Ruff\Repositories\Eloquent\NodeRepository;
+use Ruff\Repositories\Eloquent\TaskRepository;
+use Ruff\Repositories\Eloquent\UserRepository;
+use Ruff\Repositories\Eloquent\ApiKeyRepository;
+use Ruff\Repositories\Eloquent\ServerRepository;
+use Ruff\Repositories\Eloquent\SessionRepository;
+use Ruff\Repositories\Eloquent\SubuserRepository;
+use Ruff\Repositories\Eloquent\DatabaseRepository;
+use Ruff\Repositories\Eloquent\LocationRepository;
+use Ruff\Repositories\Eloquent\ScheduleRepository;
+use Ruff\Repositories\Eloquent\SettingsRepository;
+use Ruff\Repositories\Eloquent\AllocationRepository;
+use Ruff\Contracts\Repository\EggRepositoryInterface;
+use Ruff\Repositories\Eloquent\EggVariableRepository;
+use Ruff\Contracts\Repository\NestRepositoryInterface;
+use Ruff\Contracts\Repository\NodeRepositoryInterface;
+use Ruff\Contracts\Repository\TaskRepositoryInterface;
+use Ruff\Contracts\Repository\UserRepositoryInterface;
+use Ruff\Repositories\Eloquent\DatabaseHostRepository;
+use Ruff\Contracts\Repository\ApiKeyRepositoryInterface;
+use Ruff\Contracts\Repository\ServerRepositoryInterface;
+use Ruff\Repositories\Eloquent\ServerVariableRepository;
+use Ruff\Contracts\Repository\SessionRepositoryInterface;
+use Ruff\Contracts\Repository\SubuserRepositoryInterface;
+use Ruff\Contracts\Repository\DatabaseRepositoryInterface;
+use Ruff\Contracts\Repository\LocationRepositoryInterface;
+use Ruff\Contracts\Repository\ScheduleRepositoryInterface;
+use Ruff\Contracts\Repository\SettingsRepositoryInterface;
+use Ruff\Contracts\Repository\AllocationRepositoryInterface;
+use Ruff\Contracts\Repository\EggVariableRepositoryInterface;
+use Ruff\Contracts\Repository\DatabaseHostRepositoryInterface;
+use Ruff\Contracts\Repository\ServerVariableRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

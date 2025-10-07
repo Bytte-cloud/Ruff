@@ -1,26 +1,26 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Ruff\Http\Controllers\Admin;
 
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Model;
+use Ruff\Models\User;
+use Ruff\Models\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\View\Factory as ViewFactory;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Http\Controllers\Controller;
+use Ruff\Exceptions\DisplayException;
+use Ruff\Http\Controllers\Controller;
 use Illuminate\Contracts\Translation\Translator;
-use Pterodactyl\Services\Users\UserUpdateService;
-use Pterodactyl\Traits\Helpers\AvailableLanguages;
-use Pterodactyl\Services\Users\UserCreationService;
-use Pterodactyl\Services\Users\UserDeletionService;
-use Pterodactyl\Http\Requests\Admin\UserFormRequest;
-use Pterodactyl\Http\Requests\Admin\NewUserFormRequest;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
+use Ruff\Services\Users\UserUpdateService;
+use Ruff\Traits\Helpers\AvailableLanguages;
+use Ruff\Services\Users\UserCreationService;
+use Ruff\Services\Users\UserDeletionService;
+use Ruff\Http\Requests\Admin\UserFormRequest;
+use Ruff\Http\Requests\Admin\NewUserFormRequest;
+use Ruff\Contracts\Repository\UserRepositoryInterface;
 
 class UserController extends Controller
 {
@@ -115,8 +115,8 @@ class UserController extends Controller
     /**
      * Update a user on the system.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UserFormRequest $request, User $user): RedirectResponse
     {

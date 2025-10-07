@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server;
+namespace Ruff\Tests\Integration\Api\Client\Server;
 
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Ruff\Models\Permission;
+use Ruff\Repositories\Wings\DaemonServerRepository;
+use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class ResourceUtilizationControllerTest extends ClientApiIntegrationTestCase
 {

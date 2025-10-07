@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Service;
+namespace Ruff\Exceptions\Service;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Exceptions\DisplayException;
+use Ruff\Exceptions\DisplayException;
 
 class HasActiveServersException extends DisplayException
 {

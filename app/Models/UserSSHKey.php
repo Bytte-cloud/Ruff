@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Ruff\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * \Pterodactyl\Models\UserSSHKey.
+ * \Ruff\Models\UserSSHKey.
  *
  * @property int $id
  * @property int $user_id

@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Client\Servers\Startup;
+namespace Ruff\Http\Requests\Api\Client\Servers\Startup;
 
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Http\Requests\Api\Client\ClientApiRequest;
+use Ruff\Models\Permission;
+use Ruff\Http\Requests\Api\Client\ClientApiRequest;
 
 class UpdateStartupVariableRequest extends ClientApiRequest
 {

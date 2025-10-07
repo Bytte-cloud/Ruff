@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Servers;
+namespace Ruff\Tests\Integration\Services\Servers;
 
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\User;
+use Ruff\Models\Egg;
+use Ruff\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Servers\VariableValidatorService;
+use Ruff\Tests\Integration\IntegrationTestCase;
+use Ruff\Services\Servers\VariableValidatorService;
 
 class VariableValidatorServiceTest extends IntegrationTestCase
 {
@@ -19,7 +19,7 @@ class VariableValidatorServiceTest extends IntegrationTestCase
 
         /* @noinspection PhpFieldAssignmentTypeMismatchInspection */
         $this->egg = Egg::query()
-            ->where('author', 'support@pterodactyl.io')
+            ->where('author', 'support@Ruff.io')
             ->where('name', 'Bungeecord')
             ->firstOrFail();
     }

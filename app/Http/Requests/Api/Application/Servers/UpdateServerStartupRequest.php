@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Application\Servers;
+namespace Ruff\Http\Requests\Api\Application\Servers;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Http\Requests\Api\Application\ApplicationApiRequest;
+use Ruff\Models\Server;
+use Ruff\Services\Acl\Api\AdminAcl;
+use Ruff\Http\Requests\Api\Application\ApplicationApiRequest;
 
 class UpdateServerStartupRequest extends ApplicationApiRequest
 {

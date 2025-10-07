@@ -1,22 +1,22 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Servers;
+namespace Ruff\Http\Controllers\Admin\Servers;
 
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Nest;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Services\Servers\EnvironmentService;
+use Ruff\Models\Nest;
+use Ruff\Models\Server;
+use Ruff\Exceptions\DisplayException;
+use Ruff\Http\Controllers\Controller;
+use Ruff\Services\Servers\EnvironmentService;
 use Illuminate\Contracts\View\Factory as ViewFactory;
-use Pterodactyl\Repositories\Eloquent\NestRepository;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Repositories\Eloquent\MountRepository;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Traits\Controllers\JavascriptInjection;
-use Pterodactyl\Repositories\Eloquent\LocationRepository;
-use Pterodactyl\Repositories\Eloquent\DatabaseHostRepository;
+use Ruff\Repositories\Eloquent\NestRepository;
+use Ruff\Repositories\Eloquent\NodeRepository;
+use Ruff\Repositories\Eloquent\MountRepository;
+use Ruff\Repositories\Eloquent\ServerRepository;
+use Ruff\Traits\Controllers\JavascriptInjection;
+use Ruff\Repositories\Eloquent\LocationRepository;
+use Ruff\Repositories\Eloquent\DatabaseHostRepository;
 
 class ServerViewController extends Controller
 {
@@ -70,7 +70,7 @@ class ServerViewController extends Controller
     /**
      * Returns the server startup management page.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      */
     public function startup(Request $request, Server $server): View
     {

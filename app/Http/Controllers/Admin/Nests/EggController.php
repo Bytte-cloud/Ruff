@@ -1,19 +1,19 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Nests;
+namespace Ruff\Http\Controllers\Admin\Nests;
 
 use Illuminate\View\View;
-use Pterodactyl\Models\Egg;
+use Ruff\Models\Egg;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
 use Illuminate\View\Factory as ViewFactory;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Services\Eggs\EggUpdateService;
-use Pterodactyl\Services\Eggs\EggCreationService;
-use Pterodactyl\Services\Eggs\EggDeletionService;
-use Pterodactyl\Http\Requests\Admin\Egg\EggFormRequest;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
+use Ruff\Http\Controllers\Controller;
+use Ruff\Services\Eggs\EggUpdateService;
+use Ruff\Services\Eggs\EggCreationService;
+use Ruff\Services\Eggs\EggDeletionService;
+use Ruff\Http\Requests\Admin\Egg\EggFormRequest;
+use Ruff\Contracts\Repository\EggRepositoryInterface;
+use Ruff\Contracts\Repository\NestRepositoryInterface;
 
 class EggController extends Controller
 {
@@ -34,7 +34,7 @@ class EggController extends Controller
     /**
      * Handle a request to display the Egg creation page.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
      */
     public function create(): View
     {
@@ -47,8 +47,8 @@ class EggController extends Controller
     /**
      * Handle request to store a new Egg.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\NoParentConfigurationFoundException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Service\Egg\NoParentConfigurationFoundException
      */
     public function store(EggFormRequest $request): RedirectResponse
     {
@@ -79,9 +79,9 @@ class EggController extends Controller
     /**
      * Handle request to update an Egg.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\NoParentConfigurationFoundException
+     * @throws \Ruff\Exceptions\Model\DataValidationException
+     * @throws \Ruff\Exceptions\Repository\RecordNotFoundException
+     * @throws \Ruff\Exceptions\Service\Egg\NoParentConfigurationFoundException
      */
     public function update(EggFormRequest $request, Egg $egg): RedirectResponse
     {
@@ -97,8 +97,8 @@ class EggController extends Controller
     /**
      * Handle request to destroy an egg.
      *
-     * @throws \Pterodactyl\Exceptions\Service\Egg\HasChildrenException
-     * @throws \Pterodactyl\Exceptions\Service\HasActiveServersException
+     * @throws \Ruff\Exceptions\Service\Egg\HasChildrenException
+     * @throws \Ruff\Exceptions\Service\HasActiveServersException
      */
     public function destroy(Egg $egg): RedirectResponse
     {

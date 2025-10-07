@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Application\Locations;
+namespace Ruff\Http\Requests\Api\Application\Locations;
 
-use Pterodactyl\Models\Location;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Http\Requests\Api\Application\ApplicationApiRequest;
+use Ruff\Models\Location;
+use Ruff\Services\Acl\Api\AdminAcl;
+use Ruff\Http\Requests\Api\Application\ApplicationApiRequest;
 
 class StoreLocationRequest extends ApplicationApiRequest
 {

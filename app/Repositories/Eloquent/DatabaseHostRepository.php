@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Repositories\Eloquent;
+namespace Ruff\Repositories\Eloquent;
 
 use Illuminate\Support\Collection;
-use Pterodactyl\Models\DatabaseHost;
-use Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface;
+use Ruff\Models\DatabaseHost;
+use Ruff\Contracts\Repository\DatabaseHostRepositoryInterface;
 
 class DatabaseHostRepository extends EloquentRepository implements DatabaseHostRepositoryInterface
 {

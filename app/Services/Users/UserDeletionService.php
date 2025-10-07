@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Services\Users;
+namespace Ruff\Services\Users;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Exceptions\DisplayException;
+use Ruff\Models\User;
+use Ruff\Exceptions\DisplayException;
 use Illuminate\Contracts\Translation\Translator;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Ruff\Contracts\Repository\UserRepositoryInterface;
+use Ruff\Contracts\Repository\ServerRepositoryInterface;
 
 class UserDeletionService
 {

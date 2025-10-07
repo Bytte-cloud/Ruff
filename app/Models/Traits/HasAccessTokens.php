@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Models\Traits;
+namespace Ruff\Models\Traits;
 
 use Illuminate\Support\Str;
 use Laravel\Sanctum\Sanctum;
-use Pterodactyl\Models\ApiKey;
+use Ruff\Models\ApiKey;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Pterodactyl\Extensions\Laravel\Sanctum\NewAccessToken;
+use Ruff\Extensions\Laravel\Sanctum\NewAccessToken;
 
 /**
- * @mixin \Pterodactyl\Models\Model
+ * @mixin \Ruff\Models\Model
  */
 trait HasAccessTokens
 {

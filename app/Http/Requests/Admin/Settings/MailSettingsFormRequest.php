@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Admin\Settings;
+namespace Ruff\Http\Requests\Admin\Settings;
 
 use Illuminate\Validation\Rule;
-use Pterodactyl\Http\Requests\Admin\AdminFormRequest;
+use Ruff\Http\Requests\Admin\AdminFormRequest;
 
 class MailSettingsFormRequest extends AdminFormRequest
 {

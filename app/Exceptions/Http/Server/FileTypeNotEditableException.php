@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Http\Server;
+namespace Ruff\Exceptions\Http\Server;
 
-use Pterodactyl\Exceptions\DisplayException;
+use Ruff\Exceptions\DisplayException;
 
 class FileTypeNotEditableException extends DisplayException
 {

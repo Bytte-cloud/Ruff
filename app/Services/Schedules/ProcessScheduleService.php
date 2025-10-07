@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Services\Schedules;
+namespace Ruff\Services\Schedules;
 
 use Exception;
-use Pterodactyl\Models\Schedule;
+use Ruff\Models\Schedule;
 use Illuminate\Contracts\Bus\Dispatcher;
-use Pterodactyl\Jobs\Schedule\RunTaskJob;
+use Ruff\Jobs\Schedule\RunTaskJob;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Ruff\Exceptions\DisplayException;
+use Ruff\Repositories\Wings\DaemonServerRepository;
+use Ruff\Exceptions\Http\Connection\DaemonConnectionException;
 
 class ProcessScheduleService
 {
@@ -27,7 +27,7 @@ class ProcessScheduleService
      */
     public function handle(Schedule $schedule, bool $now = false): void
     {
-        /** @var \Pterodactyl\Models\Task $task */
+        /** @var \Ruff\Models\Task $task */
         $task = $schedule->tasks()->orderBy('sequence_id')->first();
 
         if (is_null($task)) {
@@ -75,7 +75,7 @@ class ProcessScheduleService
             // When using dispatchNow the RunTaskJob::failed() function is not called automatically
             // so we need to manually trigger it and then continue with the exception throw.
             //
-            // @see https://github.com/pterodactyl/panel/issues/2550
+            // @see https://github.com/Ruff/panel/issues/2550
             try {
                 $this->dispatcher->dispatchNow($job);
             } catch (\Exception $exception) {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Transformer;
+namespace Ruff\Exceptions\Transformer;
 
-use Pterodactyl\Exceptions\PterodactylException;
+use Ruff\Exceptions\RuffException;
 
-class InvalidTransformerLevelException extends PterodactylException
+class InvalidTransformerLevelException extends RuffException
 {
 }
