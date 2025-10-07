@@ -1,21 +1,20 @@
-# Stage 0:
-# Build the assets that are needed for the frontend. This build stage is then discarded
-# since we won't need NodeJS anymore in the future. This Docker image ships a final production
-# level distribution of Ruff.
-FROM --platform=$TARGETOS/$TARGETARCH node:20-alpine
+# Stage 0: Build frontend assets
+FROM node:20-alpine AS build
 WORKDIR /app
-COPY . ./
+COPY package.json yarn.lock ./
+RUN rm -f package-lock.json
+RUN yarn install --frozen-lockfile
+COPY . .
 ENV NODE_OPTIONS=--openssl-legacy-provider
-RUN yarn install --frozen-lockfile \
-    && yarn run build:production
+RUN yarn run build:production
 
-# Stage 1:
-# Build the actual container with all of the needed PHP dependencies that will run the application.
-FROM --platform=$TARGETOS/$TARGETARCH php:8.3-fpm-alpine
+# Stage 1: PHP runtime
+FROM php:8.3-fpm-alpine
 WORKDIR /app
-COPY . ./
-COPY --from=0 /app/public/assets ./public/assets
-RUN apk add --no-cache --update ca-certificates dcron curl git supervisor tar unzip nginx libpng-dev libxml2-dev libzip-dev certbot certbot-nginx mysql-client \
+COPY . .
+COPY --from=build /app/public/assets ./public/assets
+
+RUN apk add --no-cache ca-certificates dcron curl git supervisor tar unzip nginx libpng-dev libxml2-dev libzip-dev certbot certbot-nginx mysql-client \
     && docker-php-ext-configure zip \
     && docker-php-ext-install bcmath gd pdo_mysql zip \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
