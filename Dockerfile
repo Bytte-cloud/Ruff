@@ -1,12 +1,9 @@
 # Stage 0: Build frontend assets
-FROM node:20-alpine AS build
+FROM --platform=$TARGETOS/$TARGETARCH mhart/alpine-node:14 AS build
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN rm -f package-lock.json
-RUN yarn install --frozen-lockfile
-COPY . .
-ENV NODE_OPTIONS=--openssl-legacy-provider
-RUN yarn run build:production
+COPY . ./
+RUN yarn install --frozen-lockfile \
+    && yarn run build:production
 
 # Stage 1: PHP runtime
 FROM php:8.3-fpm-alpine
