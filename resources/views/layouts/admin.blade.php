@@ -1,214 +1,197 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ config('app.name', 'Ruff') }} - @yield('title')</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <meta name="_token" content="{{ csrf_token() }}">
+<html lang="en">
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="/favicons/manifest.json">
-        <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#bc6e3c">
-        <link rel="shortcut icon" href="/favicons/favicon.ico">
-        <meta name="msapplication-config" content="/favicons/browserconfig.xml">
-        <meta name="theme-color" content="#0e4688">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ config('app.name', 'Ruff') }} - @yield('title')</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="_token" content="{{ csrf_token() }}">
 
-        @include('layouts.scripts')
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/favicons/manifest.json">
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#bc6e3c">
+    <link rel="shortcut icon" href="/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#009d91">
 
-        @section('scripts')
-            {!! Theme::css('vendor/select2/select2.min.css?t={cache-version}') !!}
-            {!! Theme::css('vendor/bootstrap/bootstrap.min.css?t={cache-version}') !!}
-            {!! Theme::css('vendor/adminlte/admin.min.css?t={cache-version}') !!}
-            {!! Theme::css('vendor/adminlte/colors/skin-blue.min.css?t={cache-version}') !!}
-            {!! Theme::css('vendor/sweetalert/sweetalert.min.css?t={cache-version}') !!}
-            {!! Theme::css('vendor/animate/animate.min.css?t={cache-version}') !!}
-            {!! Theme::css('css/Ruff.css?t={cache-version}') !!}
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    @include('layouts.scripts')
+    @section('scripts')
+        {!! Theme::css('vendor/select2/select2.min.css?t={cache-version}') !!}
+        {!! Theme::css('vendor/sweetalert/sweetalert.min.css?t={cache-version}') !!}
+        {!! Theme::css('vendor/animate/animate.min.css?t={cache-version}') !!}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/themes/Ruff/css/admin.css">
+    @show
+</head>
 
-            <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
-        @show
-    </head>
-    <body class="hold-transition skin-blue fixed sidebar-mini">
-        <div class="wrapper">
-            <header class="main-header">
-                <a href="{{ route('index') }}" class="logo">
-                    <span>{{ config('app.name', 'Ruff') }}</span>
+<body>
+    <div class="admin-wrapper">
+        <header class="admin-header">
+            <div class="admin-header-left" style="display:flex;align-items:center;gap:6px;">
+                <a href="#" class="sidebar-toggle" id="sidebar-toggle" role="button" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </a>
-                <nav class="navbar navbar-static-top">
-                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <li class="user-menu">
-                                <a href="{{ route('account') }}">
-                                    <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?s=160" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">{{ Auth::user()->name_first }} {{ Auth::user()->name_last }}</span>
-                                </a>
-                            </li>
-                            <li>
-                                <li><a href="{{ route('index') }}" data-toggle="tooltip" data-placement="bottom" title="Exit Admin Control"><i class="fa fa-server"></i></a></li>
-                            </li>
-                            <li>
-                                <li><a href="{{ route('auth.logout') }}" id="logoutButton" data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fa fa-sign-out"></i></a></li>
-                            </li>
+                <a href="{{ route('index') }}" class="admin-brand">{{ config('app.name', 'Ruff') }}</a>
+            </div>
+
+            <div class="admin-header-actions">
+                <a href="{{ route('account') }}" class="admin-nav-btn">
+                    <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?s=160" class="avatar" alt="User Image">
+                    <span class="label-name hidden-xs">{{ Auth::user()->name_first }} {{ Auth::user()->name_last }}</span>
+                </a>
+                <a href="{{ route('index') }}" class="admin-nav-btn admin-nav-icon" data-toggle="tooltip" data-placement="bottom" title="Exit Admin Control">
+                    <i class="fa fa-server"></i>
+                </a>
+                <a href="{{ route('auth.logout') }}" id="logoutButton" class="admin-nav-btn admin-nav-icon" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </div>
+        </header>
+
+        <aside class="admin-sidebar" id="main-sidebar">
+            <nav>
+                @php
+                    $navItems = [
+                        ['admin.index', 'fa-home', 'Overview', false],
+                        ['admin.settings', 'fa-wrench', 'Settings', false],
+                        ['admin.api.index', 'fa-gamepad', 'Application API', false],
+                        '__sep__',
+                        ['admin.databases', 'fa-database', 'Databases', true],
+                        ['admin.locations', 'fa-globe', 'Locations', true],
+                        ['admin.nodes', 'fa-sitemap', 'Nodes', true],
+                        ['admin.servers', 'fa-server', 'Servers', true],
+                        ['admin.users', 'fa-users', 'Users', true],
+                        '__sep__',
+                        ['admin.mounts', 'fa-magic', 'Mounts', true],
+                        ['admin.nests', 'fa-th-large', 'Nests', true],
+                    ];
+                @endphp
+
+                @foreach ($navItems as $item)
+                    @if ($item === '__sep__')
+                        <span class="nav-sep"></span>
+                    @else
+                        @php
+                            [$route, $icon, $label, $prefix] = $item;
+                            $current = Route::currentRouteName();
+                            $isActive = $prefix ? starts_with($current, $route) : $current === $route;
+                        @endphp
+                        <a href="{{ route($route) }}" class="{{ $isActive ? 'active' : '' }}" data-toggle="tooltip" data-placement="right" title="{{ $label }}">
+                            <i class="fa {{ $icon }}"></i>
+                        </a>
+                    @endif
+                @endforeach
+            </nav>
+        </aside>
+
+        <main class="admin-content" id="content-wrapper">
+            <section class="content-header">
+                @yield('content-header')
+            </section>
+
+            <section class="content-body">
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Validation Error!</strong> There was an error validating the data provided.
+                        <ul style="margin:8px 0 0;padding-left:20px;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
                         </ul>
                     </div>
-                </nav>
-            </header>
-            <aside class="main-sidebar">
-                <section class="sidebar">
-                    <ul class="sidebar-menu">
-                        <li class="header">BASIC ADMINISTRATION</li>
-                        <li class="{{ Route::currentRouteName() !== 'admin.index' ?: 'active' }}">
-                            <a href="{{ route('admin.index') }}">
-                                <i class="fa fa-home"></i> <span>Overview</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.settings') ?: 'active' }}">
-                            <a href="{{ route('admin.settings')}}">
-                                <i class="fa fa-wrench"></i> <span>Settings</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.api') ?: 'active' }}">
-                            <a href="{{ route('admin.api.index')}}">
-                                <i class="fa fa-gamepad"></i> <span>Application API</span>
-                            </a>
-                        </li>
-                        <li class="header">MANAGEMENT</li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.databases') ?: 'active' }}">
-                            <a href="{{ route('admin.databases') }}">
-                                <i class="fa fa-database"></i> <span>Databases</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.locations') ?: 'active' }}">
-                            <a href="{{ route('admin.locations') }}">
-                                <i class="fa fa-globe"></i> <span>Locations</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.nodes') ?: 'active' }}">
-                            <a href="{{ route('admin.nodes') }}">
-                                <i class="fa fa-sitemap"></i> <span>Nodes</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.servers') ?: 'active' }}">
-                            <a href="{{ route('admin.servers') }}">
-                                <i class="fa fa-server"></i> <span>Servers</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.users') ?: 'active' }}">
-                            <a href="{{ route('admin.users') }}">
-                                <i class="fa fa-users"></i> <span>Users</span>
-                            </a>
-                        </li>
-                        <li class="header">SERVICE MANAGEMENT</li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.mounts') ?: 'active' }}">
-                            <a href="{{ route('admin.mounts') }}">
-                                <i class="fa fa-magic"></i> <span>Mounts</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.nests') ?: 'active' }}">
-                            <a href="{{ route('admin.nests') }}">
-                                <i class="fa fa-th-large"></i> <span>Nests</span>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </aside>
-            <div class="content-wrapper">
-                <section class="content-header">
-                    @yield('content-header')
-                </section>
-                <section class="content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    There was an error validating the data provided.<br><br>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                            @foreach (Alert::getMessages() as $type => $messages)
-                                @foreach ($messages as $message)
-                                    <div class="alert alert-{{ $type }} alert-dismissable" role="alert">
-                                        {!! $message !!}
-                                    </div>
-                                @endforeach
-                            @endforeach
+                @endif
+
+                @foreach (Alert::getMessages() as $type => $messages)
+                    @foreach ($messages as $message)
+                        @php
+                            $alertClass = [
+                                'success' => 'alert-success',
+                                'info' => 'alert-info',
+                                'warning' => 'alert-warning',
+                                'danger' => 'alert-danger',
+                            ][$type] ?? 'alert-info';
+                        @endphp
+                        <div class="alert {{ $alertClass }}" role="alert">
+                            {!! $message !!}
                         </div>
-                    </div>
-                    @yield('content')
-                </section>
-            </div>
-            <footer class="main-footer">
-                <div class="pull-right small text-gray" style="margin-right:10px;margin-top:-7px;">
-                    <strong><i class="fa fa-fw {{ $appIsGit ? 'fa-git-square' : 'fa-code-fork' }}"></i></strong> {{ $appVersion }}<br />
-                    <strong><i class="fa fa-fw fa-clock-o"></i></strong> {{ round(microtime(true) - LARAVEL_START, 3) }}s
-                </div>
+                    @endforeach
+                @endforeach
+
+                @yield('content')
+            </section>
+        </main>
+
+        <footer class="admin-footer">
+            <div>
                 Copyright &copy; 2015 - {{ date('Y') }} <a href="https://Ruff.io/">Ruff Software</a>.
-            </footer>
-        </div>
-        @section('footer-scripts')
-            <script src="/js/keyboard.polyfill.js" type="application/javascript"></script>
-            <script>keyboardeventKeyPolyfill.polyfill();</script>
+            </div>
+            <div class="meta">
+                <span><i class="fa fa-fw {{ $appIsGit ? 'fa-git-square' : 'fa-code-fork' }}"></i> {{ $appVersion }}</span><br>
+                <span><i class="fa fa-fw fa-clock-o"></i> {{ round(microtime(true) - LARAVEL_START, 3) }}s</span>
+            </div>
+        </footer>
+    </div>
 
-            {!! Theme::js('vendor/jquery/jquery.min.js?t={cache-version}') !!}
-            {!! Theme::js('vendor/sweetalert/sweetalert.min.js?t={cache-version}') !!}
-            {!! Theme::js('vendor/bootstrap/bootstrap.min.js?t={cache-version}') !!}
-            {!! Theme::js('vendor/slimscroll/jquery.slimscroll.min.js?t={cache-version}') !!}
-            {!! Theme::js('vendor/adminlte/app.min.js?t={cache-version}') !!}
-            {!! Theme::js('vendor/bootstrap-notify/bootstrap-notify.min.js?t={cache-version}') !!}
-            {!! Theme::js('vendor/select2/select2.full.min.js?t={cache-version}') !!}
-            {!! Theme::js('js/admin/functions.js?t={cache-version}') !!}
-            <script src="/js/autocomplete.js" type="application/javascript"></script>
+    @section('footer-scripts')
+        <script src="/js/keyboard.polyfill.js" type="application/javascript"></script>
+        <script>
+            keyboardeventKeyPolyfill.polyfill();
+        </script>
 
-            @if(Auth::user()->root_admin)
-                <script>
-                    $('#logoutButton').on('click', function (event) {
-                        event.preventDefault();
+        {!! Theme::js('vendor/jquery/jquery.min.js?t={cache-version}') !!}
+        {!! Theme::js('vendor/sweetalert/sweetalert.min.js?t={cache-version}') !!}
+        {!! Theme::js('vendor/bootstrap/bootstrap.min.js?t={cache-version}') !!}
+        {!! Theme::js('vendor/slimscroll/jquery.slimscroll.min.js?t={cache-version}') !!}
+        {!! Theme::js('vendor/adminlte/app.min.js?t={cache-version}') !!}
+        {!! Theme::js('vendor/bootstrap-notify/bootstrap-notify.min.js?t={cache-version}') !!}
+        {!! Theme::js('vendor/select2/select2.full.min.js?t={cache-version}') !!}
+        {!! Theme::js('js/admin/functions.js?t={cache-version}') !!}
+        <script src="/js/autocomplete.js" type="application/javascript"></script>
 
-                        var that = this;
-                        swal({
-                            title: 'Do you want to log out?',
-                            type: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#d9534f',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Log out'
-                        }, function () {
-                             $.ajax({
-                                type: 'POST',
-                                url: '{{ route('auth.logout') }}',
-                                data: {
-                                    _token: '{{ csrf_token() }}'
-                                },complete: function () {
-                                    window.location.href = '{{route('auth.login')}}';
-                                }
+        @if(Auth::user()->root_admin)
+            <script>
+                $('#logoutButton').on('click', function (event) {
+                    event.preventDefault();
+                    swal({
+                        title: 'Do you want to log out?',
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d9534f',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Log out'
+                    }, function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ route('auth.logout') }}',
+                            data: { _token: '{{ csrf_token() }}' },
+                            complete: function () {
+                                window.location.href = '{{ route('auth.login') }}';
+                            }
                         });
                     });
                 });
-                </script>
-            @endif
-
-            <script>
-                $(function () {
-                    $('[data-toggle="tooltip"]').tooltip();
-                })
             </script>
-        @show
-    </body>
+        @endif
+
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+
+                // Collapse / reveal the sidebar rail. A single body class flips the
+                // default state at each breakpoint (open on desktop, closed on mobile).
+                $('#sidebar-toggle').on('click', function (e) {
+                    e.preventDefault();
+                    $('body').toggleClass('sidebar-toggled');
+                });
+            });
+        </script>
+    @show
+</body>
+
 </html>
