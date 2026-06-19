@@ -128,6 +128,7 @@ class User extends Model implements
         'totp_authenticated_at',
         'gravatar',
         'root_admin',
+        'credits',
     ];
 
     /**
@@ -138,6 +139,7 @@ class User extends Model implements
         'use_totp' => 'boolean',
         'gravatar' => 'boolean',
         'totp_authenticated_at' => 'datetime',
+        'credits' => 'float',
     ];
 
     /**
@@ -154,6 +156,7 @@ class User extends Model implements
         'language' => 'en',
         'use_totp' => false,
         'totp_secret' => null,
+        'credits' => 0,
     ];
 
     /**
@@ -171,6 +174,7 @@ class User extends Model implements
         'language' => 'string',
         'use_totp' => 'boolean',
         'totp_secret' => 'nullable|string',
+        'credits' => 'sometimes|numeric|min:0|max:9999999999.99|decimal:0,2',
     ];
 
     /**

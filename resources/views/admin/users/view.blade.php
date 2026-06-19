@@ -57,6 +57,13 @@
                             <p class="text-muted"><small>The default language to use when rendering the Panel for this user.</small></p>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label">Credits</label>
+                        <div>
+                            <input type="number" step="0.01" min="0" name="credits" value="{{ $user->credits }}" class="form-control">
+                            <p class="text-muted"><small>Account credit balance shown to the user in the client dashboard.</small></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="box-footer">
                     {!! csrf_field() !!}
