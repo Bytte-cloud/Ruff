@@ -15,14 +15,16 @@
    Design tokens
    -------------------------------------------------------------------------- */
 :root {
-    /* Accent — orange, used sparingly */
+    /* Accent — orange by default. Everything below derives from --accent, so
+       overriding just --accent (e.g. the admin layout sharing the client's
+       accent color) re-themes the whole panel. */
     --accent: #f97316;
-    --accent-strong: #ea580c;
-    --accent-press: #c2410c;
-    --accent-soft: #fff3e9;
-    --accent-softer: #fffaf5;
-    --accent-text: #c2410c;
-    --accent-ring: rgba(249, 115, 22, .18);
+    --accent-strong: color-mix(in srgb, var(--accent) 86%, #000);
+    --accent-press: color-mix(in srgb, var(--accent) 70%, #000);
+    --accent-soft: color-mix(in srgb, var(--accent) 12%, #fff);
+    --accent-softer: color-mix(in srgb, var(--accent) 6%, #fff);
+    --accent-text: color-mix(in srgb, var(--accent) 72%, #000);
+    --accent-ring: color-mix(in srgb, var(--accent) 30%, transparent);
 
     /* Warm neutral surfaces */
     --canvas: #f6f6f4;
@@ -550,12 +552,11 @@ body.sidebar-toggled .admin-footer { margin-left: 0; }
 
 .box-footer.no-border { border-top: 0; }
 
-/* Minimal status accent: a slim left bar instead of a loud top border */
-.box-success { box-shadow: inset 3px 0 0 var(--green), var(--shadow-xs); }
-.box-danger  { box-shadow: inset 3px 0 0 var(--red), var(--shadow-xs); }
-.box-warning { box-shadow: inset 3px 0 0 var(--amber), var(--shadow-xs); }
-.box-info    { box-shadow: inset 3px 0 0 var(--blue), var(--shadow-xs); }
-.box-primary { box-shadow: inset 3px 0 0 var(--accent), var(--shadow-xs); }
+/* Contain floated children (pull-left / pull-right buttons in box footers, etc.)
+   so action buttons can't spill outside the card. */
+.box-header::after,
+.box-body::after,
+.box-footer::after { content: ""; display: table; clear: both; }
 
 .overlay {
     position: absolute;
@@ -1184,7 +1185,7 @@ select.form-control {
    -------------------------------------------------------------------------- */
 .tooltip {
     position: absolute;
-    z-index: 1070;
+    z-index: 2000;
     display: block;
     font-size: 12px;
     font-family: inherit;

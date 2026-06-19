@@ -24,6 +24,18 @@
         {!! Theme::css('vendor/animate/animate.min.css?t={cache-version}') !!}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/themes/Ruff/css/admin.css">
+        @if(!empty($siteConfiguration['theme']['share_accent_with_admin']) && !empty($siteConfiguration['theme']['modes']['light']['accent']))
+            @php
+                // Allow only valid color-token characters before emitting into a raw CSS
+                // context, so a stored value can't inject extra rules (';', '{', '}', ...).
+                $accent = trim((string) $siteConfiguration['theme']['modes']['light']['accent']);
+                $accent = preg_match('/^(#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})|rgba?\([0-9.,%\s\/]+\)|hsla?\([0-9.,%\s\/a-z]+\)|[a-zA-Z]+)$/', $accent) ? $accent : null;
+            @endphp
+            @if($accent)
+                {{-- Share the client theme's accent with the admin panel (all accent shades derive from --accent). --}}
+                <style>:root{ --accent: {{ $accent }}; }</style>
+            @endif
+        @endif
     @show
 </head>
 
@@ -181,7 +193,7 @@
 
         <script>
             $(function () {
-                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
 
                 // Collapse / reveal the sidebar rail. A single body class flips the
                 // default state at each breakpoint (open on desktop, closed on mobile).

@@ -1,3 +1,79 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Default theme variables (fallback). These approximate the packaged default
+ * theme and are overridden at runtime by resources/scripts/theme/engine.ts
+ * from the admin Theme settings. Values are "H S% L%" channels consumed as
+ * hsl(var(--c-*) / <alpha-value>) by tailwind.config.js.
+ */
+:root {
+    /* Structural (gray / neutral) */
+    --c-gray-50: 216 33% 97%;
+    --c-gray-100: 214 15% 91%;
+    --c-gray-200: 210 16% 82%;
+    --c-gray-300: 211 13% 65%;
+    --c-gray-400: 211 10% 53%;
+    --c-gray-500: 211 12% 43%;
+    --c-gray-600: 209 14% 37%;
+    --c-gray-700: 209 18% 30%;
+    --c-gray-800: 209 20% 25%;
+    --c-gray-900: 210 24% 16%;
+    --c-black: 209 25% 10%;
+
+    /* Accent (primary / blue / cyan) */
+    --c-accent-50: 34 100% 96%;
+    --c-accent-100: 34 100% 92%;
+    --c-accent-200: 33 100% 83%;
+    --c-accent-300: 31 97% 72%;
+    --c-accent-400: 27 96% 61%;
+    --c-accent-500: 25 95% 53%;
+    --c-accent-600: 21 90% 48%;
+    --c-accent-700: 17 88% 40%;
+    --c-accent-800: 15 79% 34%;
+    --c-accent-900: 15 75% 28%;
+
+    /* Danger (red) */
+    --c-danger-50: 0 86% 97%;
+    --c-danger-100: 0 93% 94%;
+    --c-danger-200: 5 90% 85%;
+    --c-danger-300: 5 85% 75%;
+    --c-danger-400: 5 80% 65%;
+    --c-danger-500: 5 73% 55%;
+    --c-danger-600: 5 65% 48%;
+    --c-danger-700: 5 65% 40%;
+    --c-danger-800: 5 60% 33%;
+    --c-danger-900: 5 55% 27%;
+
+    /* Warning (yellow / amber) */
+    --c-warning-50: 40 100% 96%;
+    --c-warning-100: 39 95% 89%;
+    --c-warning-200: 38 92% 78%;
+    --c-warning-300: 37 88% 66%;
+    --c-warning-400: 35 84% 58%;
+    --c-warning-500: 33 76% 50%;
+    --c-warning-600: 30 80% 45%;
+    --c-warning-700: 25 78% 38%;
+    --c-warning-800: 22 75% 31%;
+    --c-warning-900: 20 72% 26%;
+
+    /* Success (green) */
+    --c-success-50: 138 76% 96%;
+    --c-success-100: 141 79% 90%;
+    --c-success-200: 141 70% 78%;
+    --c-success-300: 142 65% 62%;
+    --c-success-400: 142 64% 47%;
+    --c-success-500: 142 71% 36%;
+    --c-success-600: 142 72% 30%;
+    --c-success-700: 142 70% 24%;
+    --c-success-800: 143 64% 20%;
+    --c-success-900: 143 61% 16%;
+
+    /* Geometry */
+    --radius-sm: 0.5rem;
+    --radius: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+}

@@ -2,16 +2,17 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faLayerGroup, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faLayerGroup, faMoon, faSignOutAlt, faSun } from '@fortawesome/free-solid-svg-icons';
 import { useStoreState } from 'easy-peasy';
 import { ApplicationStore } from '@/state';
 import SearchContainer from '@/components/dashboard/search/SearchContainer';
-import tw, { theme } from 'twin.macro';
+import tw from 'twin.macro';
 import styled from 'styled-components/macro';
 import http from '@/api/http';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
 import Avatar from '@/components/Avatar';
+import { useThemeMode } from '@/theme';
 
 const RightNavigation = styled.div`
     & > a,
@@ -27,7 +28,7 @@ const RightNavigation = styled.div`
         &:active,
         &:hover,
         &.active {
-            box-shadow: inset 0 -2px ${theme`colors.cyan.600`.toString()};
+            box-shadow: inset 0 -2px hsl(var(--c-accent-600));
         }
     }
 `;
@@ -36,6 +37,7 @@ export default () => {
     const name = useStoreState((state: ApplicationStore) => state.settings.data!.name);
     const rootAdmin = useStoreState((state: ApplicationStore) => state.user.data!.rootAdmin);
     const [isLoggingOut, setIsLoggingOut] = useState(false);
+    const { mode, toggle, allowToggle } = useThemeMode();
 
     const onTriggerLogout = () => {
         setIsLoggingOut(true);
@@ -61,6 +63,13 @@ export default () => {
                 </div>
                 <RightNavigation className={'flex h-full items-center justify-center'}>
                     <SearchContainer />
+                    {allowToggle && (
+                        <Tooltip placement={'bottom'} content={mode === 'dark' ? 'Light mode' : 'Dark mode'}>
+                            <button onClick={toggle} aria-label={'Toggle light/dark mode'}>
+                                <FontAwesomeIcon icon={mode === 'dark' ? faSun : faMoon} />
+                            </button>
+                        </Tooltip>
+                    )}
                     <Tooltip placement={'bottom'} content={'Dashboard'}>
                         <NavLink to={'/'} exact>
                             <FontAwesomeIcon icon={faLayerGroup} />
