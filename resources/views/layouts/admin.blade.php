@@ -8,15 +8,39 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="_token" content="{{ csrf_token() }}">
 
-    {{-- Apply the saved admin theme before any CSS loads to avoid a flash. --}}
+    {{-- Apply the saved admin theme before any CSS loads (no flash), and expose a
+         global toggle. Defined here so it never depends on jQuery or on a child
+         page's @section('footer-scripts') being present. --}}
     <script>
         (function () {
-            try {
-                var t = localStorage.getItem('ruff:admin-theme');
-                document.documentElement.setAttribute('data-admin-theme', t === 'dark' ? 'dark' : 'light');
-            } catch (e) {
-                document.documentElement.setAttribute('data-admin-theme', 'light');
+            var root = document.documentElement;
+
+            function setIcon() {
+                var i = document.querySelector('#adminThemeToggle i');
+                if (i) {
+                    i.className = 'fa ' + (root.getAttribute('data-admin-theme') === 'dark' ? 'fa-sun-o' : 'fa-moon-o');
+                }
             }
+
+            try {
+                var saved = localStorage.getItem('ruff:admin-theme');
+                root.setAttribute('data-admin-theme', saved === 'dark' ? 'dark' : 'light');
+            } catch (e) {
+                root.setAttribute('data-admin-theme', 'light');
+            }
+
+            window.toggleAdminTheme = function () {
+                var next = root.getAttribute('data-admin-theme') === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-admin-theme', next);
+                try {
+                    localStorage.setItem('ruff:admin-theme', next);
+                } catch (e) {
+                    /* ignore */
+                }
+                setIcon();
+            };
+
+            document.addEventListener('DOMContentLoaded', setIcon);
         })();
     </script>
 
@@ -35,7 +59,7 @@
         {!! Theme::css('vendor/sweetalert/sweetalert.min.css?t={cache-version}') !!}
         {!! Theme::css('vendor/animate/animate.min.css?t={cache-version}') !!}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/themes/Ruff/css/admin.css">
+        <link rel="stylesheet" href="/themes/Ruff/css/admin.css?t={{ @filemtime(public_path('themes/Ruff/css/admin.css')) ?: time() }}">
         @if(!empty($siteConfiguration['theme']['share_accent_with_admin']) && !empty($siteConfiguration['theme']['modes']['light']['accent']))
             @php
                 // Allow only valid color-token characters before emitting into a raw CSS
@@ -65,7 +89,7 @@
             </div>
 
             <div class="admin-header-actions">
-                <button type="button" id="adminThemeToggle" class="admin-nav-btn admin-nav-icon" data-toggle="tooltip" data-placement="bottom" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <button type="button" id="adminThemeToggle" onclick="toggleAdminTheme()" class="admin-nav-btn admin-nav-icon" data-toggle="tooltip" data-placement="bottom" title="Toggle dark mode" aria-label="Toggle dark mode">
                     <i class="fa fa-moon-o"></i>
                 </button>
                 <a href="{{ route('account') }}" class="admin-nav-btn">
@@ -215,21 +239,6 @@
                 $('#sidebar-toggle').on('click', function (e) {
                     e.preventDefault();
                     $('body').toggleClass('sidebar-toggled');
-                });
-
-                // Light / dark theme toggle. The initial attribute is set by the
-                // no-flash script in <head>; here we just flip + persist it.
-                var $themeIcon = $('#adminThemeToggle i');
-                function syncThemeIcon() {
-                    var dark = document.documentElement.getAttribute('data-admin-theme') === 'dark';
-                    $themeIcon.attr('class', 'fa ' + (dark ? 'fa-sun-o' : 'fa-moon-o'));
-                }
-                syncThemeIcon();
-                $('#adminThemeToggle').on('click', function () {
-                    var next = document.documentElement.getAttribute('data-admin-theme') === 'dark' ? 'light' : 'dark';
-                    document.documentElement.setAttribute('data-admin-theme', next);
-                    try { localStorage.setItem('ruff:admin-theme', next); } catch (e) { /* ignore */ }
-                    syncThemeIcon();
                 });
             });
         </script>
