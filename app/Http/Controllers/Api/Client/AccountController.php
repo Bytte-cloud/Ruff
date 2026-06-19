@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
 use Ruff\Services\Users\UserUpdateService;
+use Ruff\Notifications\GenericNotification;
 use Ruff\Transformers\Api\Client\AccountTransformer;
 use Ruff\Http\Requests\Api\Client\Account\UpdateEmailRequest;
 use Ruff\Http\Requests\Api\Client\Account\UpdatePasswordRequest;
@@ -69,6 +70,12 @@ class AccountController extends ClientApiController
         }
 
         Activity::event('user:account.password-changed')->log();
+
+        $user->notify(new GenericNotification(
+            'event',
+            'Password changed',
+            'Your account password was just updated. If this wasn\'t you, reset it immediately.',
+        ));
 
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }

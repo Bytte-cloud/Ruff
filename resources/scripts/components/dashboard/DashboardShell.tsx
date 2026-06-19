@@ -4,7 +4,6 @@ import { useStoreState } from 'easy-peasy';
 import { ApplicationStore } from '@/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faBell,
     faChevronUp,
     faKey,
     faSearch,
@@ -16,6 +15,7 @@ import {
     faWaveSquare,
 } from '@fortawesome/free-solid-svg-icons';
 import http from '@/api/http';
+import NotificationCenter from '@/components/dashboard/NotificationCenter';
 
 export default ({ children }: { children: React.ReactNode }) => {
     const name = useStoreState((state: ApplicationStore) => state.settings.data!.name);
@@ -49,10 +49,7 @@ export default ({ children }: { children: React.ReactNode }) => {
                         <span className={'v'}>£{credits.toFixed(2)}</span>
                         <button className={'add'}>Add</button>
                     </div>
-                    <button className={'ibtn'} aria-label={'Notifications'}>
-                        <FontAwesomeIcon icon={faBell} />
-                        <span className={'d'} />
-                    </button>
+                    <NotificationCenter />
                 </div>
             </div>
 
