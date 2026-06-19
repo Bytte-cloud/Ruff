@@ -8,6 +8,18 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="_token" content="{{ csrf_token() }}">
 
+    {{-- Apply the saved admin theme before any CSS loads to avoid a flash. --}}
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('ruff:admin-theme');
+                document.documentElement.setAttribute('data-admin-theme', t === 'dark' ? 'dark' : 'light');
+            } catch (e) {
+                document.documentElement.setAttribute('data-admin-theme', 'light');
+            }
+        })();
+    </script>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
@@ -53,6 +65,9 @@
             </div>
 
             <div class="admin-header-actions">
+                <button type="button" id="adminThemeToggle" class="admin-nav-btn admin-nav-icon" data-toggle="tooltip" data-placement="bottom" title="Toggle dark mode" aria-label="Toggle dark mode">
+                    <i class="fa fa-moon-o"></i>
+                </button>
                 <a href="{{ route('account') }}" class="admin-nav-btn">
                     <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?s=160" class="avatar" alt="User Image">
                     <span class="label-name hidden-xs">{{ Auth::user()->name_first }} {{ Auth::user()->name_last }}</span>
@@ -200,6 +215,21 @@
                 $('#sidebar-toggle').on('click', function (e) {
                     e.preventDefault();
                     $('body').toggleClass('sidebar-toggled');
+                });
+
+                // Light / dark theme toggle. The initial attribute is set by the
+                // no-flash script in <head>; here we just flip + persist it.
+                var $themeIcon = $('#adminThemeToggle i');
+                function syncThemeIcon() {
+                    var dark = document.documentElement.getAttribute('data-admin-theme') === 'dark';
+                    $themeIcon.attr('class', 'fa ' + (dark ? 'fa-sun-o' : 'fa-moon-o'));
+                }
+                syncThemeIcon();
+                $('#adminThemeToggle').on('click', function () {
+                    var next = document.documentElement.getAttribute('data-admin-theme') === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-admin-theme', next);
+                    try { localStorage.setItem('ruff:admin-theme', next); } catch (e) { /* ignore */ }
+                    syncThemeIcon();
                 });
             });
         </script>
