@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityLogFilters, useActivityLogs } from '@/api/account/activity';
 import { useFlashKey } from '@/plugins/useFlash';
-import PageContentBlock from '@/components/elements/PageContentBlock';
 import FlashMessageRender from '@/components/FlashMessageRender';
-import { Link } from 'react-router-dom';
 import PaginationFooter from '@/components/elements/table/PaginationFooter';
 import { DesktopComputerIcon, XCircleIcon } from '@heroicons/react/solid';
 import Spinner from '@/components/elements/Spinner';
-import { styles as btnStyles } from '@/components/elements/button/index';
-import classNames from 'classnames';
 import ActivityLogEntry from '@/components/elements/activity/ActivityLogEntry';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
 import useLocationHash from '@/plugins/useLocationHash';
@@ -22,6 +18,13 @@ export default () => {
         revalidateOnFocus: false,
     });
 
+    const hasFilters = !!(filters.filters?.event || filters.filters?.ip);
+    const total = data?.pagination.total ?? 0;
+
+    useEffect(() => {
+        document.title = 'Account Activity';
+    }, []);
+
     useEffect(() => {
         setFilters((value) => ({ ...value, filters: { ip: hash.ip, event: hash.event } }));
     }, [hash]);
@@ -31,24 +34,42 @@ export default () => {
     }, [error]);
 
     return (
-        <PageContentBlock title={'Account Activity Log'}>
+        <>
             <FlashMessageRender byKey={'account'} />
-            {(filters.filters?.event || filters.filters?.ip) && (
-                <div className={'flex justify-end mb-2'}>
-                    <Link
-                        to={'#'}
-                        className={classNames(btnStyles.button, btnStyles.text, 'w-full sm:w-auto')}
-                        onClick={() => setFilters((value) => ({ ...value, filters: {} }))}
-                    >
-                        Clear Filters <XCircleIcon className={'w-4 h-4 ml-2'} />
-                    </Link>
-                </div>
-            )}
+
+            <div className={'ph'}>
+                <h1>Account Activity</h1>
+                <span className={'c'}>
+                    {total} {total === 1 ? 'event' : 'events'}
+                </span>
+                {hasFilters && (
+                    <div className={'r'}>
+                        <button
+                            onClick={() => setFilters((value) => ({ ...value, filters: {} }))}
+                            className={
+                                'inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-neutral-100 transition-colors'
+                            }
+                            style={{ background: 'none', border: 0, cursor: 'pointer', fontFamily: 'inherit' }}
+                        >
+                            Clear filters <XCircleIcon className={'w-4 h-4'} />
+                        </button>
+                    </div>
+                )}
+            </div>
+
             {!data && isValidating ? (
-                <Spinner centered />
+                <div className={'spin-wrap'}>
+                    <Spinner size={'large'} />
+                </div>
+            ) : !data || data.items.length === 0 ? (
+                <p className={'empty'}>
+                    {hasFilters
+                        ? 'No activity matches the current filters.'
+                        : 'No account activity has been recorded yet.'}
+                </p>
             ) : (
-                <div className={'bg-gray-700'}>
-                    {data?.items.map((activity) => (
+                <div className={'tbl'}>
+                    {data.items.map((activity) => (
                         <ActivityLogEntry key={activity.id} activity={activity}>
                             {typeof activity.properties.useragent === 'string' && (
                                 <Tooltip content={activity.properties.useragent} placement={'top'}>
@@ -61,12 +82,13 @@ export default () => {
                     ))}
                 </div>
             )}
-            {data && (
+
+            {data && data.items.length > 0 && (
                 <PaginationFooter
                     pagination={data.pagination}
                     onPageSelect={(page) => setFilters((value) => ({ ...value, page }))}
                 />
             )}
-        </PageContentBlock>
+        </>
     );
 };
