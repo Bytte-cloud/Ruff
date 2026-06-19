@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Str;
 use Ruff\Helpers\Time;
+use Illuminate\Support\Str;
 
 return [
     /*

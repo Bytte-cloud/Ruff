@@ -2,10 +2,10 @@
 
 namespace Ruff\Tests\Integration\Api\Remote;
 
-use phpseclib3\Crypt\EC;
 use Ruff\Models\Node;
 use Ruff\Models\User;
 use Ruff\Models\Server;
+use phpseclib3\Crypt\EC;
 use Ruff\Models\Permission;
 use Ruff\Models\UserSSHKey;
 use Ruff\Tests\Integration\IntegrationTestCase;

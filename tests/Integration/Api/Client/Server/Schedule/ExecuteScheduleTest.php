@@ -3,11 +3,11 @@
 namespace Ruff\Tests\Integration\Api\Client\Server\Schedule;
 
 use Ruff\Models\Task;
-use Illuminate\Http\Response;
 use Ruff\Models\Schedule;
 use Ruff\Models\Permission;
-use Illuminate\Support\Facades\Bus;
+use Illuminate\Http\Response;
 use Ruff\Jobs\Schedule\RunTaskJob;
+use Illuminate\Support\Facades\Bus;
 use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class ExecuteScheduleTest extends ClientApiIntegrationTestCase

@@ -4,8 +4,8 @@ namespace Ruff\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Password;
 use Ruff\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Password;
 use Ruff\Events\Auth\FailedPasswordReset;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 

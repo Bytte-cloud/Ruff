@@ -2,23 +2,23 @@
 
 namespace Ruff\Http\Controllers\Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use Ruff\Models\User;
 use Ruff\Models\Model;
+use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Spatie\QueryBuilder\QueryBuilder;
-use Illuminate\View\Factory as ViewFactory;
 use Ruff\Exceptions\DisplayException;
 use Ruff\Http\Controllers\Controller;
-use Illuminate\Contracts\Translation\Translator;
+use Spatie\QueryBuilder\QueryBuilder;
 use Ruff\Services\Users\UserUpdateService;
+use Illuminate\View\Factory as ViewFactory;
 use Ruff\Traits\Helpers\AvailableLanguages;
 use Ruff\Services\Users\UserCreationService;
 use Ruff\Services\Users\UserDeletionService;
 use Ruff\Http\Requests\Admin\UserFormRequest;
+use Illuminate\Contracts\Translation\Translator;
 use Ruff\Http\Requests\Admin\NewUserFormRequest;
 use Ruff\Contracts\Repository\UserRepositoryInterface;
 

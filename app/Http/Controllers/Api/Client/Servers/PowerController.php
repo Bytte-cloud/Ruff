@@ -2,9 +2,9 @@
 
 namespace Ruff\Http\Controllers\Api\Client\Servers;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Server;
 use Ruff\Facades\Activity;
+use Illuminate\Http\Response;
 use Ruff\Repositories\Wings\DaemonPowerRepository;
 use Ruff\Http\Controllers\Api\Client\ClientApiController;
 use Ruff\Http\Requests\Api\Client\Servers\SendPowerRequest;

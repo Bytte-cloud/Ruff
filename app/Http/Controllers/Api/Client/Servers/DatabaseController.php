@@ -2,10 +2,10 @@
 
 namespace Ruff\Http\Controllers\Api\Client\Servers;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Server;
 use Ruff\Models\Database;
 use Ruff\Facades\Activity;
+use Illuminate\Http\Response;
 use Ruff\Services\Databases\DatabasePasswordService;
 use Ruff\Transformers\Api\Client\DatabaseTransformer;
 use Ruff\Services\Databases\DatabaseManagementService;

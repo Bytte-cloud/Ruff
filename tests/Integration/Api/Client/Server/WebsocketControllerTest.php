@@ -3,9 +3,9 @@
 namespace Ruff\Tests\Integration\Api\Client\Server;
 
 use Carbon\CarbonImmutable;
+use Ruff\Models\Permission;
 use Illuminate\Http\Response;
 use Lcobucci\JWT\Configuration;
-use Ruff\Models\Permission;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Validation\Constraint\SignedWith;

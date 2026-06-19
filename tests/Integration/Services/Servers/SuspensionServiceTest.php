@@ -2,8 +2,8 @@
 
 namespace Ruff\Tests\Integration\Services\Servers;
 
-use Mockery\MockInterface;
 use Ruff\Models\Server;
+use Mockery\MockInterface;
 use Ruff\Services\Servers\SuspensionService;
 use Ruff\Tests\Integration\IntegrationTestCase;
 use Ruff\Repositories\Wings\DaemonServerRepository;

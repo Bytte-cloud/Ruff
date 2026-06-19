@@ -2,37 +2,37 @@
 
 namespace Ruff\Http;
 
-use Illuminate\Auth\Middleware\Authorize;
-use Illuminate\Http\Middleware\HandleCors;
-use Illuminate\Auth\Middleware\Authenticate;
-use Illuminate\Http\Middleware\TrustProxies;
 use Ruff\Http\Middleware\TrimStrings;
-use Illuminate\Session\Middleware\StartSession;
 use Ruff\Http\Middleware\EncryptCookies;
+use Illuminate\Auth\Middleware\Authorize;
 use Ruff\Http\Middleware\Api\IsValidJson;
 use Ruff\Http\Middleware\VerifyCsrfToken;
 use Ruff\Http\Middleware\VerifyReCaptcha;
-use Illuminate\Routing\Middleware\ThrottleRequests;
+use Illuminate\Http\Middleware\HandleCors;
+use Illuminate\Auth\Middleware\Authenticate;
+use Illuminate\Http\Middleware\TrustProxies;
 use Ruff\Http\Middleware\LanguageMiddleware;
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Illuminate\Routing\Middleware\SubstituteBindings;
 use Ruff\Http\Middleware\Activity\TrackAPIKey;
-use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Session\Middleware\StartSession;
 use Ruff\Http\Middleware\MaintenanceMiddleware;
 use Ruff\Http\Middleware\EnsureStatefulRequests;
 use Ruff\Http\Middleware\RedirectIfAuthenticated;
-use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Ruff\Http\Middleware\Api\AuthenticateIPAccess;
-use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Routing\Middleware\ThrottleRequests;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Ruff\Http\Middleware\Api\Daemon\DaemonAuthenticate;
 use Ruff\Http\Middleware\Api\Client\RequireClientApiKey;
 use Ruff\Http\Middleware\RequireTwoFactorAuthentication;
-use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
+use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
+use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Ruff\Http\Middleware\Api\Client\SubstituteClientBindings;
-use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance;
+use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Ruff\Http\Middleware\Api\Application\AuthenticateApplicationUser;
+use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance;
 
 class Kernel extends HttpKernel
 {

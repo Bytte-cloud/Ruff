@@ -3,10 +3,10 @@
 namespace Ruff\Http\Controllers\Base;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Translation\Translator;
-use Illuminate\Contracts\Translation\Loader;
 use Ruff\Http\Controllers\Controller;
+use Illuminate\Translation\Translator;
 use Ruff\Http\Requests\Base\LocaleRequest;
+use Illuminate\Contracts\Translation\Loader;
 
 class LocaleController extends Controller
 {

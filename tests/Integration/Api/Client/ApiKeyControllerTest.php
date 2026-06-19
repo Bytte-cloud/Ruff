@@ -3,10 +3,10 @@
 namespace Ruff\Tests\Integration\Api\Client;
 
 use Ruff\Models\User;
-use Illuminate\Http\Response;
 use Ruff\Models\ApiKey;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Http\Response;
 use Ruff\Events\ActivityLogged;
+use Illuminate\Support\Facades\Event;
 
 class ApiKeyControllerTest extends ClientApiIntegrationTestCase
 {

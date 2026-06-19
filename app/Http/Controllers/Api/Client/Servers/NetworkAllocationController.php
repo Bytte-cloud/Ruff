@@ -3,9 +3,9 @@
 namespace Ruff\Http\Controllers\Api\Client\Servers;
 
 use Ruff\Models\Server;
-use Illuminate\Http\JsonResponse;
 use Ruff\Facades\Activity;
 use Ruff\Models\Allocation;
+use Illuminate\Http\JsonResponse;
 use Ruff\Exceptions\DisplayException;
 use Ruff\Repositories\Eloquent\ServerRepository;
 use Ruff\Transformers\Api\Client\AllocationTransformer;

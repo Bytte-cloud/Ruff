@@ -3,8 +3,8 @@
 namespace Ruff\Tests\Integration\Api\Application\Location;
 
 use Ruff\Models\Node;
-use Illuminate\Http\Response;
 use Ruff\Models\Location;
+use Illuminate\Http\Response;
 use Ruff\Transformers\Api\Application\NodeTransformer;
 use Ruff\Transformers\Api\Application\ServerTransformer;
 use Ruff\Transformers\Api\Application\LocationTransformer;

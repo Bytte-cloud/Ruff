@@ -4,12 +4,12 @@ namespace Ruff\Http\Controllers\Auth;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\JsonResponse;
+use Ruff\Exceptions\DisplayException;
+use Ruff\Http\Controllers\Controller;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\Events\Dispatcher;
-use Ruff\Exceptions\DisplayException;
-use Ruff\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Ruff\Http\Requests\Auth\ResetPasswordRequest;
 use Ruff\Contracts\Repository\UserRepositoryInterface;

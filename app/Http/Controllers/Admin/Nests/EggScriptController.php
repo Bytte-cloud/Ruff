@@ -2,12 +2,12 @@
 
 namespace Ruff\Http\Controllers\Admin\Nests;
 
-use Illuminate\View\View;
 use Ruff\Models\Egg;
+use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Illuminate\View\Factory as ViewFactory;
 use Ruff\Http\Controllers\Controller;
+use Illuminate\View\Factory as ViewFactory;
 use Ruff\Services\Eggs\Scripts\InstallScriptService;
 use Ruff\Contracts\Repository\EggRepositoryInterface;
 use Ruff\Http\Requests\Admin\Egg\EggScriptFormRequest;

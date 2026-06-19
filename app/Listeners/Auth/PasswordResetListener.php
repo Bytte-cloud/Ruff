@@ -2,8 +2,8 @@
 
 namespace Ruff\Listeners\Auth;
 
-use Illuminate\Http\Request;
 use Ruff\Facades\Activity;
+use Illuminate\Http\Request;
 use Illuminate\Auth\Events\PasswordReset;
 
 class PasswordResetListener

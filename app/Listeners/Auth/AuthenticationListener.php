@@ -3,8 +3,8 @@
 namespace Ruff\Listeners\Auth;
 
 use Ruff\Facades\Activity;
-use Illuminate\Auth\Events\Failed;
 use Ruff\Events\Auth\DirectLogin;
+use Illuminate\Auth\Events\Failed;
 use Illuminate\Contracts\Events\Dispatcher;
 use Ruff\Extensions\Illuminate\Events\Contracts\SubscribesToEvents;
 

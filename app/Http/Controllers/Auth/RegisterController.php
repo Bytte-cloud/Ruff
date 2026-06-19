@@ -2,8 +2,8 @@
 
 namespace Ruff\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use Ruff\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

@@ -2,10 +2,10 @@
 
 namespace Ruff\Tests\Integration\Api\Client\Server;
 
-use GuzzleHttp\Psr7\Request;
-use Illuminate\Http\Response;
 use Ruff\Models\Server;
 use Ruff\Models\Permission;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Response;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use Ruff\Repositories\Wings\DaemonCommandRepository;

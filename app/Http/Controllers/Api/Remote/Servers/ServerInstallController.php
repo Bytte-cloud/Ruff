@@ -2,16 +2,16 @@
 
 namespace Ruff\Http\Controllers\Api\Remote\Servers;
 
+use Ruff\Models\Server;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Ruff\Models\Server;
 use Illuminate\Http\JsonResponse;
 use Ruff\Http\Controllers\Controller;
 use Ruff\Repositories\Eloquent\ServerRepository;
 use Ruff\Events\Server\Installed as ServerInstalled;
-use Illuminate\Contracts\Events\Dispatcher as EventDispatcher;
 use Ruff\Http\Requests\Api\Remote\InstallationDataRequest;
+use Illuminate\Contracts\Events\Dispatcher as EventDispatcher;
 
 class ServerInstallController extends Controller
 {

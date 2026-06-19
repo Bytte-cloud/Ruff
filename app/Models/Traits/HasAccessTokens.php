@@ -2,9 +2,9 @@
 
 namespace Ruff\Models\Traits;
 
+use Ruff\Models\ApiKey;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\Sanctum;
-use Ruff\Models\ApiKey;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Ruff\Extensions\Laravel\Sanctum\NewAccessToken;

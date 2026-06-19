@@ -3,9 +3,9 @@
 namespace Ruff\Repositories\Eloquent;
 
 use Ruff\Models\Task;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Ruff\Contracts\Repository\TaskRepositoryInterface;
 use Ruff\Exceptions\Repository\RecordNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TaskRepository extends EloquentRepository implements TaskRepositoryInterface
 {

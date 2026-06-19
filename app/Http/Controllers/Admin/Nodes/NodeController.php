@@ -2,11 +2,11 @@
 
 namespace Ruff\Http\Controllers\Admin\Nodes;
 
+use Ruff\Models\Node;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Ruff\Models\Node;
-use Spatie\QueryBuilder\QueryBuilder;
 use Ruff\Http\Controllers\Controller;
+use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 
 class NodeController extends Controller

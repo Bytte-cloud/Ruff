@@ -5,8 +5,8 @@ namespace Ruff\Tests\Integration\Api\Client;
 use Carbon\Carbon;
 use Ruff\Models\User;
 use Illuminate\Http\Response;
-use PragmaRX\Google2FA\Google2FA;
 use Ruff\Models\RecoveryToken;
+use PragmaRX\Google2FA\Google2FA;
 use PHPUnit\Framework\ExpectationFailedException;
 
 class TwoFactorControllerTest extends ClientApiIntegrationTestCase

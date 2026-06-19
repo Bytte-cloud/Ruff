@@ -5,8 +5,8 @@ namespace Ruff\Http\Controllers\Admin\Settings;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Illuminate\View\Factory as ViewFactory;
 use Ruff\Http\Controllers\Controller;
+use Illuminate\View\Factory as ViewFactory;
 use Ruff\Contracts\Repository\SettingsRepositoryInterface;
 use Ruff\Http\Requests\Admin\Settings\ThemeSettingsFormRequest;
 

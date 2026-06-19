@@ -3,8 +3,8 @@
 namespace Ruff\Tests\Unit\Http\Middleware\Api\Application;
 
 use Ruff\Tests\Unit\Http\Middleware\MiddlewareTestCase;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Ruff\Http\Middleware\Api\Application\AuthenticateApplicationUser;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AuthenticateUserTest extends MiddlewareTestCase
 {

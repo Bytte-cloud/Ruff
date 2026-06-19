@@ -3,14 +3,14 @@
 namespace Ruff\Tests\Unit\Http\Middleware\Api\Daemon;
 
 use Mockery as m;
-use Mockery\MockInterface;
 use Ruff\Models\Node;
+use Mockery\MockInterface;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Ruff\Repositories\Eloquent\NodeRepository;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Ruff\Exceptions\Repository\RecordNotFoundException;
 use Ruff\Http\Middleware\Api\Daemon\DaemonAuthenticate;
 use Ruff\Tests\Unit\Http\Middleware\MiddlewareTestCase;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 

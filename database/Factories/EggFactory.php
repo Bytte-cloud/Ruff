@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Ramsey\Uuid\Uuid;
 use Ruff\Models\Egg;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EggFactory extends Factory

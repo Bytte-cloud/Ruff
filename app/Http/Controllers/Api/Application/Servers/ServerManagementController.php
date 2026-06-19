@@ -2,8 +2,8 @@
 
 namespace Ruff\Http\Controllers\Api\Application\Servers;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Server;
+use Illuminate\Http\Response;
 use Ruff\Services\Servers\SuspensionService;
 use Ruff\Services\Servers\ReinstallServerService;
 use Ruff\Http\Requests\Api\Application\Servers\ServerWriteRequest;

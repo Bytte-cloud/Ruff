@@ -2,8 +2,8 @@
 
 namespace Ruff\Tests\Integration\Api\Client;
 
-use phpseclib3\Crypt\EC;
 use Ruff\Models\User;
+use phpseclib3\Crypt\EC;
 use Ruff\Models\UserSSHKey;
 
 class SSHKeyControllerTest extends ClientApiIntegrationTestCase

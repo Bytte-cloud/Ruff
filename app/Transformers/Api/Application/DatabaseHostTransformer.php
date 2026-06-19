@@ -4,9 +4,9 @@ namespace Ruff\Transformers\Api\Application;
 
 use Ruff\Models\Database;
 use Ruff\Models\DatabaseHost;
+use Ruff\Services\Acl\Api\AdminAcl;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\NullResource;
-use Ruff\Services\Acl\Api\AdminAcl;
 
 class DatabaseHostTransformer extends BaseTransformer
 {

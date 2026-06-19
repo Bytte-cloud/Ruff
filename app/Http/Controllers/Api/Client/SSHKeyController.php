@@ -2,8 +2,8 @@
 
 namespace Ruff\Http\Controllers\Api\Client;
 
-use Illuminate\Http\JsonResponse;
 use Ruff\Facades\Activity;
+use Illuminate\Http\JsonResponse;
 use Ruff\Http\Requests\Api\Client\ClientApiRequest;
 use Ruff\Transformers\Api\Client\UserSSHKeyTransformer;
 use Ruff\Http\Requests\Api\Client\Account\StoreSSHKeyRequest;

@@ -5,17 +5,17 @@ namespace Ruff\Http\Controllers\Admin\Settings;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Contracts\Console\Kernel;
 use Ruff\Notifications\MailTested;
-use Illuminate\View\Factory as ViewFactory;
-use Illuminate\Support\Facades\Notification;
 use Ruff\Exceptions\DisplayException;
 use Ruff\Http\Controllers\Controller;
-use Illuminate\Contracts\Encryption\Encrypter;
+use Illuminate\Contracts\Console\Kernel;
+use Illuminate\View\Factory as ViewFactory;
 use Ruff\Providers\SettingsServiceProvider;
-use Illuminate\Contracts\Config\Repository as ConfigRepository;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Contracts\Encryption\Encrypter;
 use Ruff\Contracts\Repository\SettingsRepositoryInterface;
 use Ruff\Http\Requests\Admin\Settings\MailSettingsFormRequest;
+use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 class MailController extends Controller
 {

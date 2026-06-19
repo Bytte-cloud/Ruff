@@ -3,8 +3,8 @@
 namespace Ruff\Transformers\Api\Client;
 
 use Ruff\Models\Database;
-use League\Fractal\Resource\Item;
 use Ruff\Models\Permission;
+use League\Fractal\Resource\Item;
 use League\Fractal\Resource\NullResource;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Ruff\Contracts\Extensions\HashidsInterface;

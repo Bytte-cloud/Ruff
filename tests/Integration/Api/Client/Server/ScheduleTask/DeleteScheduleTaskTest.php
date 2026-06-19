@@ -4,9 +4,9 @@ namespace Ruff\Tests\Integration\Api\Client\Server\ScheduleTask;
 
 use Ruff\Models\Task;
 use Ruff\Models\User;
-use Illuminate\Http\Response;
 use Ruff\Models\Schedule;
 use Ruff\Models\Permission;
+use Illuminate\Http\Response;
 use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class DeleteScheduleTaskTest extends ClientApiIntegrationTestCase

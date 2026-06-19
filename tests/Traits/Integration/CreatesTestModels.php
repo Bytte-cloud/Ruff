@@ -2,8 +2,8 @@
 
 namespace Ruff\Tests\Traits\Integration;
 
-use Ramsey\Uuid\Uuid;
 use Ruff\Models\Egg;
+use Ramsey\Uuid\Uuid;
 use Ruff\Models\Node;
 use Ruff\Models\User;
 use Ruff\Models\Server;

@@ -2,7 +2,6 @@
 
 namespace Ruff\Http\Middleware\Api\Client\Server;
 
-use Illuminate\Http\Request;
 use Ruff\Models\Task;
 use Ruff\Models\User;
 use Ruff\Models\Backup;
@@ -11,6 +10,7 @@ use Ruff\Models\Subuser;
 use Ruff\Models\Database;
 use Ruff\Models\Schedule;
 use Ruff\Models\Allocation;
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 

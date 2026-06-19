@@ -4,8 +4,8 @@ namespace Ruff\Services\Allocations;
 
 use IPTools\Network;
 use Ruff\Models\Node;
-use Illuminate\Database\ConnectionInterface;
 use Ruff\Exceptions\DisplayException;
+use Illuminate\Database\ConnectionInterface;
 use Ruff\Contracts\Repository\AllocationRepositoryInterface;
 use Ruff\Exceptions\Service\Allocation\CidrOutOfRangeException;
 use Ruff\Exceptions\Service\Allocation\PortOutOfRangeException;

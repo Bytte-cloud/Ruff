@@ -2,13 +2,13 @@
 
 namespace Ruff\Tests\Integration\Services\Servers;
 
+use Ruff\Models\Server;
 use Mockery\MockInterface;
+use Ruff\Models\Allocation;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use Ruff\Models\Server;
-use Ruff\Models\Allocation;
-use GuzzleHttp\Exception\RequestException;
 use Ruff\Exceptions\DisplayException;
+use GuzzleHttp\Exception\RequestException;
 use Ruff\Tests\Integration\IntegrationTestCase;
 use Ruff\Repositories\Wings\DaemonServerRepository;
 use Ruff\Services\Servers\BuildModificationService;

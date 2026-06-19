@@ -2,12 +2,12 @@
 
 namespace Ruff\Http\Controllers\Admin\Servers;
 
+use Ruff\Models\Server;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Ruff\Models\Server;
+use Ruff\Http\Controllers\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-use Ruff\Http\Controllers\Controller;
 use Ruff\Models\Filters\AdminServerFilter;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 

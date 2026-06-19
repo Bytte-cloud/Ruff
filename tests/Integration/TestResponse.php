@@ -3,8 +3,8 @@
 namespace Ruff\Tests\Integration;
 
 use Illuminate\Http\Response;
-use Illuminate\Testing\Assert as PHPUnit;
 use Ruff\Exceptions\DisplayException;
+use Illuminate\Testing\Assert as PHPUnit;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Testing\TestResponse as IlluminateTestResponse;
 

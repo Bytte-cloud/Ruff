@@ -2,14 +2,14 @@
 
 namespace Ruff\Http\Requests\Api\Application;
 
-use Webmozart\Assert\Assert;
 use Ruff\Models\ApiKey;
+use Webmozart\Assert\Assert;
+use Ruff\Exceptions\RuffException;
 use Laravel\Sanctum\TransientToken;
+use Ruff\Services\Acl\Api\AdminAcl;
 use Illuminate\Validation\Validator;
 use Illuminate\Database\Eloquent\Model;
-use Ruff\Services\Acl\Api\AdminAcl;
 use Illuminate\Foundation\Http\FormRequest;
-use Ruff\Exceptions\RuffException;
 
 abstract class ApplicationApiRequest extends FormRequest
 {

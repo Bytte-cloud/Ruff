@@ -2,9 +2,9 @@
 
 namespace Ruff\Services\Eggs;
 
+use Ruff\Models\Server;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Ruff\Models\Server;
 use Ruff\Services\Servers\ServerConfigurationStructureService;
 
 class EggConfigurationService

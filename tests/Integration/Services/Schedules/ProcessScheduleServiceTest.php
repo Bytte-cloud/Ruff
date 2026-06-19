@@ -3,13 +3,13 @@
 namespace Ruff\Tests\Integration\Services\Schedules;
 
 use Exception;
-use Carbon\CarbonImmutable;
 use Ruff\Models\Task;
 use Ruff\Models\Schedule;
-use Illuminate\Support\Facades\Bus;
-use Illuminate\Contracts\Bus\Dispatcher;
+use Carbon\CarbonImmutable;
 use Ruff\Jobs\Schedule\RunTaskJob;
+use Illuminate\Support\Facades\Bus;
 use Ruff\Exceptions\DisplayException;
+use Illuminate\Contracts\Bus\Dispatcher;
 use Ruff\Tests\Integration\IntegrationTestCase;
 use Ruff\Services\Schedules\ProcessScheduleService;
 

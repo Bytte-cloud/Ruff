@@ -2,9 +2,9 @@
 
 namespace Ruff\Services\Subusers;
 
-use Illuminate\Support\Str;
 use Ruff\Models\Server;
 use Ruff\Models\Subuser;
+use Illuminate\Support\Str;
 use Illuminate\Database\ConnectionInterface;
 use Ruff\Services\Users\UserCreationService;
 use Ruff\Repositories\Eloquent\SubuserRepository;

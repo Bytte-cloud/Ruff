@@ -2,11 +2,11 @@
 
 namespace Ruff\Http\Controllers\Api\Client;
 
+use Ruff\Facades\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
-use Ruff\Facades\Activity;
 use Ruff\Services\Users\UserUpdateService;
 use Ruff\Transformers\Api\Client\AccountTransformer;
 use Ruff\Http\Requests\Api\Client\Account\UpdateEmailRequest;

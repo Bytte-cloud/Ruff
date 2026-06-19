@@ -2,8 +2,8 @@
 
 namespace Ruff\Tests\Integration\Api\Application\Users;
 
-use Illuminate\Support\Str;
 use Ruff\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use Ruff\Tests\Integration\Api\Application\ApplicationApiIntegrationTestCase;
 

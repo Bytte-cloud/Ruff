@@ -2,8 +2,8 @@
 
 namespace Ruff\Http\Controllers\Api\Application\Locations;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Location;
+use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
 use Ruff\Services\Locations\LocationUpdateService;

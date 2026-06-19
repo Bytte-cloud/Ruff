@@ -2,11 +2,11 @@
 
 namespace Ruff\Tests\Integration;
 
+use Ruff\Tests\TestCase;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
-use Ruff\Tests\TestCase;
-use Illuminate\Support\Facades\Event;
 use Ruff\Events\ActivityLogged;
+use Illuminate\Support\Facades\Event;
 use Ruff\Tests\Assertions\AssertsActivityLogged;
 use Ruff\Tests\Traits\Integration\CreatesTestModels;
 use Ruff\Transformers\Api\Application\BaseTransformer;
