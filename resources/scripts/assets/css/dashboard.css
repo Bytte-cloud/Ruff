@@ -72,7 +72,9 @@
 .ruff .nb{display:inline-flex;align-items:center;gap:9px;background:var(--acc);color:#fff;border:0;border-radius:var(--pill);padding:11px 20px;font-weight:600;font-size:13.5px;cursor:pointer;transition:.15s;box-shadow:var(--sh);font-family:inherit}.ruff .nb:hover{background:var(--acc-d)}
 
 /* Table */
-.ruff .tbl{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.ruff .tbl{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:visible;box-shadow:var(--sh)}
+.ruff .tbl .tr2:first-child{border-top-left-radius:var(--r);border-top-right-radius:var(--r)}
+.ruff .tbl .tr2:last-child{border-bottom-left-radius:var(--r);border-bottom-right-radius:var(--r)}
 .ruff .th,.ruff .tr2{display:grid;grid-template-columns:minmax(240px,1.7fr) 150px 230px 200px 100px 40px;gap:24px;align-items:center}
 .ruff .th{padding:14px 26px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line)}
 .ruff .tr2{padding:16px 26px;border-bottom:1px solid var(--line);transition:.12s;cursor:pointer;color:inherit}
@@ -128,3 +130,28 @@
 .ruff .noti-m{font-size:12.5px;color:var(--muted);line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .ruff .noti-time{font-size:11px;color:var(--faint);margin-top:2px}
 .ruff .noti-dot{position:absolute;top:16px;right:14px;width:7px;height:7px;border-radius:50%;background:var(--acc);flex:0 0 auto}
+/* Folders */
+.ruff .fghost{display:inline-flex;align-items:center;gap:8px;background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:var(--pill);padding:10px 16px;font-weight:600;font-size:13px;cursor:pointer;transition:.15s;font-family:inherit}
+.ruff .fghost:hover{color:var(--text);border-color:var(--line2)}
+.ruff .fnew{display:inline-flex;align-items:center;gap:8px}
+.ruff .fnew input{background:var(--bg);border:1px solid var(--line);border-radius:var(--pill);padding:9px 16px;color:var(--text);font-family:inherit;font-size:13px;outline:0;min-width:170px}
+.ruff .fnew input:focus{border-color:var(--acc)}
+.ruff .fsec{margin-bottom:22px}
+.ruff .fsec-h{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ruff .fsec-t{display:inline-flex;align-items:center;gap:10px;background:0;border:0;color:var(--text);font-family:inherit;font-weight:700;font-size:15px;letter-spacing:-.01em;cursor:pointer;padding:2px 0}
+.ruff .fsec-t .fcar{color:var(--faint);font-size:12px;width:12px}
+.ruff .fcount{font-size:11px;font-weight:600;color:var(--muted);background:var(--panel-h);border-radius:var(--pill);padding:1px 9px;margin-left:2px}
+.ruff .fdot{width:9px;height:9px;border-radius:50%;background:var(--acc);display:inline-block;flex:0 0 auto}
+.ruff .fsec-a{margin-left:auto;display:flex;gap:2px}
+.ruff .fsec-a button{width:30px;height:30px;border-radius:8px;background:0;border:0;color:var(--faint);cursor:pointer;font-size:12.5px;transition:.13s}
+.ruff .fsec-a button:hover{background:var(--panel-h);color:var(--text)}
+.ruff .fempty{color:var(--faint);font-size:12.5px;padding:14px 4px;border:1px dashed var(--line);border-radius:var(--r)}
+
+/* Row "move to folder" menu (kebab) */
+.ruff .rowmenu-bd{position:fixed;inset:0;z-index:39}
+.ruff .rowmenu{position:absolute;right:0;top:calc(100% + 6px);z-index:40;min-width:200px;background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:6px;box-shadow:var(--sh-lg)}
+.ruff .rowmenu-h{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding:6px 10px 8px}
+.ruff .rowmenu-i{display:flex;align-items:center;justify-content:space-between;width:100%;gap:10px;background:0;border:0;color:var(--muted);font-family:inherit;font-size:13px;font-weight:500;text-align:left;padding:8px 10px;border-radius:8px;cursor:pointer;transition:.12s}
+.ruff .rowmenu-i:hover{background:var(--panel-h);color:var(--text)}
+.ruff .rowmenu-i span{display:inline-flex;align-items:center;gap:9px;min-width:0}
+.ruff .rowmenu-i svg{color:var(--acc);font-size:12px}

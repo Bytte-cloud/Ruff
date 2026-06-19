@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileAlt, faFileArchive, faFileImport, faFolder } from '@fortawesome/free-solid-svg-icons';
 import { encodePathSegments } from '@/helpers';
 import { differenceInHours, format, formatDistanceToNow } from 'date-fns';
 import React, { memo } from 'react';
@@ -13,6 +12,7 @@ import SelectFileCheckbox from '@/components/server/files/SelectFileCheckbox';
 import { usePermissions } from '@/plugins/usePermissions';
 import { join } from 'path';
 import { bytesToString } from '@/lib/formatters';
+import { categoryFor, iconFor, isMedia } from '@/components/server/files/fileTypes';
 import styles from './style.module.css';
 
 const Clickable: React.FC<{ file: FileObject }> = memo(({ file, children }) => {
@@ -22,13 +22,26 @@ const Clickable: React.FC<{ file: FileObject }> = memo(({ file, children }) => {
 
     const match = useRouteMatch();
 
-    return (file.isFile && (!file.isEditable() || !canReadContents)) || (!file.isFile && !canRead) ? (
+    const hash = encodePathSegments(join(directory, file.name));
+    const category = categoryFor(file);
+
+    // Directories navigate; media open the preview; editable files open the
+    // editor. Everything else (non-readable binaries) is not clickable.
+    let target: string | null = null;
+    if (!file.isFile) {
+        target = canRead ? `${match.url}#${hash}` : null;
+    } else if (canReadContents) {
+        if (isMedia(category)) {
+            target = `${match.url}/view#${hash}`;
+        } else if (file.isEditable()) {
+            target = `${match.url}/edit#${hash}`;
+        }
+    }
+
+    return target === null ? (
         <div className={styles.details}>{children}</div>
     ) : (
-        <NavLink
-            className={styles.details}
-            to={`${match.url}${file.isFile ? '/edit' : ''}#${encodePathSegments(join(directory, file.name))}`}
-        >
+        <NavLink className={styles.details} to={target}>
             {children}
         </NavLink>
     );
@@ -46,13 +59,7 @@ const FileObjectRow = ({ file }: { file: FileObject }) => (
         <SelectFileCheckbox name={file.name} />
         <Clickable file={file}>
             <div css={tw`flex-none text-neutral-400 ml-6 mr-4 text-lg pl-3`}>
-                {file.isFile ? (
-                    <FontAwesomeIcon
-                        icon={file.isSymlink ? faFileImport : file.isArchiveType() ? faFileArchive : faFileAlt}
-                    />
-                ) : (
-                    <FontAwesomeIcon icon={faFolder} />
-                )}
+                <FontAwesomeIcon icon={iconFor(categoryFor(file))} />
             </div>
             <div css={tw`flex-1 truncate`}>{file.name}</div>
             {file.isFile && <div css={tw`w-1/6 text-right mr-4 hidden sm:block`}>{bytesToString(file.size)}</div>}

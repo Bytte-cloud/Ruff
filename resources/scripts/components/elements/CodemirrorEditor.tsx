@@ -110,6 +110,7 @@ export interface Props {
     initialContent?: string;
     mode: string;
     filename?: string;
+    readOnly?: boolean;
     onModeChanged: (mode: string) => void;
     fetchContent: (callback: () => Promise<string>) => void;
     onContentSaved: () => void;
@@ -143,7 +144,16 @@ const findModeByFilename = (filename: string) => {
     return undefined;
 };
 
-export default ({ style, initialContent, filename, mode, fetchContent, onContentSaved, onModeChanged }: Props) => {
+export default ({
+    style,
+    initialContent,
+    filename,
+    mode,
+    readOnly,
+    fetchContent,
+    onContentSaved,
+    onModeChanged,
+}: Props) => {
     const [editor, setEditor] = useState<CodeMirror.Editor>();
 
     const ref = useCallback((node) => {
@@ -189,6 +199,10 @@ export default ({ style, initialContent, filename, mode, fetchContent, onContent
     useEffect(() => {
         editor && editor.setOption('mode', mode);
     }, [editor, mode]);
+
+    useEffect(() => {
+        editor && editor.setOption('readOnly', readOnly ? 'nocursor' : false);
+    }, [editor, readOnly]);
 
     useEffect(() => {
         editor && editor.setValue(initialContent || '');

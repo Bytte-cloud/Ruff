@@ -47,6 +47,12 @@ Route::prefix('/account')->middleware(AccountSubject::class)->group(function () 
         Route::post('/read', [Client\NotificationController::class, 'readAll']);
         Route::post('/{notification}/read', [Client\NotificationController::class, 'read']);
         Route::delete('/{notification}', [Client\NotificationController::class, 'delete']);
+    Route::prefix('/folders')->group(function () {
+        Route::get('/', [Client\ServerFolderController::class, 'index']);
+        Route::post('/', [Client\ServerFolderController::class, 'store']);
+        Route::post('/assign', [Client\ServerFolderController::class, 'assign']);
+        Route::patch('/{folder}', [Client\ServerFolderController::class, 'update']);
+        Route::delete('/{folder}', [Client\ServerFolderController::class, 'delete']);
     });
 });
 

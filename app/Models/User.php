@@ -255,6 +255,16 @@ class User extends Model implements
     }
 
     /**
+     * Returns all the server folders this user has created to organise their
+     * dashboard. Folders are per-user, so the same server can be filed
+     * differently by each user that can access it.
+     */
+    public function serverFolders(): HasMany
+    {
+        return $this->hasMany(ServerFolder::class)->orderBy('sort')->orderBy('name');
+    }
+
+    /**
      * Returns all the activity logs where this user is the subject — not to
      * be confused by activity logs where this user is the _actor_.
      */

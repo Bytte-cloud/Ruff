@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faEllipsisV, faLock, faPlay, faServer, faStop } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCopy, faEllipsisV, faLock, faPlay, faServer, faStop } from '@fortawesome/free-solid-svg-icons';
 import { Server } from '@/api/server/getServer';
 import getServerResourceUsage, { ServerStats } from '@/api/server/getServerResourceUsage';
 import { bytesToString, ip, mbToBytes } from '@/lib/formatters';
+import { ServerFolder } from '@/api/account/folders';
 import http from '@/api/http';
 
 // A restrained, theme-harmonious palette for per-server icon tinting. Each
@@ -21,11 +22,20 @@ const PALETTE = [
 
 type Timer = ReturnType<typeof setInterval>;
 
-export default ({ server, grid }: { server: Server; grid?: boolean }) => {
+interface RowProps {
+    server: Server;
+    grid?: boolean;
+    folders?: ServerFolder[];
+    currentFolder?: string | null;
+    onMove?: (folderUuid: string | null) => void;
+}
+
+export default ({ server, grid, folders, currentFolder, onMove }: RowProps) => {
     const history = useHistory();
     const interval = useRef<Timer>(null) as React.MutableRefObject<Timer>;
     const [isSuspended, setIsSuspended] = useState(server.status === 'suspended');
     const [stats, setStats] = useState<ServerStats | null>(null);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const getStats = () =>
         getServerResourceUsage(server.uuid)
@@ -195,9 +205,58 @@ export default ({ server, grid }: { server: Server; grid?: boolean }) => {
                     <FontAwesomeIcon icon={faStop} /> Stop
                 </button>
             )}
-            <button className={'kb'} onClick={stop} aria-label={'More'}>
-                <FontAwesomeIcon icon={faEllipsisV} />
-            </button>
+            {onMove && folders ? (
+                <div style={{ position: 'relative' }} onClick={stop}>
+                    <button
+                        className={'kb'}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setMenuOpen((v) => !v);
+                        }}
+                        aria-label={'Move to folder'}
+                    >
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                    </button>
+                    {menuOpen && (
+                        <>
+                            <div className={'rowmenu-bd'} onClick={() => setMenuOpen(false)} />
+                            <div className={'rowmenu'}>
+                                <div className={'rowmenu-h'}>Move to folder</div>
+                                <button
+                                    className={'rowmenu-i'}
+                                    onClick={() => {
+                                        setMenuOpen(false);
+                                        if (currentFolder) onMove(null);
+                                    }}
+                                >
+                                    <span>No folder</span>
+                                    {!currentFolder && <FontAwesomeIcon icon={faCheck} />}
+                                </button>
+                                {folders.map((f) => (
+                                    <button
+                                        key={f.uuid}
+                                        className={'rowmenu-i'}
+                                        onClick={() => {
+                                            setMenuOpen(false);
+                                            if (currentFolder !== f.uuid) onMove(f.uuid);
+                                        }}
+                                    >
+                                        <span>
+                                            <i className={'fdot'} style={{ background: f.color || undefined }} />{' '}
+                                            {f.name}
+                                        </span>
+                                        {currentFolder === f.uuid && <FontAwesomeIcon icon={faCheck} />}
+                                    </button>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+            ) : (
+                <button className={'kb'} onClick={stop} aria-label={'More'}>
+                    <FontAwesomeIcon icon={faEllipsisV} />
+                </button>
+            )}
         </div>
     );
 };

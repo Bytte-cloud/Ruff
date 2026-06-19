@@ -4,6 +4,7 @@ import {
     faBoxOpen,
     faCopy,
     faEllipsisH,
+    faEye,
     faFileArchive,
     faFileCode,
     faFileDownload,
@@ -14,6 +15,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import RenameFileModal from '@/components/server/files/RenameFileModal';
 import { ServerContext } from '@/state/server';
+import { useHistory } from 'react-router-dom';
+import { encodePathSegments } from '@/helpers';
+import { categoryFor, isPreviewable } from '@/components/server/files/fileTypes';
 import { join } from 'path';
 import deleteFiles from '@/api/server/files/deleteFiles';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
@@ -61,6 +65,8 @@ const FileDropdownMenu = ({ file }: { file: FileObject }) => {
     const [showConfirmation, setShowConfirmation] = useState(false);
 
     const uuid = ServerContext.useStoreState((state) => state.server.data!.uuid);
+    const id = ServerContext.useStoreState((state) => state.server.data!.id);
+    const history = useHistory();
     const { mutate } = useFileManagerSwr();
     const { clearAndAddHttpError, clearFlashes } = useFlash();
     const directory = ServerContext.useStoreState((state) => state.files.directory);
@@ -82,6 +88,10 @@ const FileDropdownMenu = ({ file }: { file: FileObject }) => {
             mutate();
             clearAndAddHttpError({ key: 'files', error });
         });
+    };
+
+    const doView = () => {
+        history.push(`/server/${id}/files/view#/${encodePathSegments(join(directory, file.name))}`);
     };
 
     const doCopy = () => {
@@ -171,6 +181,11 @@ const FileDropdownMenu = ({ file }: { file: FileObject }) => {
                     <Row onClick={() => setModal('move')} icon={faLevelUpAlt} title={'Move'} />
                     <Row onClick={() => setModal('chmod')} icon={faFileCode} title={'Permissions'} />
                 </Can>
+                {file.isFile && isPreviewable(categoryFor(file)) && (
+                    <Can action={'file.read-content'}>
+                        <Row onClick={doView} icon={faEye} title={'View'} />
+                    </Can>
+                )}
                 {file.isFile && (
                     <Can action={'file.create'}>
                         <Row onClick={doCopy} icon={faCopy} title={'Copy'} />
