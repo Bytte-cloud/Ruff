@@ -104,7 +104,7 @@ export default () => {
                                 marginLeft: 10,
                                 background: 'none',
                                 border: 0,
-                                color: '#9373ff',
+                                color: 'hsl(var(--c-accent-400))',
                                 fontFamily: 'inherit',
                                 fontWeight: 600,
                                 cursor: 'pointer',

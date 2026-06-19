@@ -29,8 +29,8 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
             addFlash({
                 type: 'success',
                 title: 'Success',
-                message: 'Your account has been successfully created! Login to continue.'
-            })
+                message: 'Your account has been successfully created! Login to continue.',
+            });
             return;
         }
     }, []);
@@ -82,10 +82,10 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
             })}
         >
             {({ isSubmitting, setSubmitting, submitForm }) => (
-                <LoginFormContainer title={'Login to Continue'} css={tw`w-full flex`}>
-                    <Field light type={'text'} label={'Username or Email'} name={'username'} disabled={isSubmitting} />
+                <LoginFormContainer title={'Sign in to your account'}>
+                    <Field type={'text'} label={'Username or Email'} name={'username'} disabled={isSubmitting} />
                     <div css={tw`mt-6`}>
-                        <Field light type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
+                        <Field type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
                         <Button type={'submit'} size={'xlarge'} isLoading={isSubmitting} disabled={isSubmitting}>
@@ -110,7 +110,7 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
                     <div css={tw`mt-6 text-center`}>
                         <Link
                             to={'/auth/password'}
-                            css={tw`text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                            css={tw`text-xs text-neutral-400 no-underline hover:text-neutral-200 transition-colors duration-150`}
                         >
                             Forgot password?
                         </Link>

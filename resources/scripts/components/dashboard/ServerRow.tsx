@@ -7,7 +7,17 @@ import getServerResourceUsage, { ServerStats } from '@/api/server/getServerResou
 import { bytesToString, ip, mbToBytes } from '@/lib/formatters';
 import http from '@/api/http';
 
-const PALETTE = ['#7bd06f', '#5b9bff', '#f5934a', '#7289ff', '#c9b8ff', '#40d99a'];
+// A restrained, theme-harmonious palette for per-server icon tinting. Each
+// entry references a runtime theme token so the icons stay on-brand and adapt
+// to the active theme / light mode.
+const PALETTE = [
+    'hsl(var(--c-accent-400))',
+    'hsl(var(--c-success-400))',
+    'hsl(var(--c-warning-400))',
+    'hsl(var(--c-accent-300))',
+    'hsl(var(--c-success-300))',
+    'hsl(var(--c-accent-500))',
+];
 
 type Timer = ReturnType<typeof setInterval>;
 
@@ -120,7 +130,7 @@ export default ({ server, grid }: { server: Server; grid?: boolean }) => {
                 </div>
                 <div className={'kv'}>
                     <span className={'k'}>CPU</span>
-                    <span className={'v'} style={cpuAlarm ? { color: '#fb6a72' } : undefined}>
+                    <span className={'v'} style={cpuAlarm ? { color: 'hsl(var(--c-danger-500))' } : undefined}>
                         {isRunning ? `${cpu.toFixed(0)}%` : '—'}
                     </span>
                 </div>
