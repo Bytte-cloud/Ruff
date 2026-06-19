@@ -1,9 +1,9 @@
-[![Logo Image](https://cdn.Ruff.io/logos/new/Ruff_logo.png)](https://Ruff.io)
+//[![Logo Image](https://cdn.Ruff.io/logos/new/Ruff_logo.png)](https://Ruff.io)
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Ruff/panel/ci.yaml?label=Tests&style=for-the-badge&branch=1.0-develop)
-![Discord](https://img.shields.io/discord/122900397965705216?label=Discord&logo=Discord&logoColor=white&style=for-the-badge)
-![GitHub Releases](https://img.shields.io/github/downloads/Ruff/panel/latest/total?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/Ruff/panel?style=for-the-badge)
+//![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Ruff/panel/ci.yaml?label=Tests&style=for-the-badge&branch=1.0-develop)
+//![Discord](https://img.shields.io/discord/122900397965705216?label=Discord&logo=Discord&logoColor=white&style=for-the-badge)
+//![GitHub Releases](https://img.shields.io/github/downloads/Ruff/panel/latest/total?style=for-the-badge)
+//![GitHub contributors](https://img.shields.io/github/contributors/Ruff/panel?style=for-the-badge)
 
 # Ruff Panel
 
