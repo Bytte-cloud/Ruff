@@ -1,24 +1,50 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faList, faPlus, faThLarge } from '@fortawesome/free-solid-svg-icons';
 import { Server } from '@/api/server/getServer';
 import getServers from '@/api/getServers';
 import ServerRow from '@/components/dashboard/ServerRow';
 import Spinner from '@/components/elements/Spinner';
-import PageContentBlock from '@/components/elements/PageContentBlock';
 import useFlash from '@/plugins/useFlash';
 import { useStoreState } from 'easy-peasy';
 import { usePersistedState } from '@/plugins/usePersistedState';
-import Switch from '@/components/elements/Switch';
-import tw from 'twin.macro';
 import useSWR from 'swr';
 import { PaginatedResult } from '@/api/http';
 import Pagination from '@/components/elements/Pagination';
 import { useLocation } from 'react-router-dom';
+import FlashMessageRender from '@/components/FlashMessageRender';
+
+// Placeholder announcement/offer/blog content. These will be admin-managed later.
+const ANNOUNCEMENTS = [
+    {
+        tag: 'Offer',
+        cls: 'o',
+        title: '50% off your second server',
+        body: 'Deploy another game server this week and get half off the first month.',
+        offer: true,
+    },
+    {
+        tag: 'Announcement',
+        cls: 'a',
+        title: 'Scheduled maintenance',
+        body: 'EU-West nodes reboot Sunday 02:00–03:00 UTC. Expect brief downtime.',
+        offer: false,
+    },
+    {
+        tag: 'Blog',
+        cls: 'b',
+        title: 'One-click modpack installs',
+        body: 'Deploy CurseForge & Modrinth packs straight from the egg list.',
+        offer: false,
+    },
+];
 
 export default () => {
     const { search } = useLocation();
     const defaultPage = Number(new URLSearchParams(search).get('page') || '1');
 
     const [page, setPage] = useState(!isNaN(defaultPage) && defaultPage > 0 ? defaultPage : 1);
+    const [view, setView] = useState<'list' | 'grid'>('list');
     const { clearFlashes, clearAndAddHttpError } = useFlash();
     const uuid = useStoreState((state) => state.user.data!.uuid);
     const rootAdmin = useStoreState((state) => state.user.data!.rootAdmin);
@@ -37,9 +63,6 @@ export default () => {
     }, [servers?.pagination.currentPage]);
 
     useEffect(() => {
-        // Don't use react-router to handle changing this part of the URL, otherwise it
-        // triggers a needless re-render. We just want to track this in the URL incase the
-        // user refreshes the page.
         window.history.replaceState(null, document.title, `/${page <= 1 ? '' : `?page=${page}`}`);
     }, [page]);
 
@@ -48,31 +71,95 @@ export default () => {
         if (!error) clearFlashes('dashboard');
     }, [error]);
 
+    const total = servers?.pagination.total ?? 0;
+
     return (
-        <PageContentBlock title={'Dashboard'} showFlashKey={'dashboard'}>
-            {rootAdmin && (
-                <div css={tw`mb-2 flex justify-end items-center`}>
-                    <p css={tw`uppercase text-xs text-neutral-400 mr-2`}>
-                        {showOnlyAdmin ? "Showing others' servers" : 'Showing your servers'}
-                    </p>
-                    <Switch
-                        name={'show_all_servers'}
-                        defaultChecked={showOnlyAdmin}
-                        onChange={() => setShowOnlyAdmin((s) => !s)}
-                    />
+        <>
+            <FlashMessageRender byKey={'dashboard'} />
+
+            <div className={'news'}>
+                {ANNOUNCEMENTS.map((a) => (
+                    <div key={a.title} className={`ann ${a.offer ? 'offer' : ''}`}>
+                        <span className={`tag ${a.cls}`}>{a.tag}</span>
+                        <h4>{a.title}</h4>
+                        <p>{a.body}</p>
+                        <span className={'more'}>
+                            {a.offer ? 'Claim offer' : 'Read more'} <FontAwesomeIcon icon={faArrowRight} />
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            <div className={'ph'}>
+                <h1>Servers</h1>
+                <span className={'c'}>
+                    {total} server{total === 1 ? '' : 's'}
+                    {rootAdmin && (
+                        <button
+                            onClick={() => {
+                                setShowOnlyAdmin((s) => !s);
+                                setPage(1);
+                            }}
+                            style={{
+                                marginLeft: 10,
+                                background: 'none',
+                                border: 0,
+                                color: '#9373ff',
+                                fontFamily: 'inherit',
+                                fontWeight: 600,
+                                cursor: 'pointer',
+                            }}
+                        >
+                            {showOnlyAdmin ? '· viewing all' : '· view all'}
+                        </button>
+                    )}
+                </span>
+                <div className={'r'}>
+                    <div className={'seg'}>
+                        <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')}>
+                            <FontAwesomeIcon icon={faList} />
+                        </button>
+                        <button className={view === 'grid' ? 'on' : ''} onClick={() => setView('grid')}>
+                            <FontAwesomeIcon icon={faThLarge} />
+                        </button>
+                    </div>
+                    <button className={'nb'}>
+                        <FontAwesomeIcon icon={faPlus} /> New Server
+                    </button>
                 </div>
-            )}
+            </div>
+
             {!servers ? (
-                <Spinner centered size={'large'} />
+                <div className={'spin-wrap'}>
+                    <Spinner size={'large'} />
+                </div>
             ) : (
                 <Pagination data={servers} onPageSelect={setPage}>
                     {({ items }) =>
                         items.length > 0 ? (
-                            items.map((server, index) => (
-                                <ServerRow key={server.uuid} server={server} css={index > 0 ? tw`mt-2` : undefined} />
-                            ))
+                            view === 'grid' ? (
+                                <div className={'grid'}>
+                                    {items.map((server) => (
+                                        <ServerRow key={server.uuid} server={server} grid />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className={'tbl'}>
+                                    <div className={'th'}>
+                                        <div>Server</div>
+                                        <div>Status</div>
+                                        <div>Connect</div>
+                                        <div>Load</div>
+                                        <div>Power</div>
+                                        <div />
+                                    </div>
+                                    {items.map((server) => (
+                                        <ServerRow key={server.uuid} server={server} />
+                                    ))}
+                                </div>
+                            )
                         ) : (
-                            <p css={tw`text-center text-sm text-neutral-400`}>
+                            <p className={'empty'}>
                                 {showOnlyAdmin
                                     ? 'There are no other servers to display.'
                                     : 'There are no servers associated with your account.'}
@@ -81,6 +168,6 @@ export default () => {
                     }
                 </Pagination>
             )}
-        </PageContentBlock>
+        </>
     );
 };

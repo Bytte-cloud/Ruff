@@ -13,6 +13,7 @@ import { setupInterceptors } from '@/api/interceptors';
 import AuthenticatedRoute from '@/components/elements/AuthenticatedRoute';
 import { ServerContext } from '@/state/server';
 import '@/assets/tailwind.css';
+import '@/assets/css/dashboard.css';
 import Spinner from '@/components/elements/Spinner';
 
 const DashboardRouter = lazy(() => import(/* webpackChunkName: "dashboard" */ '@/routers/DashboardRouter'));
@@ -28,6 +29,7 @@ interface ExtendedWindow extends Window {
         /* eslint-disable camelcase */
         root_admin: boolean;
         use_totp: boolean;
+        credits: number;
         language: string;
         updated_at: string;
         created_at: string;
@@ -47,6 +49,7 @@ const App = () => {
             language: RuffUser.language,
             rootAdmin: RuffUser.root_admin,
             useTotp: RuffUser.use_totp,
+            credits: RuffUser.credits ?? 0,
             createdAt: new Date(RuffUser.created_at),
             updatedAt: new Date(RuffUser.updated_at),
         });
