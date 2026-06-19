@@ -69,6 +69,55 @@
 }
 
 /* --------------------------------------------------------------------------
+   Dark theme. The whole panel is driven by the structural variables above, so
+   a dark palette is just a matter of overriding them when
+   `data-admin-theme="dark"` is set on <html> (see layouts/admin.blade.php).
+   The accent + status hues stay; only their soft tints are re-mixed against
+   the dark surface so they read correctly.
+   -------------------------------------------------------------------------- */
+html[data-admin-theme='dark'] {
+    color-scheme: dark;
+
+    /* Accent tints re-mixed for a dark surface */
+    --accent-soft: color-mix(in srgb, var(--accent) 20%, #14161d);
+    --accent-softer: color-mix(in srgb, var(--accent) 11%, #14161d);
+    --accent-text: color-mix(in srgb, var(--accent) 82%, #fff);
+
+    /* Neutral surfaces */
+    --canvas: #0f1115;
+    --surface: #181b22;
+    --surface-soft: #14161d;
+    --surface-hover: #1e222b;
+    --border: #272b35;
+    --border-strong: #333a47;
+
+    /* Text */
+    --text: #e6e8f0;
+    --text-soft: #b4bac6;
+    --text-faint: #7e8492;
+
+    /* Status soft tints over the dark surface */
+    --green-soft: color-mix(in srgb, var(--green) 22%, #14161d);
+    --red-soft: color-mix(in srgb, var(--red) 22%, #14161d);
+    --amber-soft: color-mix(in srgb, var(--amber) 22%, #14161d);
+    --blue-soft: color-mix(in srgb, var(--blue) 22%, #14161d);
+
+    /* Deeper shadows on dark */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, .4);
+    --shadow: 0 1px 3px rgba(0, 0, 0, .5), 0 1px 2px rgba(0, 0, 0, .3);
+    --shadow-pop: 0 12px 32px -10px rgba(0, 0, 0, .7);
+}
+
+/* Element-level dark fixes for the few spots that hardcode a light value. */
+html[data-admin-theme='dark'] .overlay {
+    background: rgba(15, 17, 21, .66);
+}
+html[data-admin-theme='dark'] .bg-white {
+    background-color: var(--surface) !important;
+    color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
    Base
    -------------------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -182,6 +231,9 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 18px 0; }
 }
 
 .admin-nav-btn:hover { background: var(--surface-hover); color: var(--text); }
+
+/* Allow <button> to share the nav-button styling (e.g. the theme toggle). */
+button.admin-nav-btn { background: none; border: 0; cursor: pointer; font-family: inherit; }
 
 .admin-nav-btn .avatar {
     width: 30px; height: 30px;
