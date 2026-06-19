@@ -27,8 +27,8 @@ return [
 
     // Shape / geometry tokens (shared across both modes).
     'geometry' => [
-        'radius' => '12px',
-        'radius_sm' => '8px',
+        'radius' => '10px',
+        'radius_sm' => '6px',
         'border_width' => '1px',
     ],
 
@@ -36,30 +36,30 @@ return [
     // the admin editor and as CSS variables on the client.
     'modes' => [
         'light' => [
-            'background' => '#f6f6f4',
+            'background' => '#f7f8fa',
             'surface' => '#ffffff',
-            'surface_alt' => '#fafaf9',
-            'border' => '#ececea',
-            'text' => '#1b1b19',
-            'text_muted' => '#8d8c83',
-            'accent' => '#f97316',
-            'accent_hover' => '#ea580c',
+            'surface_alt' => '#f1f2f6',
+            'border' => '#e4e6ec',
+            'text' => '#15171c',
+            'text_muted' => '#697080',
+            'accent' => '#6366f1',
+            'accent_hover' => '#4f46e5',
             'success' => '#16a34a',
-            'danger' => '#e1483a',
-            'warning' => '#e08a1e',
+            'danger' => '#dc2626',
+            'warning' => '#d97706',
             'info' => '#3b82f6',
         ],
         'dark' => [
-            'background' => '#1f2933',
-            'surface' => '#283543',
-            'surface_alt' => '#222d38',
-            'border' => '#3b4754',
-            'text' => '#e4e9ef',
-            'text_muted' => '#9aa5b1',
-            'accent' => '#f97316',
-            'accent_hover' => '#fb8c3f',
+            'background' => '#0f1115',
+            'surface' => '#181b22',
+            'surface_alt' => '#14161d',
+            'border' => '#272b35',
+            'text' => '#e6e8f0',
+            'text_muted' => '#9097a6',
+            'accent' => '#6366f1',
+            'accent_hover' => '#818cf8',
             'success' => '#22c55e',
-            'danger' => '#f0584a',
+            'danger' => '#ef4444',
             'warning' => '#eab308',
             'info' => '#60a5fa',
         ],
@@ -83,8 +83,27 @@ return [
 
     // One-click starting points. Each preset is a full theme (minus labels).
     'presets' => [
+        'slate' => [
+            'name' => 'Slate (default)',
+            'default_mode' => 'dark',
+            'geometry' => ['radius' => '10px', 'radius_sm' => '6px', 'border_width' => '1px'],
+            'modes' => [
+                'light' => [
+                    'background' => '#f7f8fa', 'surface' => '#ffffff', 'surface_alt' => '#f1f2f6',
+                    'border' => '#e4e6ec', 'text' => '#15171c', 'text_muted' => '#697080',
+                    'accent' => '#6366f1', 'accent_hover' => '#4f46e5',
+                    'success' => '#16a34a', 'danger' => '#dc2626', 'warning' => '#d97706', 'info' => '#3b82f6',
+                ],
+                'dark' => [
+                    'background' => '#0f1115', 'surface' => '#181b22', 'surface_alt' => '#14161d',
+                    'border' => '#272b35', 'text' => '#e6e8f0', 'text_muted' => '#9097a6',
+                    'accent' => '#6366f1', 'accent_hover' => '#818cf8',
+                    'success' => '#22c55e', 'danger' => '#ef4444', 'warning' => '#eab308', 'info' => '#60a5fa',
+                ],
+            ],
+        ],
         'sunset' => [
-            'name' => 'Sunset (default)',
+            'name' => 'Sunset (warm orange)',
             'default_mode' => 'dark',
             'geometry' => ['radius' => '12px', 'radius_sm' => '8px', 'border_width' => '1px'],
             'modes' => [

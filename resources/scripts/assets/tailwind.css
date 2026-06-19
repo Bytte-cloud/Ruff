@@ -10,70 +10,70 @@
  */
 :root {
     /* Structural (gray / neutral) */
-    --c-gray-50: 216 33% 97%;
-    --c-gray-100: 214 15% 91%;
-    --c-gray-200: 210 16% 82%;
-    --c-gray-300: 211 13% 65%;
-    --c-gray-400: 211 10% 53%;
-    --c-gray-500: 211 12% 43%;
-    --c-gray-600: 209 14% 37%;
-    --c-gray-700: 209 18% 30%;
-    --c-gray-800: 209 20% 25%;
-    --c-gray-900: 210 24% 16%;
-    --c-black: 209 25% 10%;
+    --c-gray-50: 230 23% 95%;
+    --c-gray-100: 228 25% 92%;
+    --c-gray-200: 226 15% 83%;
+    --c-gray-300: 223 13% 73%;
+    --c-gray-400: 221 11% 61%;
+    --c-gray-500: 223 15% 18%;
+    --c-gray-600: 227 18% 10%;
+    --c-gray-700: 222 17% 11%;
+    --c-gray-800: 220 17% 7%;
+    --c-gray-900: 225 15% 5%;
+    --c-black: 225 20% 4%;
 
     /* Accent (primary / blue / cyan) */
-    --c-accent-50: 34 100% 96%;
-    --c-accent-100: 34 100% 92%;
-    --c-accent-200: 33 100% 83%;
-    --c-accent-300: 31 97% 72%;
-    --c-accent-400: 27 96% 61%;
-    --c-accent-500: 25 95% 53%;
-    --c-accent-600: 21 90% 48%;
-    --c-accent-700: 17 88% 40%;
-    --c-accent-800: 15 79% 34%;
-    --c-accent-900: 15 75% 28%;
+    --c-accent-50: 236 88% 97%;
+    --c-accent-100: 240 82% 93%;
+    --c-accent-200: 239 82% 87%;
+    --c-accent-300: 239 84% 80%;
+    --c-accent-400: 238 84% 73%;
+    --c-accent-500: 239 84% 67%;
+    --c-accent-600: 234 89% 74%;
+    --c-accent-700: 239 42% 49%;
+    --c-accent-800: 239 42% 40%;
+    --c-accent-900: 239 41% 32%;
 
     /* Danger (red) */
-    --c-danger-50: 0 86% 97%;
-    --c-danger-100: 0 93% 94%;
-    --c-danger-200: 5 90% 85%;
-    --c-danger-300: 5 85% 75%;
-    --c-danger-400: 5 80% 65%;
-    --c-danger-500: 5 73% 55%;
-    --c-danger-600: 5 65% 48%;
-    --c-danger-700: 5 65% 40%;
-    --c-danger-800: 5 60% 33%;
-    --c-danger-900: 5 55% 27%;
+    --c-danger-50: 0 81% 96%;
+    --c-danger-100: 0 85% 92%;
+    --c-danger-200: 0 85% 84%;
+    --c-danger-300: 0 84% 76%;
+    --c-danger-400: 0 84% 67%;
+    --c-danger-500: 0 84% 60%;
+    --c-danger-600: 0 62% 53%;
+    --c-danger-700: 0 56% 45%;
+    --c-danger-800: 0 55% 36%;
+    --c-danger-900: 0 55% 29%;
 
     /* Warning (yellow / amber) */
-    --c-warning-50: 40 100% 96%;
-    --c-warning-100: 39 95% 89%;
-    --c-warning-200: 38 92% 78%;
-    --c-warning-300: 37 88% 66%;
-    --c-warning-400: 35 84% 58%;
-    --c-warning-500: 33 76% 50%;
-    --c-warning-600: 30 80% 45%;
-    --c-warning-700: 25 78% 38%;
-    --c-warning-800: 22 75% 31%;
-    --c-warning-900: 20 72% 26%;
+    --c-warning-50: 44 85% 95%;
+    --c-warning-100: 45 85% 90%;
+    --c-warning-200: 45 85% 79%;
+    --c-warning-300: 45 84% 68%;
+    --c-warning-400: 45 85% 57%;
+    --c-warning-500: 45 93% 47%;
+    --c-warning-600: 46 93% 42%;
+    --c-warning-700: 45 93% 35%;
+    --c-warning-800: 45 93% 28%;
+    --c-warning-900: 46 93% 23%;
 
     /* Success (green) */
-    --c-success-50: 138 76% 96%;
-    --c-success-100: 141 79% 90%;
-    --c-success-200: 141 70% 78%;
-    --c-success-300: 142 65% 62%;
-    --c-success-400: 142 64% 47%;
-    --c-success-500: 142 71% 36%;
-    --c-success-600: 142 72% 30%;
-    --c-success-700: 142 70% 24%;
-    --c-success-800: 143 64% 20%;
-    --c-success-900: 143 61% 16%;
+    --c-success-50: 143 57% 95%;
+    --c-success-100: 143 57% 89%;
+    --c-success-200: 142 59% 78%;
+    --c-success-300: 142 58% 67%;
+    --c-success-400: 142 58% 55%;
+    --c-success-500: 142 71% 45%;
+    --c-success-600: 142 70% 40%;
+    --c-success-700: 142 71% 34%;
+    --c-success-800: 142 71% 27%;
+    --c-success-900: 142 71% 22%;
 
     /* Geometry */
-    --radius-sm: 0.5rem;
-    --radius: 0.5rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
+    --radius-sm: 0.375rem;
+    --radius: 0.375rem;
+    --radius-md: 0.625rem;
+    --radius-lg: 0.625rem;
+    --radius-xl: 0.875rem;
 }
