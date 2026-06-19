@@ -19,7 +19,7 @@ interface Values {
     password: string;
 }
 
-const RegisterContainer = () => {   
+const RegisterContainer = () => {
     const ref = useRef<Reaptcha>(null);
     const [token, setToken] = useState('');
 
@@ -80,17 +80,17 @@ const RegisterContainer = () => {
             {({ isSubmitting, setSubmitting, submitForm }) => (
                 <LoginFormContainer title={'Create an Account'} css={tw`w-full flex`}>
                     <div css={tw`flex gap-2 w-full`}>
-                        <Field light type={'text'} label={'First Name'} name={'first_name'} disabled={isSubmitting} />
-                        <Field light type={'text'} label={'Last Name'} name={'last_name'} disabled={isSubmitting} />
+                        <Field type={'text'} label={'First Name'} name={'first_name'} disabled={isSubmitting} />
+                        <Field type={'text'} label={'Last Name'} name={'last_name'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Field light type={'text'} label={'Username'} name={'username'} disabled={isSubmitting} />
+                        <Field type={'text'} label={'Username'} name={'username'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Field light type={'text'} label={'Email'} name={'email'} disabled={isSubmitting} />
+                        <Field type={'text'} label={'Email'} name={'email'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Field light type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
+                        <Field type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
                         <Button type={'submit'} size={'xlarge'} isLoading={isSubmitting} disabled={isSubmitting}>
@@ -115,7 +115,7 @@ const RegisterContainer = () => {
                     <div css={tw`mt-6 text-center`}>
                         <Link
                             to={'/auth/password'}
-                            css={tw`text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                            css={tw`text-xs text-neutral-400 no-underline hover:text-neutral-200 transition-colors duration-150`}
                         >
                             Forgot password?
                         </Link>
