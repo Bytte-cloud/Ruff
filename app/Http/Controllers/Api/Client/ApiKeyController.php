@@ -6,6 +6,7 @@ use Ruff\Models\ApiKey;
 use Ruff\Facades\Activity;
 use Illuminate\Http\JsonResponse;
 use Ruff\Exceptions\DisplayException;
+use Ruff\Notifications\GenericNotification;
 use Ruff\Http\Requests\Api\Client\ClientApiRequest;
 use Ruff\Transformers\Api\Client\ApiKeyTransformer;
 use Ruff\Http\Requests\Api\Client\Account\StoreApiKeyRequest;
@@ -42,6 +43,13 @@ class ApiKeyController extends ClientApiController
             ->subject($token->accessToken)
             ->property('identifier', $token->accessToken->identifier)
             ->log();
+
+        $request->user()->notify(new GenericNotification(
+            'event',
+            'API key created',
+            'A new API key was just created on your account.',
+            '/account/api',
+        ));
 
         return $this->fractal->item($token->accessToken)
             ->transformWith($this->getTransformer(ApiKeyTransformer::class))
