@@ -113,7 +113,7 @@ function toHslChannels({ r, g, b }: RGB): string {
         s = d / (1 - Math.abs(2 * l - 1));
         switch (max) {
             case rn:
-                h = (((gn - bn) / d) % 6 + 6) % 6;
+                h = ((((gn - bn) / d) % 6) + 6) % 6;
                 break;
             case gn:
                 h = (bn - rn) / d + 2;

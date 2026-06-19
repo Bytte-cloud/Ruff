@@ -11,7 +11,15 @@ interface Props {
 }
 
 const ButtonStyle = styled.button<Omit<Props, 'isLoading'>>`
-    ${tw`relative inline-block rounded p-2 uppercase tracking-wide text-sm transition-all duration-150 border`};
+    ${tw`relative inline-flex items-center justify-center rounded p-2 font-medium text-sm leading-none whitespace-nowrap select-none transition-all duration-150 border shadow-sm`};
+
+    &:focus-visible {
+        ${tw`outline-none ring-2 ring-offset-2 ring-primary-400 ring-offset-neutral-800`};
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0.5px);
+    }
 
     ${(props) =>
         ((!props.isSecondary && !props.color) || props.color === 'primary') &&
@@ -77,7 +85,7 @@ const ButtonStyle = styled.button<Omit<Props, 'isLoading'>>`
     ${(props) =>
         props.isSecondary &&
         css<Props>`
-            ${tw`border-neutral-600 bg-transparent text-neutral-200`};
+            ${tw`border-neutral-500 bg-transparent text-neutral-200 shadow-none`};
 
             &:hover:not(:disabled) {
                 ${tw`border-neutral-500 text-neutral-100`};
