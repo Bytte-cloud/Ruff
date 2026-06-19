@@ -1,5 +1,6 @@
 import React, { lazy } from 'react';
 import ServerConsole from '@/components/server/console/ServerConsoleContainer';
+import PlayerManagerContainer from '@/components/server/players/PlayerManagerContainer';
 import DatabasesContainer from '@/components/server/databases/DatabasesContainer';
 import ScheduleContainer from '@/components/server/schedules/ScheduleContainer';
 import UsersContainer from '@/components/server/users/UsersContainer';
@@ -72,6 +73,13 @@ export default {
             permission: null,
             name: 'Console',
             component: ServerConsole,
+            exact: true,
+        },
+        {
+            path: '/players',
+            permission: 'control.console',
+            name: 'Players',
+            component: PlayerManagerContainer,
             exact: true,
         },
         {
