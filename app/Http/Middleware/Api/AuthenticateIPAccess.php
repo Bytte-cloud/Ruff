@@ -4,8 +4,8 @@ namespace Ruff\Http\Middleware\Api;
 
 use IPTools\IP;
 use IPTools\Range;
-use Illuminate\Http\Request;
 use Ruff\Facades\Activity;
+use Illuminate\Http\Request;
 use Laravel\Sanctum\TransientToken;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 

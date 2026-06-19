@@ -11,13 +11,13 @@ use Ruff\Models\Server;
 use Ruff\Models\Database;
 use Ruff\Models\Location;
 use Ruff\Models\Schedule;
-use Illuminate\Support\Collection;
 use Ruff\Models\Allocation;
 use Ruff\Models\DatabaseHost;
+use Illuminate\Support\Collection;
 use Ruff\Tests\Integration\TestResponse;
 use Ruff\Tests\Integration\IntegrationTestCase;
-use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Ruff\Transformers\Api\Client\BaseClientTransformer;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 abstract class ClientApiIntegrationTestCase extends IntegrationTestCase
 {

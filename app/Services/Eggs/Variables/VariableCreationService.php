@@ -4,8 +4,8 @@ namespace Ruff\Services\Eggs\Variables;
 
 use Ruff\Models\EggVariable;
 use Ruff\Traits\Services\ValidatesValidationRules;
-use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use Ruff\Contracts\Repository\EggVariableRepositoryInterface;
+use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use Ruff\Exceptions\Service\Egg\Variable\ReservedVariableNameException;
 
 class VariableCreationService

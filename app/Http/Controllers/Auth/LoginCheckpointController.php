@@ -2,16 +2,16 @@
 
 namespace Ruff\Http\Controllers\Auth;
 
+use Ruff\Models\User;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
-use Ruff\Models\User;
 use Illuminate\Http\JsonResponse;
 use PragmaRX\Google2FA\Google2FA;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Ruff\Events\Auth\ProvidedAuthenticationToken;
 use Ruff\Http\Requests\Auth\LoginCheckpointRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
 class LoginCheckpointController extends AbstractLoginController

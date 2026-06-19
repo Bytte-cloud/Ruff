@@ -3,9 +3,9 @@
 namespace Ruff\Models;
 
 use Illuminate\Container\Container;
+use Ruff\Contracts\Extensions\HashidsInterface;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Ruff\Contracts\Extensions\HashidsInterface;
 
 /**
  * @property int $id

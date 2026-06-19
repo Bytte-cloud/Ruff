@@ -3,8 +3,8 @@
 namespace Ruff\Http\Controllers\Base;
 
 use Illuminate\View\View;
-use Illuminate\View\Factory as ViewFactory;
 use Ruff\Http\Controllers\Controller;
+use Illuminate\View\Factory as ViewFactory;
 use Ruff\Contracts\Repository\ServerRepositoryInterface;
 
 class IndexController extends Controller

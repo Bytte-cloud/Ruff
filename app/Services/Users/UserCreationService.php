@@ -4,10 +4,10 @@ namespace Ruff\Services\Users;
 
 use Ramsey\Uuid\Uuid;
 use Ruff\Models\User;
+use Ruff\Notifications\AccountCreated;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use Ruff\Notifications\AccountCreated;
 use Ruff\Contracts\Repository\UserRepositoryInterface;
 
 class UserCreationService

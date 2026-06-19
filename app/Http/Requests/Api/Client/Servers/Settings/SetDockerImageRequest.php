@@ -2,10 +2,10 @@
 
 namespace Ruff\Http\Requests\Api\Client\Servers\Settings;
 
-use Webmozart\Assert\Assert;
 use Ruff\Models\Server;
-use Illuminate\Validation\Rule;
 use Ruff\Models\Permission;
+use Webmozart\Assert\Assert;
+use Illuminate\Validation\Rule;
 use Ruff\Contracts\Http\ClientPermissionsRequest;
 use Ruff\Http\Requests\Api\Client\ClientApiRequest;
 

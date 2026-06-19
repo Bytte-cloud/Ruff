@@ -3,10 +3,10 @@
 namespace Ruff\Services\Servers;
 
 use Ruff\Models\User;
-use Illuminate\Support\Collection;
 use Ruff\Models\EggVariable;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Collection;
 use Ruff\Traits\Services\HasUserLevels;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
 class VariableValidatorService

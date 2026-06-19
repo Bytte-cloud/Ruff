@@ -1,10 +1,10 @@
 <?php
 
+use Ruff\Models\Permission;
+use Ruff\Models\Permission as P;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Ruff\Models\Permission;
 use Illuminate\Support\Facades\Schema;
-use Ruff\Models\Permission as P;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 

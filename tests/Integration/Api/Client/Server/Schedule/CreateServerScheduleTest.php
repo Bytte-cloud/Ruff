@@ -2,9 +2,9 @@
 
 namespace Ruff\Tests\Integration\Api\Client\Server\Schedule;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Schedule;
 use Ruff\Models\Permission;
+use Illuminate\Http\Response;
 use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class CreateServerScheduleTest extends ClientApiIntegrationTestCase

@@ -2,8 +2,8 @@
 
 namespace Ruff\Tests\Integration\Api\Application\Nests;
 
-use Illuminate\Support\Arr;
 use Ruff\Models\Egg;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Response;
 use Ruff\Transformers\Api\Application\EggTransformer;
 use Ruff\Tests\Integration\Api\Application\ApplicationApiIntegrationTestCase;

@@ -3,11 +3,11 @@
 namespace Ruff\Services\Eggs\Sharing;
 
 use Ruff\Models\Egg;
+use Ruff\Models\EggVariable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
-use Ruff\Models\EggVariable;
-use Illuminate\Database\ConnectionInterface;
 use Ruff\Services\Eggs\EggParserService;
+use Illuminate\Database\ConnectionInterface;
 
 class EggUpdateImporterService
 {

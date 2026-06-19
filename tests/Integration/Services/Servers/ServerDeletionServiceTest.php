@@ -2,10 +2,10 @@
 
 namespace Ruff\Tests\Integration\Services\Servers;
 
+use Ruff\Models\Database;
 use Mockery\MockInterface;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use Ruff\Models\Database;
 use Ruff\Models\DatabaseHost;
 use GuzzleHttp\Exception\BadResponseException;
 use Ruff\Tests\Integration\IntegrationTestCase;

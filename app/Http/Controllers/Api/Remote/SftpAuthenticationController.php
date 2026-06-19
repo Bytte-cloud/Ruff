@@ -2,20 +2,20 @@
 
 namespace Ruff\Http\Controllers\Api\Remote;
 
-use Illuminate\Http\Request;
 use Ruff\Models\User;
 use Ruff\Models\Server;
-use Illuminate\Http\JsonResponse;
 use Ruff\Facades\Activity;
 use Ruff\Models\Permission;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use phpseclib3\Crypt\PublicKeyLoader;
 use Ruff\Http\Controllers\Controller;
 use phpseclib3\Exception\NoKeyLoadedException;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Ruff\Exceptions\Http\HttpForbiddenException;
 use Ruff\Services\Servers\GetUserPermissionsService;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Ruff\Http\Requests\Api\Remote\SftpAuthenticationFormRequest;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 class SftpAuthenticationController extends Controller

@@ -2,8 +2,8 @@
 
 namespace Ruff\Services\Eggs;
 
-use Ramsey\Uuid\Uuid;
 use Ruff\Models\Egg;
+use Ramsey\Uuid\Uuid;
 use Ruff\Contracts\Repository\EggRepositoryInterface;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Ruff\Exceptions\Service\Egg\NoParentConfigurationFoundException;

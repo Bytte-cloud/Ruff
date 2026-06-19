@@ -3,8 +3,8 @@
 namespace Ruff\Http\Controllers\Api\Client;
 
 use Ruff\Models\ApiKey;
-use Illuminate\Http\JsonResponse;
 use Ruff\Facades\Activity;
+use Illuminate\Http\JsonResponse;
 use Ruff\Exceptions\DisplayException;
 use Ruff\Http\Requests\Api\Client\ClientApiRequest;
 use Ruff\Transformers\Api\Client\ApiKeyTransformer;

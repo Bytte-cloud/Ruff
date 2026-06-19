@@ -3,8 +3,8 @@
 namespace Ruff\Http\Controllers\Api\Application\Nodes;
 
 use Ruff\Models\Node;
-use Illuminate\Http\JsonResponse;
 use Ruff\Models\Allocation;
+use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use Illuminate\Database\Eloquent\Builder;

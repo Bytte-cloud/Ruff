@@ -2,15 +2,15 @@
 
 namespace Ruff\Http\Controllers\Admin\Nests;
 
-use Illuminate\View\View;
 use Ruff\Models\Egg;
+use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Illuminate\View\Factory as ViewFactory;
 use Ruff\Http\Controllers\Controller;
 use Ruff\Services\Eggs\EggUpdateService;
 use Ruff\Services\Eggs\EggCreationService;
 use Ruff\Services\Eggs\EggDeletionService;
+use Illuminate\View\Factory as ViewFactory;
 use Ruff\Http\Requests\Admin\Egg\EggFormRequest;
 use Ruff\Contracts\Repository\EggRepositoryInterface;
 use Ruff\Contracts\Repository\NestRepositoryInterface;

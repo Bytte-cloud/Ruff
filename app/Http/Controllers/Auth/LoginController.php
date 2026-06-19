@@ -2,12 +2,12 @@
 
 namespace Ruff\Http\Controllers\Auth;
 
+use Ruff\Models\User;
+use Ruff\Facades\Activity;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Ruff\Models\User;
 use Illuminate\Http\JsonResponse;
-use Ruff\Facades\Activity;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

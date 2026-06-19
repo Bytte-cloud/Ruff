@@ -2,11 +2,11 @@
 
 namespace Ruff\Tests\Integration\Api\Client\Server\Subuser;
 
-use Illuminate\Support\Str;
 use Ruff\Models\User;
-use Illuminate\Http\Response;
 use Ruff\Models\Subuser;
+use Illuminate\Support\Str;
 use Ruff\Models\Permission;
+use Illuminate\Http\Response;
 use Illuminate\Foundation\Testing\WithFaker;
 use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 

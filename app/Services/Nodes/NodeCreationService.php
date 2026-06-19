@@ -3,8 +3,8 @@
 namespace Ruff\Services\Nodes;
 
 use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Str;
 use Ruff\Models\Node;
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Ruff\Contracts\Repository\NodeRepositoryInterface;
 

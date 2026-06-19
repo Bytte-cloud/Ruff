@@ -2,8 +2,8 @@
 
 namespace Ruff\Contracts\Criteria;
 
-use Illuminate\Database\Eloquent\Model;
 use Ruff\Repositories\Repository;
+use Illuminate\Database\Eloquent\Model;
 
 interface CriteriaInterface
 {

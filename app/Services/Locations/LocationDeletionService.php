@@ -2,8 +2,8 @@
 
 namespace Ruff\Services\Locations;
 
-use Webmozart\Assert\Assert;
 use Ruff\Models\Location;
+use Webmozart\Assert\Assert;
 use Ruff\Contracts\Repository\NodeRepositoryInterface;
 use Ruff\Contracts\Repository\LocationRepositoryInterface;
 use Ruff\Exceptions\Service\Location\HasActiveNodesException;

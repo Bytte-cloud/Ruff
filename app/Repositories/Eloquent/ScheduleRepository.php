@@ -4,8 +4,8 @@ namespace Ruff\Repositories\Eloquent;
 
 use Ruff\Models\Schedule;
 use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Ruff\Exceptions\Repository\RecordNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Ruff\Contracts\Repository\ScheduleRepositoryInterface;
 
 class ScheduleRepository extends EloquentRepository implements ScheduleRepositoryInterface

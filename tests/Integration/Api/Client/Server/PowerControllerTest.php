@@ -2,8 +2,8 @@
 
 namespace Ruff\Tests\Integration\Api\Client\Server;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Permission;
+use Illuminate\Http\Response;
 use Ruff\Repositories\Wings\DaemonPowerRepository;
 use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 

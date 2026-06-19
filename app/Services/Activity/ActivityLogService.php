@@ -3,13 +3,13 @@
 namespace Ruff\Services\Activity;
 
 use Illuminate\Support\Arr;
+use Ruff\Models\ActivityLog;
 use Webmozart\Assert\Assert;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
-use Ruff\Models\ActivityLog;
+use Ruff\Models\ActivityLogSubject;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
-use Ruff\Models\ActivityLogSubject;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Contracts\Auth\Factory as AuthFactory;
 

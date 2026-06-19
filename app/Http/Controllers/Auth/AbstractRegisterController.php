@@ -2,14 +2,13 @@
 
 namespace Ruff\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use Ruff\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Event;
-use Ruff\Events\Auth\DirectLogin;
 use Ruff\Exceptions\DisplayException;
 use Ruff\Http\Controllers\Controller;
 use Ruff\Services\Users\UserCreationService;

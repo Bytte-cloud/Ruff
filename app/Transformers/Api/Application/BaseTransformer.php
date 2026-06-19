@@ -2,15 +2,15 @@
 
 namespace Ruff\Transformers\Api\Application;
 
+use Ruff\Models\ApiKey;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 use Illuminate\Http\Request;
 use Webmozart\Assert\Assert;
-use Ruff\Models\ApiKey;
 use Illuminate\Container\Container;
+use Ruff\Services\Acl\Api\AdminAcl;
 use Illuminate\Database\Eloquent\Model;
 use League\Fractal\TransformerAbstract;
-use Ruff\Services\Acl\Api\AdminAcl;
 
 /**
  * @method array transform(Model $model)

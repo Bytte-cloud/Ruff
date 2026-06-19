@@ -2,8 +2,8 @@
 
 namespace Ruff\Http\Middleware\Activity;
 
-use Illuminate\Http\Request;
 use Ruff\Facades\LogTarget;
+use Illuminate\Http\Request;
 
 class AccountSubject
 {

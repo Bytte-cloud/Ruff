@@ -5,9 +5,9 @@ namespace Ruff\Repositories\Eloquent;
 use Ruff\Models\Egg;
 use Webmozart\Assert\Assert;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Ruff\Contracts\Repository\EggRepositoryInterface;
 use Ruff\Exceptions\Repository\RecordNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class EggRepository extends EloquentRepository implements EggRepositoryInterface
 {

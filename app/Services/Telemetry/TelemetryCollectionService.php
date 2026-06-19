@@ -2,9 +2,8 @@
 
 namespace Ruff\Services\Telemetry;
 
-use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Arr;
 use Ruff\Models\Egg;
+use Ramsey\Uuid\Uuid;
 use Ruff\Models\Nest;
 use Ruff\Models\Node;
 use Ruff\Models\User;
@@ -12,8 +11,9 @@ use Ruff\Models\Mount;
 use Ruff\Models\Backup;
 use Ruff\Models\Server;
 use Ruff\Models\Location;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 use Ruff\Models\Allocation;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Ruff\Repositories\Eloquent\SettingsRepository;
 use Ruff\Repositories\Wings\DaemonConfigurationRepository;

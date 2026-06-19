@@ -6,10 +6,10 @@ use Ruff\Models\Nest;
 use Ruff\Models\Node;
 use Ruff\Models\User;
 use Ruff\Models\Server;
-use Ruff\Models\Location;
 use Illuminate\View\View;
-use Illuminate\View\Factory as ViewFactory;
+use Ruff\Models\Location;
 use Ruff\Http\Controllers\Controller;
+use Illuminate\View\Factory as ViewFactory;
 use Ruff\Services\Helpers\SoftwareVersionService;
 
 class BaseController extends Controller

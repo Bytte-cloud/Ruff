@@ -9,8 +9,8 @@ use Ruff\Models\Server;
 use Ruff\Models\ServerVariable;
 use Illuminate\Validation\ValidationException;
 use Ruff\Tests\Integration\IntegrationTestCase;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Ruff\Services\Servers\StartupModificationService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class StartupModificationServiceTest extends IntegrationTestCase
 {

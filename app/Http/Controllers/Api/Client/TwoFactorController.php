@@ -3,10 +3,10 @@
 namespace Ruff\Http\Controllers\Api\Client;
 
 use Carbon\Carbon;
+use Ruff\Facades\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Ruff\Facades\Activity;
 use Ruff\Services\Users\TwoFactorSetupService;
 use Ruff\Services\Users\ToggleTwoFactorService;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;

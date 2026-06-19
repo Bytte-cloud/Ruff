@@ -2,9 +2,9 @@
 
 namespace Ruff\Services\Databases;
 
-use Webmozart\Assert\Assert;
 use Ruff\Models\Server;
 use Ruff\Models\Database;
+use Webmozart\Assert\Assert;
 use Ruff\Models\DatabaseHost;
 use Ruff\Exceptions\Service\Database\NoSuitableDatabaseHostException;
 

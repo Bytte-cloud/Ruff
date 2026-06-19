@@ -2,8 +2,8 @@
 
 namespace Ruff\Repositories\Eloquent;
 
-use Illuminate\Support\Collection;
 use Ruff\Models\DatabaseHost;
+use Illuminate\Support\Collection;
 use Ruff\Contracts\Repository\DatabaseHostRepositoryInterface;
 
 class DatabaseHostRepository extends EloquentRepository implements DatabaseHostRepositoryInterface

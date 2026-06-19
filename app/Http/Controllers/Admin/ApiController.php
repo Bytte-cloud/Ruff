@@ -2,16 +2,16 @@
 
 namespace Ruff\Http\Controllers\Admin;
 
+use Ruff\Models\ApiKey;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Ruff\Models\ApiKey;
+use Ruff\Services\Acl\Api\AdminAcl;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Ruff\Services\Acl\Api\AdminAcl;
-use Illuminate\View\Factory as ViewFactory;
 use Ruff\Http\Controllers\Controller;
 use Ruff\Services\Api\KeyCreationService;
+use Illuminate\View\Factory as ViewFactory;
 use Ruff\Contracts\Repository\ApiKeyRepositoryInterface;
 use Ruff\Http\Requests\Admin\Api\StoreApplicationApiKeyRequest;
 

@@ -2,8 +2,8 @@
 
 namespace Ruff\Repositories\Eloquent;
 
-use Illuminate\Support\Collection;
 use Ruff\Models\EggVariable;
+use Illuminate\Support\Collection;
 use Ruff\Contracts\Repository\EggVariableRepositoryInterface;
 
 class EggVariableRepository extends EloquentRepository implements EggVariableRepositoryInterface

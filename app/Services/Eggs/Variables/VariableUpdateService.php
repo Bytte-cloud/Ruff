@@ -6,8 +6,8 @@ use Illuminate\Support\Str;
 use Ruff\Models\EggVariable;
 use Ruff\Exceptions\DisplayException;
 use Ruff\Traits\Services\ValidatesValidationRules;
-use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use Ruff\Contracts\Repository\EggVariableRepositoryInterface;
+use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use Ruff\Exceptions\Service\Egg\Variable\ReservedVariableNameException;
 
 class VariableUpdateService

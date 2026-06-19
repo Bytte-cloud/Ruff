@@ -2,8 +2,8 @@
 
 namespace Ruff\Http\Controllers\Api\Application\Servers;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Server;
+use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
 use Ruff\Services\Servers\ServerCreationService;

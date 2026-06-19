@@ -2,15 +2,15 @@
 
 namespace Ruff\Tests\Integration\Api\Application;
 
-use Illuminate\Http\Request;
 use Ruff\Models\User;
-use PHPUnit\Framework\Assert;
 use Ruff\Models\ApiKey;
+use Illuminate\Http\Request;
+use PHPUnit\Framework\Assert;
 use Ruff\Services\Acl\Api\AdminAcl;
 use Ruff\Tests\Integration\IntegrationTestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ruff\Tests\Traits\Integration\CreatesTestModels;
 use Ruff\Transformers\Api\Application\BaseTransformer;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ruff\Transformers\Api\Client\BaseClientTransformer;
 use Ruff\Tests\Traits\Http\IntegrationJsonRequestAssertions;
 

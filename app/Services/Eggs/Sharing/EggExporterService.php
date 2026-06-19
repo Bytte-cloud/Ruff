@@ -4,8 +4,8 @@ namespace Ruff\Services\Eggs\Sharing;
 
 use Carbon\Carbon;
 use Ruff\Models\Egg;
-use Illuminate\Support\Collection;
 use Ruff\Models\EggVariable;
+use Illuminate\Support\Collection;
 use Ruff\Contracts\Repository\EggRepositoryInterface;
 
 class EggExporterService

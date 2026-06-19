@@ -2,18 +2,18 @@
 
 namespace Ruff\Http\Controllers\Api\Remote\Backups;
 
+use Ruff\Models\Backup;
+use Ruff\Facades\Activity;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
-use Ruff\Models\Backup;
 use Illuminate\Http\JsonResponse;
-use Ruff\Facades\Activity;
 use Ruff\Exceptions\DisplayException;
 use Ruff\Http\Controllers\Controller;
 use Ruff\Extensions\Backups\BackupManager;
 use Ruff\Extensions\Filesystem\S3Filesystem;
 use Ruff\Exceptions\Http\HttpForbiddenException;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Ruff\Http\Requests\Api\Remote\ReportBackupCompleteRequest;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class BackupStatusController extends Controller
 {

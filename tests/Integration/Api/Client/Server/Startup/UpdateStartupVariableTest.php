@@ -3,9 +3,9 @@
 namespace Ruff\Tests\Integration\Api\Client\Server\Startup;
 
 use Ruff\Models\User;
-use Illuminate\Http\Response;
 use Ruff\Models\Permission;
 use Ruff\Models\EggVariable;
+use Illuminate\Http\Response;
 use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class UpdateStartupVariableTest extends ClientApiIntegrationTestCase

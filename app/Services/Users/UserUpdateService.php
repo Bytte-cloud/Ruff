@@ -3,8 +3,8 @@
 namespace Ruff\Services\Users;
 
 use Ruff\Models\User;
-use Illuminate\Contracts\Hashing\Hasher;
 use Ruff\Traits\Services\HasUserLevels;
+use Illuminate\Contracts\Hashing\Hasher;
 
 class UserUpdateService
 {

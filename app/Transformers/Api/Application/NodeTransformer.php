@@ -4,9 +4,9 @@ namespace Ruff\Transformers\Api\Application;
 
 use Ruff\Models\Node;
 use League\Fractal\Resource\Item;
+use Ruff\Services\Acl\Api\AdminAcl;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\NullResource;
-use Ruff\Services\Acl\Api\AdminAcl;
 
 class NodeTransformer extends BaseTransformer
 {

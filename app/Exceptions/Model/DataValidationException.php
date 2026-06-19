@@ -3,9 +3,9 @@
 namespace Ruff\Exceptions\Model;
 
 use Illuminate\Support\MessageBag;
+use Ruff\Exceptions\RuffException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Validation\Validator;
-use Ruff\Exceptions\RuffException;
 use Illuminate\Contracts\Support\MessageProvider;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 

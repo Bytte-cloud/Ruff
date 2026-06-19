@@ -3,10 +3,10 @@
 namespace Ruff\Transformers\Api\Application;
 
 use Ruff\Models\Database;
-use League\Fractal\Resource\Item;
 use Ruff\Models\DatabaseHost;
-use League\Fractal\Resource\NullResource;
+use League\Fractal\Resource\Item;
 use Ruff\Services\Acl\Api\AdminAcl;
+use League\Fractal\Resource\NullResource;
 use Illuminate\Contracts\Encryption\Encrypter;
 
 class ServerDatabaseTransformer extends BaseTransformer

@@ -2,12 +2,12 @@
 
 namespace Ruff\Http\Controllers\Api\Remote\Servers;
 
-use Illuminate\Http\Request;
 use Ruff\Models\Server;
-use Illuminate\Http\JsonResponse;
 use Ruff\Facades\Activity;
-use Illuminate\Database\ConnectionInterface;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Ruff\Http\Controllers\Controller;
+use Illuminate\Database\ConnectionInterface;
 use Ruff\Services\Eggs\EggConfigurationService;
 use Ruff\Repositories\Eloquent\ServerRepository;
 use Ruff\Http\Resources\Wings\ServerConfigurationCollection;

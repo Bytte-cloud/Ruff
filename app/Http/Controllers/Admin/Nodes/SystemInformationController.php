@@ -2,9 +2,9 @@
 
 namespace Ruff\Http\Controllers\Admin\Nodes;
 
+use Ruff\Models\Node;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Ruff\Models\Node;
 use Illuminate\Http\JsonResponse;
 use Ruff\Http\Controllers\Controller;
 use Ruff\Repositories\Wings\DaemonConfigurationRepository;

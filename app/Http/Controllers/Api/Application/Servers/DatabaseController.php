@@ -2,9 +2,9 @@
 
 namespace Ruff\Http\Controllers\Api\Application\Servers;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Server;
 use Ruff\Models\Database;
+use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Ruff\Services\Databases\DatabasePasswordService;
 use Ruff\Services\Databases\DatabaseManagementService;

@@ -2,19 +2,19 @@
 
 namespace Ruff\Http\Controllers\Admin\Nodes;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use Ruff\Models\Node;
-use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Ruff\Models\Allocation;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Ruff\Http\Controllers\Controller;
-use Illuminate\Contracts\View\Factory as ViewFactory;
 use Ruff\Repositories\Eloquent\NodeRepository;
 use Ruff\Repositories\Eloquent\ServerRepository;
 use Ruff\Traits\Controllers\JavascriptInjection;
 use Ruff\Services\Helpers\SoftwareVersionService;
 use Ruff\Repositories\Eloquent\LocationRepository;
 use Ruff\Repositories\Eloquent\AllocationRepository;
+use Illuminate\Contracts\View\Factory as ViewFactory;
 
 class NodeViewController extends Controller
 {

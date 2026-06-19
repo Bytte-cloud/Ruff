@@ -2,9 +2,9 @@
 
 namespace Ruff\Tests\Integration\Api\Client\Server\Allocation;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Allocation;
 use Ruff\Models\Permission;
+use Illuminate\Http\Response;
 use Ruff\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class DeleteAllocationTest extends ClientApiIntegrationTestCase

@@ -2,8 +2,8 @@
 
 namespace Ruff\Tests\Integration\Api\Client;
 
-use Illuminate\Support\Str;
 use Ruff\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 

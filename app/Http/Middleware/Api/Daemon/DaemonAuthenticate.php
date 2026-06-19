@@ -5,8 +5,8 @@ namespace Ruff\Http\Middleware\Api\Daemon;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Ruff\Repositories\Eloquent\NodeRepository;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Ruff\Exceptions\Repository\RecordNotFoundException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 

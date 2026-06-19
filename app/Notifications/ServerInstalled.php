@@ -3,14 +3,14 @@
 namespace Ruff\Notifications;
 
 use Ruff\Models\User;
-use Illuminate\Bus\Queueable;
 use Ruff\Events\Event;
 use Ruff\Models\Server;
-use Illuminate\Container\Container;
+use Illuminate\Bus\Queueable;
 use Ruff\Events\Server\Installed;
+use Illuminate\Container\Container;
+use Ruff\Contracts\Core\ReceivesEvents;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Ruff\Contracts\Core\ReceivesEvents;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Notifications\Messages\MailMessage;
 

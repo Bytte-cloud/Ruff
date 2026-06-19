@@ -2,10 +2,10 @@
 
 namespace Ruff\Http\Controllers\Api\Client\Servers;
 
-use Illuminate\Http\Response;
 use Ruff\Models\Server;
-use Illuminate\Http\JsonResponse;
 use Ruff\Facades\Activity;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use Ruff\Repositories\Eloquent\ServerRepository;
 use Ruff\Services\Servers\ReinstallServerService;
 use Ruff\Http\Controllers\Api\Client\ClientApiController;

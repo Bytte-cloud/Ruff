@@ -2,9 +2,9 @@
 
 namespace Ruff\Providers;
 
-use Laravel\Sanctum\Sanctum;
 use Ruff\Models\ApiKey;
 use Ruff\Models\Server;
+use Laravel\Sanctum\Sanctum;
 use Ruff\Policies\ServerPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

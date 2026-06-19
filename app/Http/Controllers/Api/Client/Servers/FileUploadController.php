@@ -2,9 +2,9 @@
 
 namespace Ruff\Http\Controllers\Api\Client\Servers;
 
-use Carbon\CarbonImmutable;
 use Ruff\Models\User;
 use Ruff\Models\Server;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\JsonResponse;
 use Ruff\Services\Nodes\NodeJWTService;
 use Ruff\Http\Controllers\Api\Client\ClientApiController;

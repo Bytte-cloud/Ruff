@@ -2,9 +2,9 @@
 
 namespace Ruff\Services\Allocations;
 
-use Webmozart\Assert\Assert;
 use Ruff\Models\Server;
 use Ruff\Models\Allocation;
+use Webmozart\Assert\Assert;
 use Ruff\Exceptions\Service\Allocation\AutoAllocationNotEnabledException;
 use Ruff\Exceptions\Service\Allocation\NoAutoAllocationSpaceAvailableException;
 

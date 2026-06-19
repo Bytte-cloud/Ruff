@@ -2,12 +2,12 @@
 
 namespace Ruff\Providers;
 
-use Illuminate\Http\Request;
 use Ruff\Models\Database;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Ruff\Http\Middleware\TrimStrings;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
-use Ruff\Http\Middleware\TrimStrings;
 use Ruff\Http\Middleware\AdminAuthenticate;
 use Ruff\Http\Middleware\RequireTwoFactorAuthentication;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

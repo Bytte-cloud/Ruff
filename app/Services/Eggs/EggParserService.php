@@ -2,8 +2,8 @@
 
 namespace Ruff\Services\Eggs;
 
-use Illuminate\Support\Arr;
 use Ruff\Models\Egg;
+use Illuminate\Support\Arr;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Ruff\Exceptions\Service\InvalidFileUploadException;

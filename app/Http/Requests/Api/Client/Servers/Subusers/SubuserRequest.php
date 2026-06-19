@@ -2,9 +2,9 @@
 
 namespace Ruff\Http\Requests\Api\Client\Servers\Subusers;
 
-use Illuminate\Http\Request;
 use Ruff\Models\User;
 use Ruff\Models\Subuser;
+use Illuminate\Http\Request;
 use Ruff\Exceptions\Http\HttpForbiddenException;
 use Ruff\Http\Requests\Api\Client\ClientApiRequest;
 use Ruff\Services\Servers\GetUserPermissionsService;

@@ -3,8 +3,8 @@
 namespace Ruff\Transformers\Api\Client;
 
 use Ruff\Models\User;
-use Webmozart\Assert\Assert;
 use Ruff\Models\Server;
+use Webmozart\Assert\Assert;
 use Ruff\Transformers\Api\Application\BaseTransformer as BaseApplicationTransformer;
 
 abstract class BaseClientTransformer extends BaseApplicationTransformer

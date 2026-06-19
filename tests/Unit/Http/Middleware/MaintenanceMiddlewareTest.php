@@ -3,12 +3,12 @@
 namespace Ruff\Tests\Unit\Http\Middleware;
 
 use Mockery as m;
-use Mockery\MockInterface;
 use Ruff\Models\Node;
-use Illuminate\Http\Response;
 use Ruff\Models\Server;
-use Illuminate\Contracts\Routing\ResponseFactory;
+use Mockery\MockInterface;
+use Illuminate\Http\Response;
 use Ruff\Http\Middleware\MaintenanceMiddleware;
+use Illuminate\Contracts\Routing\ResponseFactory;
 
 class MaintenanceMiddlewareTest extends MiddlewareTestCase
 {

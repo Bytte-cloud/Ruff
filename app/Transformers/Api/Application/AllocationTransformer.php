@@ -4,10 +4,10 @@ namespace Ruff\Transformers\Api\Application;
 
 use Ruff\Models\Node;
 use Ruff\Models\Server;
-use League\Fractal\Resource\Item;
 use Ruff\Models\Allocation;
-use League\Fractal\Resource\NullResource;
+use League\Fractal\Resource\Item;
 use Ruff\Services\Acl\Api\AdminAcl;
+use League\Fractal\Resource\NullResource;
 
 class AllocationTransformer extends BaseTransformer
 {

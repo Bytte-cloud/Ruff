@@ -2,13 +2,13 @@
 
 namespace Ruff\Services\Servers;
 
-use Illuminate\Support\Arr;
 use Ruff\Models\Egg;
 use Ruff\Models\User;
 use Ruff\Models\Server;
+use Illuminate\Support\Arr;
 use Ruff\Models\ServerVariable;
-use Illuminate\Database\ConnectionInterface;
 use Ruff\Traits\Services\HasUserLevels;
+use Illuminate\Database\ConnectionInterface;
 
 class StartupModificationService
 {

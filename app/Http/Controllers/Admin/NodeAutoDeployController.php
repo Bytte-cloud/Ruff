@@ -2,13 +2,13 @@
 
 namespace Ruff\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Ruff\Models\Node;
 use Ruff\Models\ApiKey;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Ruff\Http\Controllers\Controller;
-use Illuminate\Contracts\Encryption\Encrypter;
 use Ruff\Services\Api\KeyCreationService;
+use Illuminate\Contracts\Encryption\Encrypter;
 use Ruff\Repositories\Eloquent\ApiKeyRepository;
 
 class NodeAutoDeployController extends Controller
