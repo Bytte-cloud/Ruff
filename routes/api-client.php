@@ -41,6 +41,14 @@ Route::prefix('/account')->middleware(AccountSubject::class)->group(function () 
         Route::post('/', [Client\SSHKeyController::class, 'store']);
         Route::post('/remove', [Client\SSHKeyController::class, 'delete']);
     });
+
+    Route::prefix('/folders')->group(function () {
+        Route::get('/', [Client\ServerFolderController::class, 'index']);
+        Route::post('/', [Client\ServerFolderController::class, 'store']);
+        Route::post('/assign', [Client\ServerFolderController::class, 'assign']);
+        Route::patch('/{folder}', [Client\ServerFolderController::class, 'update']);
+        Route::delete('/{folder}', [Client\ServerFolderController::class, 'delete']);
+    });
 });
 
 /*
