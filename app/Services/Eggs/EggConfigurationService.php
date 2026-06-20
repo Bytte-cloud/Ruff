@@ -21,6 +21,17 @@ class EggConfigurationService
      */
     public function handle(Server $server): array
     {
+        // VPS (QEMU) servers have no egg, so there is no egg/parser configuration
+        // to send. Return a well-formed but empty process configuration that the
+        // daemon can ingest without tripping over a null egg.
+        if ($server->isVm() || is_null($server->egg)) {
+            return [
+                'startup' => ['done' => [], 'user_interaction' => [], 'strip_ansi' => false],
+                'stop' => ['type' => 'command', 'value' => ''],
+                'configs' => [],
+            ];
+        }
+
         $configs = $this->replacePlaceholders(
             $server,
             json_decode($server->egg->inherit_config_files)

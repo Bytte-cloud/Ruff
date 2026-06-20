@@ -41,6 +41,22 @@ Route::group(['prefix' => 'locations'], function () {
 
 /*
 |--------------------------------------------------------------------------
+| Pup (VPS Template) Controller Routes
+|--------------------------------------------------------------------------
+|
+| Endpoint: /admin/pups
+|
+*/
+Route::group(['prefix' => 'pups'], function () {
+    Route::get('/', [Admin\PupController::class, 'index'])->name('admin.pups');
+    Route::get('/view/{pup:id}', [Admin\PupController::class, 'view'])->name('admin.pups.view');
+
+    Route::post('/', [Admin\PupController::class, 'create']);
+    Route::patch('/view/{pup:id}', [Admin\PupController::class, 'update']);
+});
+
+/*
+|--------------------------------------------------------------------------
 | Database Controller Routes
 |--------------------------------------------------------------------------
 |
@@ -109,6 +125,7 @@ Route::group(['prefix' => 'users'], function () {
 Route::group(['prefix' => 'servers'], function () {
     Route::get('/', [Admin\Servers\ServerController::class, 'index'])->name('admin.servers');
     Route::get('/new', [Admin\Servers\CreateServerController::class, 'index'])->name('admin.servers.new');
+    Route::get('/new/vps', [Admin\Servers\CreateVpsServerController::class, 'index'])->name('admin.servers.new.vps');
     Route::get('/view/{server:id}', [Admin\Servers\ServerViewController::class, 'index'])->name('admin.servers.view');
 
     Route::group(['middleware' => [ServerInstalled::class]], function () {
@@ -123,6 +140,7 @@ Route::group(['prefix' => 'servers'], function () {
     Route::get('/view/{server:id}/delete', [Admin\Servers\ServerViewController::class, 'delete'])->name('admin.servers.view.delete');
 
     Route::post('/new', [Admin\Servers\CreateServerController::class, 'store']);
+    Route::post('/new/vps', [Admin\Servers\CreateVpsServerController::class, 'store']);
     Route::post('/view/{server:id}/build', [Admin\ServersController::class, 'updateBuild']);
     Route::post('/view/{server:id}/startup', [Admin\ServersController::class, 'saveStartup']);
     Route::post('/view/{server:id}/database', [Admin\ServersController::class, 'newDatabase']);

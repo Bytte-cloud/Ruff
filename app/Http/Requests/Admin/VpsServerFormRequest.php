@@ -6,37 +6,32 @@ use Ruff\Models\Server;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
 
-class ServerFormRequest extends AdminFormRequest
+class VpsServerFormRequest extends AdminFormRequest
 {
     /**
-     * Rules to be applied to this request.
+     * Rules applied when creating a VPS (QEMU/KVM) server. A VPS is backed by a
+     * Pup template instead of a nest/egg, so the egg-specific fields are dropped
+     * and a Pup is required. The startup command and base image are derived from
+     * the Pup server-side, never from user input.
      */
     public function rules(): array
     {
         $rules = Server::getRules();
         $rules['description'][] = 'nullable';
-        $rules['custom_image'] = 'sometimes|nullable|string';
+        $rules['pup_id'] = 'required|exists:pups,id';
 
-        // The model relaxes these to nullable so VPS (Pup-backed) servers can be
-        // persisted without an egg/nest. A game server always has them, so the
-        // game-server form re-enforces them as required.
-        $rules['egg_id'] = 'required|exists:eggs,id';
-        $rules['nest_id'] = 'required|exists:nests,id';
-        $rules['startup'] = 'required|string';
+        unset($rules['egg_id'], $rules['nest_id'], $rules['startup'], $rules['image']);
 
         return $rules;
     }
 
     /**
-     * Run validation after the rules above have been applied.
+     * Ensure the chosen allocation actually belongs to the chosen node and is
+     * free, mirroring the game-server form's allocation safety checks.
      */
     public function withValidator(Validator $validator): void
     {
         $validator->after(function ($validator) {
-            $validator->sometimes('node_id', 'required|numeric|bail|exists:nodes,id', function ($input) {
-                return !$input->auto_deploy;
-            });
-
             $validator->sometimes('allocation_id', [
                 'required',
                 'numeric',
@@ -45,9 +40,7 @@ class ServerFormRequest extends AdminFormRequest
                     $query->where('node_id', $this->input('node_id'));
                     $query->whereNull('server_id');
                 }),
-            ], function ($input) {
-                return !$input->auto_deploy;
-            });
+            ], fn () => true);
 
             $validator->sometimes('allocation_additional.*', [
                 'sometimes',
@@ -57,9 +50,7 @@ class ServerFormRequest extends AdminFormRequest
                     $query->where('node_id', $this->input('node_id'));
                     $query->whereNull('server_id');
                 }),
-            ], function ($input) {
-                return !$input->auto_deploy;
-            });
+            ], fn () => true);
         });
     }
 }

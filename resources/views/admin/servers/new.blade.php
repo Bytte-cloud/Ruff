@@ -142,14 +142,6 @@
                 </div>
 
                 <div class="box-body row">
-                    <div class="form-group col-xs-12">
-                        <label for="pEnvironmentType">Environment Type</label>
-                        <select name="environment_type" id="pEnvironmentType" class="form-control">
-                            <option value="docker">Game Server (Docker container)</option>
-                            <option value="qemu" @if(old('environment_type') === 'qemu')selected @endif>VPS (QEMU/KVM virtual machine)</option>
-                        </select>
-                        <p class="text-muted small">A <strong>VPS</strong> runs this server as a QEMU/KVM virtual machine on a VM-capable node (one running the Dawg daemon with <code>qemu.enabled</code>). The selected egg's <em>Docker image</em> is reused as the VM's base disk-image template — set it to a qcow2 path/filename on the node, or an <code>http(s)://</code> URL to a cloud image. Leave as <strong>Game Server</strong> for normal containers.</p>
-                    </div>
                     <div class="form-group col-xs-6">
                         <label for="pCPU">CPU Limit</label>
 

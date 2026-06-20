@@ -24,14 +24,6 @@
                     <h3 class="box-title">Resource Management</h3>
                 </div>
                 <div class="box-body">
-                    <div class="form-group">
-                        <label for="environment_type" class="control-label">Environment Type</label>
-                        <select name="environment_type" id="environment_type" class="form-control">
-                            <option value="docker" @if($server->environment_type !== 'qemu')selected @endif>Game Server (Docker container)</option>
-                            <option value="qemu" @if($server->environment_type === 'qemu')selected @endif>VPS (QEMU/KVM virtual machine)</option>
-                        </select>
-                        <p class="text-muted small">Selects the daemon execution backend. <strong>VPS</strong> runs this server as a QEMU/KVM virtual machine (requires a VM-capable node running the Dawg daemon). Changing this requires a reinstall to (re)provision the machine.</p>
-                    </div>
                 <div class="form-group">
                         <label for="cpu" class="control-label">CPU Limit</label>
                         <div class="input-group">
