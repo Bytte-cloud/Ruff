@@ -145,6 +145,7 @@ class ServerCreationService
             'name' => Arr::get($data, 'name'),
             'description' => Arr::get($data, 'description') ?? '',
             'status' => Server::STATUS_INSTALLING,
+            'environment_type' => Arr::get($data, 'environment_type', 'docker'),
             'skip_scripts' => Arr::get($data, 'skip_scripts') ?? isset($data['skip_scripts']),
             'owner_id' => Arr::get($data, 'owner_id'),
             'memory' => Arr::get($data, 'memory'),
