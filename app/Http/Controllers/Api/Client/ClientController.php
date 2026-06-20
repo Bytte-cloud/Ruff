@@ -37,6 +37,7 @@ class ClientController extends ClientApiController
             'name',
             'description',
             'external_id',
+            AllowedFilter::exact('environment_type'),
             AllowedFilter::custom('*', new MultiFieldServerFilter()),
         ]);
 

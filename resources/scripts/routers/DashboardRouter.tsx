@@ -19,6 +19,9 @@ export default () => {
                         <Route path={'/'} exact>
                             <DashboardContainer />
                         </Route>
+                        <Route path={'/vps'} exact>
+                            <DashboardContainer vps />
+                        </Route>
                         {routes.account.map(({ path, component: Component }) => (
                             <Route key={path} path={`/account/${path}`.replace('//', '/')} exact>
                                 <Component />

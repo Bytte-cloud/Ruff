@@ -57,7 +57,7 @@ const ANNOUNCEMENTS = [
     },
 ];
 
-export default () => {
+export default ({ vps = false }: { vps?: boolean }) => {
     const { search } = useLocation();
     const defaultPage = Number(new URLSearchParams(search).get('page') || '1');
 
@@ -69,12 +69,18 @@ export default () => {
     const [showOnlyAdmin, setShowOnlyAdmin] = usePersistedState(`${uuid}:show_all_servers`, false);
 
     const { data: servers, error } = useSWR<PaginatedResult<Server>>(
-        ['/api/client/servers', showOnlyAdmin && rootAdmin, page],
-        () => getServers({ page, type: showOnlyAdmin && rootAdmin ? 'admin' : undefined })
+        ['/api/client/servers', showOnlyAdmin && rootAdmin, page, vps],
+        () =>
+            getServers({
+                page,
+                type: showOnlyAdmin && rootAdmin ? 'admin' : undefined,
+                environmentType: vps ? 'qemu' : 'docker',
+            })
     );
 
+    // Folders organize game servers only; they are not shown in the VPS view.
     const { data: folders, mutate: mutateFolders } = useSWR<ServerFolder[]>(
-        ['/api/client/account/folders', uuid],
+        vps ? null : ['/api/client/account/folders', uuid],
         () => getFolders(),
         { revalidateOnFocus: false }
     );
@@ -91,8 +97,9 @@ export default () => {
     }, [servers?.pagination.currentPage]);
 
     useEffect(() => {
-        window.history.replaceState(null, document.title, `/${page <= 1 ? '' : `?page=${page}`}`);
-    }, [page]);
+        const base = vps ? '/vps' : '/';
+        window.history.replaceState(null, document.title, `${base}${page <= 1 ? '' : `?page=${page}`}`);
+    }, [page, vps]);
 
     useEffect(() => {
         if (error) clearAndAddHttpError({ key: 'dashboard', error });
@@ -174,21 +181,23 @@ export default () => {
         <>
             <FlashMessageRender byKey={'dashboard'} />
 
-            <div className={'news'}>
-                {ANNOUNCEMENTS.map((a) => (
-                    <div key={a.title} className={`ann ${a.offer ? 'offer' : ''}`}>
-                        <span className={`tag ${a.cls}`}>{a.tag}</span>
-                        <h4>{a.title}</h4>
-                        <p>{a.body}</p>
-                        <span className={'more'}>
-                            {a.offer ? 'Claim offer' : 'Read more'} <FontAwesomeIcon icon={faArrowRight} />
-                        </span>
-                    </div>
-                ))}
-            </div>
+            {!vps && (
+                <div className={'news'}>
+                    {ANNOUNCEMENTS.map((a) => (
+                        <div key={a.title} className={`ann ${a.offer ? 'offer' : ''}`}>
+                            <span className={`tag ${a.cls}`}>{a.tag}</span>
+                            <h4>{a.title}</h4>
+                            <p>{a.body}</p>
+                            <span className={'more'}>
+                                {a.offer ? 'Claim offer' : 'Read more'} <FontAwesomeIcon icon={faArrowRight} />
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            )}
 
             <div className={'ph'}>
-                <h1>Servers</h1>
+                <h1>{vps ? 'Your VPS' : 'Game Servers'}</h1>
                 <span className={'c'}>
                     {total} server{total === 1 ? '' : 's'}
                     {rootAdmin && (
@@ -220,41 +229,42 @@ export default () => {
                             <FontAwesomeIcon icon={faThLarge} />
                         </button>
                     </div>
-                    {creating ? (
-                        <div className={'fnew'}>
-                            <input
-                                autoFocus
-                                value={newName}
-                                placeholder={'Folder name'}
-                                onChange={(e) => setNewName(e.currentTarget.value)}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter') handleCreate();
-                                    if (e.key === 'Escape') {
+                    {!vps &&
+                        (creating ? (
+                            <div className={'fnew'}>
+                                <input
+                                    autoFocus
+                                    value={newName}
+                                    placeholder={'Folder name'}
+                                    onChange={(e) => setNewName(e.currentTarget.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') handleCreate();
+                                        if (e.key === 'Escape') {
+                                            setCreating(false);
+                                            setNewName('');
+                                        }
+                                    }}
+                                />
+                                <button className={'nb'} onClick={handleCreate}>
+                                    Add
+                                </button>
+                                <button
+                                    className={'fghost'}
+                                    onClick={() => {
                                         setCreating(false);
                                         setNewName('');
-                                    }
-                                }}
-                            />
-                            <button className={'nb'} onClick={handleCreate}>
-                                Add
+                                    }}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        ) : (
+                            <button className={'fghost'} onClick={() => setCreating(true)}>
+                                <FontAwesomeIcon icon={faFolderPlus} /> New Folder
                             </button>
-                            <button
-                                className={'fghost'}
-                                onClick={() => {
-                                    setCreating(false);
-                                    setNewName('');
-                                }}
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                    ) : (
-                        <button className={'fghost'} onClick={() => setCreating(true)}>
-                            <FontAwesomeIcon icon={faFolderPlus} /> New Folder
-                        </button>
-                    )}
+                        ))}
                     <button className={'nb'}>
-                        <FontAwesomeIcon icon={faPlus} /> New Server
+                        <FontAwesomeIcon icon={faPlus} /> {vps ? 'New VPS' : 'New Server'}
                     </button>
                 </div>
             </div>
@@ -271,6 +281,8 @@ export default () => {
                                 <p className={'empty'}>
                                     {showOnlyAdmin
                                         ? 'There are no other servers to display.'
+                                        : vps
+                                        ? 'You do not have any VPS yet.'
                                         : 'There are no servers associated with your account.'}
                                 </p>
                             );

@@ -170,6 +170,7 @@ class Server extends Model
         'database_limit' => 'present|nullable|integer|min:0',
         'allocation_limit' => 'sometimes|nullable|integer|min:0',
         'backup_limit' => 'present|nullable|integer|min:0',
+        'environment_type' => 'sometimes|string|in:docker,qemu',
     ];
 
     /**
