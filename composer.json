@@ -59,7 +59,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "~3.2.0",
         "fakerphp/faker": "~1.23.1",
-        "friendsofphp/php-cs-fixer": "~3.64.0",
+        "friendsofphp/php-cs-fixer": "~3.95.10",
         "itsgoingd/clockwork": "~5.2.2",
         "larastan/larastan": "~2.9.9",
         "laravel/pail": "~1.1.5",
