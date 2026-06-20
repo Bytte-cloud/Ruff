@@ -1,17 +1,54 @@
 version: 2
 updates:
+  # ---------------- Backend (PHP) ----------------
   - package-ecosystem: composer
     directory: "/"
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    groups:
+      composer-minor-patch:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # Laravel 12 is a coordinated major upgrade, tracked separately.
+      - dependency-name: laravel/framework
+        update-types: ["version-update:semver-major"]
 
+  # ---------------- Frontend (JS) ----------------
   - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    groups:
+      # Batch all non-breaking updates into a single PR instead of dozens.
+      npm-minor-patch:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # EOL build/runtime stack — these majors require the webpack 5 / React 18
+      # migration and will break the build if bumped piecemeal. Tracked separately.
+      - dependency-name: webpack
+        update-types: ["version-update:semver-major"]
+      - dependency-name: webpack-cli
+        update-types: ["version-update:semver-major"]
+      - dependency-name: webpack-dev-server
+        update-types: ["version-update:semver-major"]
+      - dependency-name: react
+        update-types: ["version-update:semver-major"]
+      - dependency-name: react-dom
+        update-types: ["version-update:semver-major"]
+      # Held: their fixed versions ship modern ESM / changed APIs that webpack 4
+      # cannot consume. Unblocked by the webpack 5 migration.
+      - dependency-name: uuid
+        update-types: ["version-update:semver-major"]
+      - dependency-name: i18next-http-backend
+        update-types: ["version-update:semver-major"]
 
+  # ---------------- CI ----------------
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
