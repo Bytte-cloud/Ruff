@@ -60,7 +60,7 @@
         "barryvdh/laravel-ide-helper": "~3.2.0",
         "fakerphp/faker": "~1.23.1",
         "friendsofphp/php-cs-fixer": "~3.64.0",
-        "itsgoingd/clockwork": "~5.2.2",
+        "itsgoingd/clockwork": "~5.3.5",
         "larastan/larastan": "~2.9.9",
         "laravel/pail": "~1.1.5",
         "laravel/sail": "~1.36.0",
