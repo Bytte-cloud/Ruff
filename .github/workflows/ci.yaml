@@ -36,7 +36,7 @@ jobs:
           - 3306
     steps:
       - name: Code Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Get cache directory
         id: composer-cache
