@@ -44,9 +44,19 @@ class BuildModificationService
                 }
             }
 
+            // The execution backend cannot be hot-swapped: the daemon provisions a
+            // container vs. a VM at install time and does not recreate the environment
+            // on a config sync. Changing it on an installed server would leave the
+            // panel and daemon disagreeing, so require a reinstall instead.
+            if (array_key_exists('environment_type', $data)
+                && $data['environment_type'] !== $server->environment_type
+                && $server->isInstalled()) {
+                throw new DisplayException('The environment type cannot be changed on an already-installed server. Reinstall the server to switch between a game server and a VPS.');
+            }
+
             // If any of these values are passed through in the data array go ahead and set
             // them correctly on the server model.
-            $merge = Arr::only($data, ['oom_disabled', 'memory', 'swap', 'io', 'cpu', 'threads', 'disk', 'allocation_id']);
+            $merge = Arr::only($data, ['oom_disabled', 'memory', 'swap', 'io', 'cpu', 'threads', 'disk', 'allocation_id', 'environment_type']);
 
             $server->forceFill(array_merge($merge, [
                 'database_limit' => Arr::get($data, 'database_limit', 0) ?? null,

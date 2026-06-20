@@ -146,6 +146,7 @@ class ServersController extends Controller
                 'allocation_id', 'add_allocations', 'remove_allocations',
                 'memory', 'swap', 'io', 'cpu', 'threads', 'disk',
                 'database_limit', 'allocation_limit', 'backup_limit', 'oom_disabled',
+                'environment_type',
             ]));
         } catch (DataValidationException $exception) {
             throw new ValidationException($exception->getValidator());
