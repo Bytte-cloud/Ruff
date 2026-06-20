@@ -1,5 +1,5 @@
 # Stage 0: Build frontend assets
-FROM --platform=$TARGETOS/$TARGETARCH mhart/alpine-node:14 AS build
+FROM --platform=$TARGETOS/$TARGETARCH node:20-alpine AS build
 WORKDIR /app
 COPY . ./
 RUN yarn install --frozen-lockfile \
