@@ -1,0 +1,73 @@
+{
+    "_comment": "Ruff VPS egg — import via Admin > Nests > (a nest) > Import Egg. Set the server's Environment Type to 'VPS' when creating it. Requires a node running the Dawg daemon with qemu.enabled.",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-06-20T00:00:00+00:00",
+    "name": "VPS (Linux)",
+    "author": "admin@bytte.cloud",
+    "description": "A Linux VPS — a QEMU/KVM virtual machine provisioned from a cloud image via cloud-init. The 'Docker image' below is reused by the Dawg daemon as the VM's base disk template (a qcow2 path/filename on the node, or an http(s):// URL to a cloud image). VM provisioning is handled by the daemon, so the installation script is a no-op. Set the server's Environment Type to 'VPS' on creation.",
+    "features": null,
+    "docker_images": {
+        "Ubuntu 22.04 (cloud image)": "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img",
+        "Debian 12 (cloud image)": "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"
+    },
+    "file_denylist": [],
+    "startup": "/sbin/init",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"login:\"\r\n}",
+        "logs": "{}",
+        "stop": "poweroff"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/ash\r\n# VM provisioning (disk overlay, cloud-init, libvirt domain) is performed by the\r\n# Dawg daemon's QEMU backend (Environment.Create), not by this script. Wings\r\n# skips this container install entirely for VM servers; it exists only so the\r\n# egg is valid.\r\necho 'VPS provisioning is handled by the daemon.'\r\nexit 0\r\n",
+            "container": "alpine:3.19",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Root Password",
+            "description": "Initial login password for the VM. Either this or an SSH key is required for the first boot.",
+            "env_variable": "VM_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "SSH Public Keys",
+            "description": "Newline- or comma-separated SSH public keys to authorize for login.",
+            "env_variable": "VM_SSH_KEYS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Login Username",
+            "description": "The user account created in the guest (defaults to root).",
+            "env_variable": "VM_USER",
+            "default_value": "root",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:32",
+            "field_type": "text"
+        },
+        {
+            "name": "Hostname",
+            "description": "The hostname set inside the guest. Defaults to a name derived from the server UUID.",
+            "env_variable": "VM_HOSTNAME",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:63",
+            "field_type": "text"
+        }
+    ]
+}
