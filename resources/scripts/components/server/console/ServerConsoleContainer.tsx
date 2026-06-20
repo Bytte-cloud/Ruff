@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { lazy, memo } from 'react';
 import { ServerContext } from '@/state/server';
 import Can from '@/components/elements/Can';
 import ServerContentBlock from '@/components/elements/ServerContentBlock';
@@ -6,6 +6,9 @@ import isEqual from 'react-fast-compare';
 import Spinner from '@/components/elements/Spinner';
 import Features from '@feature/Features';
 import Console from '@/components/server/console/Console';
+
+// noVNC is only needed for VM servers, so load it lazily.
+const VncConsole = lazy(() => import('@/components/server/console/VncConsole'));
 import StatGraphs from '@/components/server/console/StatGraphs';
 import PowerButtons from '@/components/server/console/PowerButtons';
 import ServerDetailsBlock from '@/components/server/console/ServerDetailsBlock';
@@ -20,6 +23,7 @@ const ServerConsoleContainer = () => {
     const isTransferring = ServerContext.useStoreState((state) => state.server.data!.isTransferring);
     const eggFeatures = ServerContext.useStoreState((state) => state.server.data!.eggFeatures, isEqual);
     const isNodeUnderMaintenance = ServerContext.useStoreState((state) => state.server.data!.isNodeUnderMaintenance);
+    const isVm = ServerContext.useStoreState((state) => state.server.data!.isVm);
 
     return (
         <ServerContentBlock title={'Console'}>
@@ -45,9 +49,7 @@ const ServerConsoleContainer = () => {
             </div>
             <div className={'grid grid-cols-4 gap-2 sm:gap-4 mb-4'}>
                 <div className={'flex col-span-4 lg:col-span-3'}>
-                    <Spinner.Suspense>
-                        <Console />
-                    </Spinner.Suspense>
+                    <Spinner.Suspense>{isVm ? <VncConsole /> : <Console />}</Spinner.Suspense>
                 </div>
                 <ServerDetailsBlock className={'col-span-4 lg:col-span-1 order-last lg:order-none'} />
             </div>

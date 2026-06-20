@@ -49,6 +49,8 @@ class ServerConfigurationStructureService
                 'description' => $server->description,
             ],
             'suspended' => $server->isSuspended(),
+            // Selects the daemon execution backend: "docker" (container) or "qemu" (VM/VPS).
+            'environment_type' => $server->environment_type,
             'environment' => $this->environment->handle($server),
             'invocation' => $server->startup,
             'skip_egg_scripts' => $server->skip_scripts,

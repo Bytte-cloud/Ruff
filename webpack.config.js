@@ -36,6 +36,12 @@ module.exports = {
                 type: 'javascript/auto',
             },
             {
+                // noVNC ships untranspiled ESM; run it through babel so webpack 4 can parse it.
+                test: /\.js$/,
+                include: /node_modules[/\\]@novnc/,
+                loader: 'babel-loader',
+            },
+            {
                 test: /\.css$/,
                 use: [
                     { loader: 'style-loader' },

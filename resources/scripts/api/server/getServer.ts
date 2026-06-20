@@ -25,6 +25,10 @@ export interface Server {
     };
     invocation: string;
     dockerImage: string;
+    // The execution backend for this server: "docker" (game server) or "qemu" (VPS/VM).
+    environmentType: string;
+    // Convenience flag derived from environmentType.
+    isVm: boolean;
     description: string;
     limits: {
         memory: number;
@@ -55,6 +59,8 @@ export const rawDataToServerObject = ({ attributes: data }: FractalResponseData)
     status: data.status,
     invocation: data.invocation,
     dockerImage: data.docker_image,
+    environmentType: data.environment_type || 'docker',
+    isVm: data.environment_type === 'qemu',
     sftpDetails: {
         ip: data.sftp_details.ip,
         port: data.sftp_details.port,
