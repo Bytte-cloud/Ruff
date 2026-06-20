@@ -110,7 +110,7 @@
         "postcss": "^8.4.31",
         "postcss-import": "^14.1.0",
         "postcss-loader": "^4.0.0",
-        "postcss-nesting": "^10.1.8",
+        "postcss-nesting": "^14.0.0",
         "postcss-preset-env": "^7.7.1",
         "prettier": "^2.7.1",
         "redux-devtools-extension": "^2.13.8",
