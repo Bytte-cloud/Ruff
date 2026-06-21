@@ -57,9 +57,11 @@ export default ({ sidebar, variant = 'dashboard', children }: Props) => {
                 </nav>
 
                 <button type={'button'} className={'search'} onClick={() => setSearchVisible(true)}>
-                    <FontAwesomeIcon icon={faSearch} />
-                    <span className={'ph'}>Search servers, nodes...</span>
-                    <span className={'k'}>⌘ /</span>
+                    <span className={'si'}>
+                        <FontAwesomeIcon icon={faSearch} />
+                        <span className={'ph'}>Search servers, nodes...</span>
+                        <span className={'k'}>⌘ /</span>
+                    </span>
                 </button>
                 <div className={'tbar-r'}>
                     <div className={'cr'}>
