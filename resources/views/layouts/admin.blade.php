@@ -122,6 +122,9 @@
                         ['admin.mounts', 'fa-magic', 'Mounts', true],
                         ['admin.nests', 'fa-th-large', 'Nests', true],
                         ['admin.pups', 'fa-hdd-o', 'Pups', true],
+                        '__sep__',
+                        ['admin.announcements', 'fa-bullhorn', 'Announcements', true],
+                        ['admin.addons', 'fa-puzzle-piece', 'Addons', true],
                     ];
                 @endphp
 

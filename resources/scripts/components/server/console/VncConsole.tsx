@@ -42,6 +42,9 @@ const VncConsole = () => {
             rfb.scaleViewport = true;
             rfb.background = '#08080d';
             rfb.focusOnClick = true;
+            // Show a dot cursor so the pointer never vanishes when the guest hasn't
+            // set a hardware cursor (e.g. at the BIOS/boot screen or a text console).
+            rfb.showDotCursor = true;
             rfb.addEventListener('connect', () => setStatus('connected'));
             rfb.addEventListener('disconnect', (e: Event) => {
                 setStatus('disconnected');

@@ -8,6 +8,7 @@ declare module '@novnc/novnc/core/rfb' {
         background: string;
         viewOnly: boolean;
         focusOnClick: boolean;
+        showDotCursor: boolean;
         disconnect(): void;
         focus(): void;
         sendCtrlAltDel(): void;

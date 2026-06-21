@@ -57,6 +57,37 @@ Route::group(['prefix' => 'pups'], function () {
 
 /*
 |--------------------------------------------------------------------------
+| Announcement Controller Routes
+|--------------------------------------------------------------------------
+|
+| Endpoint: /admin/announcements
+|
+*/
+Route::group(['prefix' => 'announcements'], function () {
+    Route::get('/', [Admin\AnnouncementController::class, 'index'])->name('admin.announcements');
+    Route::get('/view/{announcement:id}', [Admin\AnnouncementController::class, 'view'])->name('admin.announcements.view');
+
+    Route::post('/', [Admin\AnnouncementController::class, 'create']);
+    Route::patch('/view/{announcement:id}', [Admin\AnnouncementController::class, 'update']);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Addon Controller Routes
+|--------------------------------------------------------------------------
+|
+| Endpoint: /admin/addons
+|
+*/
+Route::group(['prefix' => 'addons'], function () {
+    Route::get('/', [Admin\AddonController::class, 'index'])->name('admin.addons');
+
+    Route::post('/{addon}/enable', [Admin\AddonController::class, 'enable'])->name('admin.addons.enable');
+    Route::post('/{addon}/disable', [Admin\AddonController::class, 'disable'])->name('admin.addons.disable');
+});
+
+/*
+|--------------------------------------------------------------------------
 | Database Controller Routes
 |--------------------------------------------------------------------------
 |

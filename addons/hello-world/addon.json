@@ -1,0 +1,9 @@
+{
+    "id": "hello-world",
+    "name": "Hello World",
+    "version": "1.0.0",
+    "description": "A minimal example addon — adds a route and a migration to demonstrate the addon system.",
+    "author": "Bytte",
+    "namespace": "Addons\\HelloWorld\\",
+    "provider": "Addons\\HelloWorld\\HelloWorldServiceProvider"
+}
