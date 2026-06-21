@@ -116,6 +116,19 @@ html[data-admin-theme='dark'] .bg-white {
     background-color: var(--surface) !important;
     color: var(--text);
 }
+/* sweetalert (swal) confirm dialogs — logout, delete confirmations, etc. — ship
+   a hardcoded white card with dark text. Re-tint just the surface + text for
+   dark mode; the coloured action buttons are set per-call and stay as-is. */
+html[data-admin-theme='dark'] .sweet-alert {
+    background: var(--surface);
+}
+html[data-admin-theme='dark'] .sweet-alert h2 { color: var(--text); }
+html[data-admin-theme='dark'] .sweet-alert p { color: var(--text-soft); }
+html[data-admin-theme='dark'] .sweet-alert input {
+    background: var(--surface-soft);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
 
 /* --------------------------------------------------------------------------
    Base
@@ -1307,6 +1320,8 @@ select.form-control {
 .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
     min-height: 40px;
+    background: var(--surface) !important;
+    color: var(--text);
     border-color: var(--border-strong) !important;
     border-radius: var(--r-sm) !important;
 }
@@ -1324,6 +1339,8 @@ select.form-control {
 .select2-container--default .select2-selection--single .select2-selection__arrow { height: 38px; }
 
 .select2-dropdown {
+    background: var(--surface) !important;
+    color: var(--text);
     border-color: var(--border-strong) !important;
     border-radius: var(--r-sm) !important;
     box-shadow: var(--shadow-pop);
@@ -1338,6 +1355,31 @@ select.form-control {
     border-color: var(--accent) !important;
     color: var(--accent-text);
     border-radius: var(--r-xs) !important;
+}
+
+/* The remaining select2 surfaces hardcode light values in the vendor sheet
+   (control text #444, options bg #ddd, placeholder/arrow greys, the search
+   field). Drive them from the theme tokens so the control + open dropdown read
+   correctly in dark mode and stay identical in light mode. */
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: var(--text-faint);
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: var(--text-faint) transparent transparent transparent;
+}
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    border-color: transparent transparent var(--text-faint) transparent;
+}
+.select2-container--default .select2-results__option { color: var(--text-soft); }
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    background: var(--surface-soft);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-xs);
+    color: var(--text);
 }
 
 /* --------------------------------------------------------------------------
