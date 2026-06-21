@@ -140,7 +140,7 @@ class AddonManager
     /**
      * Enable an addon: run its migrations (if any) then record it as enabled.
      *
-     * @throws \RuntimeException when the addon is not present on disk.
+     * @throws \RuntimeException when the addon is not present on disk
      */
     public function enable(string $id): void
     {

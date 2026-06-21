@@ -9,5 +9,4 @@ export interface Announcement {
     link: string | null;
 }
 
-export default (): Promise<Announcement[]> =>
-    http.get('/api/client/announcements').then(({ data }) => data.data || []);
+export default (): Promise<Announcement[]> => http.get('/api/client/announcements').then(({ data }) => data.data || []);

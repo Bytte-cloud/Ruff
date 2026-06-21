@@ -2,8 +2,8 @@
 
 namespace Ruff\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Ruff\Services\Addons\AddonManager;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Wires drop-in addons into the application:

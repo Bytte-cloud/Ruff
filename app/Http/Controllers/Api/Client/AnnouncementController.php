@@ -2,8 +2,8 @@
 
 namespace Ruff\Http\Controllers\Api\Client;
 
-use Illuminate\Http\JsonResponse;
 use Ruff\Models\Announcement;
+use Illuminate\Http\JsonResponse;
 use Ruff\Http\Controllers\Controller;
 
 class AnnouncementController extends Controller
