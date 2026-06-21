@@ -24,8 +24,9 @@
 /* Top bar */
 .ruff .top{display:flex;align-items:center;gap:18px;height:60px;padding:0 22px;background:var(--top);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
 .ruff .wm{font-weight:700;font-size:20px;letter-spacing:-.02em;width:228px;padding-left:4px}
-.ruff .search{flex:1;display:flex;align-items:center;gap:11px;background:var(--bg);border:1px solid var(--line);border-radius:var(--pill);height:36px;padding:0 16px;color:var(--faint);transition:.15s;min-width:0;cursor:pointer;font-family:inherit;text-align:left}
+.ruff .search{flex:1;display:flex;background:var(--bg);border:1px solid var(--line);border-radius:var(--pill);height:40px;padding:0 16px;color:var(--faint);transition:.15s;min-width:0;cursor:pointer;font-family:inherit;text-align:left}
 .ruff .search:hover{border-color:var(--line2)}
+.ruff .search .si{display:flex;align-items:center;gap:11px;width:100%}
 .ruff .search .ph{flex:1;color:var(--faint);font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ruff .search .k{margin-left:auto;font-size:11px;border:1px solid var(--line2);border-radius:5px;padding:1px 7px;color:var(--faint)}
 .ruff .tbar-r{display:flex;align-items:center;gap:13px;flex:0 0 auto}
