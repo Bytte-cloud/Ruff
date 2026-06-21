@@ -121,6 +121,7 @@
                         '__sep__',
                         ['admin.mounts', 'fa-magic', 'Mounts', true],
                         ['admin.nests', 'fa-th-large', 'Nests', true],
+                        ['admin.pups', 'fa-hdd-o', 'Pups', true],
                     ];
                 @endphp
 

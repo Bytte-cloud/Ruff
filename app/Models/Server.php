@@ -34,8 +34,10 @@ use Ruff\Exceptions\Http\Server\ServerStateConflictException;
  * @property string|null $threads
  * @property bool $oom_disabled
  * @property int $allocation_id
- * @property int $nest_id
- * @property int $egg_id
+ * @property int|null $nest_id
+ * @property int|null $egg_id
+ * @property int|null $pup_id
+ * @property string|null $environment_type
  * @property string $startup
  * @property string $image
  * @property int|null $allocation_limit
@@ -56,7 +58,8 @@ use Ruff\Exceptions\Http\Server\ServerStateConflictException;
  * @property Egg|null $egg
  * @property \Illuminate\Database\Eloquent\Collection|\Ruff\Models\Mount[] $mounts
  * @property int|null $mounts_count
- * @property Nest $nest
+ * @property Nest|null $nest
+ * @property Pup|null $pup
  * @property Node $node
  * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property int|null $notifications_count
@@ -162,9 +165,13 @@ class Server extends Model
         'oom_disabled' => 'sometimes|boolean',
         'disk' => 'required|numeric|min:0',
         'allocation_id' => 'required|bail|unique:servers|exists:allocations,id',
-        'nest_id' => 'required|exists:nests,id',
-        'egg_id' => 'required|exists:eggs,id',
-        'startup' => 'required|string',
+        // nest_id/egg_id are nullable at the model level because VPS servers are
+        // backed by a Pup, not an egg. The game-server form request re-enforces
+        // them as required so container servers keep their existing guarantees.
+        'nest_id' => 'sometimes|nullable|exists:nests,id',
+        'egg_id' => 'sometimes|nullable|exists:eggs,id',
+        'pup_id' => 'sometimes|nullable|exists:pups,id',
+        'startup' => 'nullable|string',
         'skip_scripts' => 'sometimes|boolean',
         'image' => ['required', 'string', 'max:191', 'regex:/^~?[\w\.\/\-:@ ]*$/'],
         'database_limit' => 'present|nullable|integer|min:0',
@@ -189,6 +196,7 @@ class Server extends Model
         'allocation_id' => 'integer',
         'nest_id' => 'integer',
         'egg_id' => 'integer',
+        'pup_id' => 'integer',
         'database_limit' => 'integer',
         'allocation_limit' => 'integer',
         'backup_limit' => 'integer',
@@ -264,6 +272,24 @@ class Server extends Model
     public function egg(): HasOne
     {
         return $this->hasOne(Egg::class, 'id', 'egg_id');
+    }
+
+    /**
+     * Gets the Pup (VPS template) this server was provisioned from, if any. Only
+     * set for VM servers (environment_type "qemu").
+     */
+    public function pup(): BelongsTo
+    {
+        return $this->belongsTo(Pup::class);
+    }
+
+    /**
+     * Whether this server runs as a virtual machine (VPS) rather than a
+     * Docker container.
+     */
+    public function isVm(): bool
+    {
+        return $this->environment_type === 'qemu';
     }
 
     /**

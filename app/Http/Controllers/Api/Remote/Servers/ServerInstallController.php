@@ -32,6 +32,16 @@ class ServerInstallController extends Controller
         $server = $this->repository->getByUuid($uuid);
         $egg = $server->egg;
 
+        // VPS (QEMU) servers have no egg install script — they are "installed" by
+        // the daemon provisioning the VM disk/firmware — so there is nothing to run.
+        if (is_null($egg)) {
+            return new JsonResponse([
+                'container_image' => '',
+                'entrypoint' => '',
+                'script' => '',
+            ]);
+        }
+
         return new JsonResponse([
             'container_image' => $egg->copy_script_container,
             'entrypoint' => $egg->copy_script_entry,

@@ -23,8 +23,12 @@ class SetDockerImageRequest extends ClientApiRequest implements ClientPermission
 
         Assert::isInstanceOf($server, Server::class);
 
+        // VPS servers have no egg and therefore no Docker image whitelist; the
+        // controller rejects the change for them, so just validate the format here.
+        $allowedImages = array_values($server->egg?->docker_images ?? []);
+
         return [
-            'docker_image' => ['required', 'string', 'max:191', 'regex:/^[\w#\.\/\- ]*\|?~?[\w\.\/\-:@ ]*$/', Rule::in(array_values($server->egg->docker_images))],
+            'docker_image' => ['required', 'string', 'max:191', 'regex:/^[\w#\.\/\- ]*\|?~?[\w\.\/\-:@ ]*$/', Rule::in($allowedImages)],
         ];
     }
 }

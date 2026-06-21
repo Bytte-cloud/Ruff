@@ -67,15 +67,23 @@ class ServerCreationService
             $data['node_id'] = Allocation::query()->findOrFail($data['allocation_id'])->node_id;
         }
 
-        if (empty($data['nest_id'])) {
-            Assert::false(empty($data['egg_id']), 'Expected a non-empty egg_id in server creation data.');
+        // A VPS (environment_type "qemu") is backed by a Pup, not a nest/egg, so
+        // skip all egg resolution and variable validation for it.
+        if (Arr::get($data, 'environment_type') === 'qemu') {
+            $data['egg_id'] = null;
+            $data['nest_id'] = null;
+            $eggVariableData = new Collection();
+        } else {
+            if (empty($data['nest_id'])) {
+                Assert::false(empty($data['egg_id']), 'Expected a non-empty egg_id in server creation data.');
 
-            $data['nest_id'] = Egg::query()->findOrFail($data['egg_id'])->nest_id;
+                $data['nest_id'] = Egg::query()->findOrFail($data['egg_id'])->nest_id;
+            }
+
+            $eggVariableData = $this->validatorService
+                ->setUserLevel(User::USER_LEVEL_ADMIN)
+                ->handle(Arr::get($data, 'egg_id'), Arr::get($data, 'environment', []));
         }
-
-        $eggVariableData = $this->validatorService
-            ->setUserLevel(User::USER_LEVEL_ADMIN)
-            ->handle(Arr::get($data, 'egg_id'), Arr::get($data, 'environment', []));
 
         // Due to the design of the Daemon, we need to persist this server to the disk
         // before we can actually create it on the Daemon.
@@ -145,6 +153,7 @@ class ServerCreationService
             'name' => Arr::get($data, 'name'),
             'description' => Arr::get($data, 'description') ?? '',
             'status' => Server::STATUS_INSTALLING,
+            'environment_type' => Arr::get($data, 'environment_type', 'docker'),
             'skip_scripts' => Arr::get($data, 'skip_scripts') ?? isset($data['skip_scripts']),
             'owner_id' => Arr::get($data, 'owner_id'),
             'memory' => Arr::get($data, 'memory'),
@@ -157,6 +166,7 @@ class ServerCreationService
             'allocation_id' => Arr::get($data, 'allocation_id'),
             'nest_id' => Arr::get($data, 'nest_id'),
             'egg_id' => Arr::get($data, 'egg_id'),
+            'pup_id' => Arr::get($data, 'pup_id'),
             'startup' => Arr::get($data, 'startup'),
             'image' => Arr::get($data, 'image'),
             'database_limit' => Arr::get($data, 'database_limit') ?? 0,

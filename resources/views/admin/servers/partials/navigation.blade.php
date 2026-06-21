@@ -15,15 +15,21 @@
                     <li class="{{ $router->currentRouteNamed('admin.servers.view.build') ? 'active' : '' }}">
                         <a href="{{ route('admin.servers.view.build', $server->id) }}">Build Configuration</a>
                     </li>
-                    <li class="{{ $router->currentRouteNamed('admin.servers.view.startup') ? 'active' : '' }}">
-                        <a href="{{ route('admin.servers.view.startup', $server->id) }}">Startup</a>
-                    </li>
+                    {{-- Startup (egg variables/command) and Mounts (host filesystem) are
+                         container concepts that do not apply to a VPS. --}}
+                    @if(!$server->isVm())
+                        <li class="{{ $router->currentRouteNamed('admin.servers.view.startup') ? 'active' : '' }}">
+                            <a href="{{ route('admin.servers.view.startup', $server->id) }}">Startup</a>
+                        </li>
+                    @endif
                     <li class="{{ $router->currentRouteNamed('admin.servers.view.database') ? 'active' : '' }}">
                         <a href="{{ route('admin.servers.view.database', $server->id) }}">Database</a>
                     </li>
-                    <li class="{{ $router->currentRouteNamed('admin.servers.view.mounts') ? 'active' : '' }}">
-                        <a href="{{ route('admin.servers.view.mounts', $server->id) }}">Mounts</a>
-                    </li>
+                    @if(!$server->isVm())
+                        <li class="{{ $router->currentRouteNamed('admin.servers.view.mounts') ? 'active' : '' }}">
+                            <a href="{{ route('admin.servers.view.mounts', $server->id) }}">Mounts</a>
+                        </li>
+                    @endif
                 @endif
                 <li class="{{ $router->currentRouteNamed('admin.servers.view.manage') ? 'active' : '' }}">
                     <a href="{{ route('admin.servers.view.manage', $server->id) }}">Manage</a>

@@ -72,7 +72,8 @@ class ServerConfigurationStructureService
                 'requires_rebuild' => false,
             ],
             'allocations' => [
-                'force_outgoing_ip' => $server->egg->force_outgoing_ip,
+                // VPS servers have no egg; fall back to a sane default.
+                'force_outgoing_ip' => $server->egg?->force_outgoing_ip ?? false,
                 'default' => [
                     'ip' => $server->allocation->ip,
                     'port' => $server->allocation->port,
@@ -86,11 +87,37 @@ class ServerConfigurationStructureService
                     'read_only' => $mount->read_only,
                 ];
             }),
+            // Container labels. For VPS servers these carry the guest OS family and
+            // firmware the QEMU backend boots the VM with (read by the Dawg daemon
+            // as "vm.os" / "vm.firmware"); for Docker servers there are none.
+            //
+            // Cast to an object so an empty set encodes as a JSON object ({}) rather
+            // than an array ([]) — the daemon unmarshals this into a map and would
+            // reject a JSON array.
+            'labels' => (object) $this->labels($server),
             'egg' => [
-                'id' => $server->egg->uuid,
-                'file_denylist' => $server->egg->inherit_file_denylist,
+                'id' => $server->egg?->uuid ?? '',
+                'file_denylist' => $server->egg?->inherit_file_denylist ?? [],
             ],
         ];
+    }
+
+    /**
+     * Build the container-label map sent to the daemon. Only VPS (QEMU) servers
+     * currently produce labels, derived from their Pup template.
+     */
+    protected function labels(Server $server): array
+    {
+        if (!$server->isVm() || is_null($server->pup)) {
+            return [];
+        }
+
+        $labels = ['vm.os' => $server->pup->os_type];
+        if (!is_null($server->pup->firmware)) {
+            $labels['vm.firmware'] = $server->pup->firmware;
+        }
+
+        return $labels;
     }
 
     /**
@@ -122,7 +149,7 @@ class ServerConfigurationStructureService
                 'image' => $server->image,
             ],
             'service' => [
-                'egg' => $server->egg->uuid,
+                'egg' => $server->egg?->uuid ?? '',
                 'skip_scripts' => $server->skip_scripts,
             ],
             'rebuild' => false,

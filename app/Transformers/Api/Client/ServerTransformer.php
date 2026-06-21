@@ -61,7 +61,8 @@ class ServerTransformer extends BaseClientTransformer
             'invocation' => $service->handle($server, !$user->can(Permission::ACTION_STARTUP_READ, $server)),
             'docker_image' => $server->image,
             'environment_type' => $server->environment_type,
-            'egg_features' => $server->egg->inherit_features,
+            // VPS servers have no egg, so no egg feature flags.
+            'egg_features' => $server->egg?->inherit_features,
             'feature_limits' => [
                 'databases' => $server->database_limit,
                 'allocations' => $server->allocation_limit,
@@ -120,12 +121,16 @@ class ServerTransformer extends BaseClientTransformer
     }
 
     /**
-     * Returns the egg associated with this server.
+     * Returns the egg associated with this server. VPS servers have no egg.
      *
      * @throws \Ruff\Exceptions\Transformer\InvalidTransformerLevelException
      */
-    public function includeEgg(Server $server): Item
+    public function includeEgg(Server $server): Item|NullResource
     {
+        if (is_null($server->egg)) {
+            return $this->null();
+        }
+
         return $this->item($server->egg, $this->makeTransformer(EggTransformer::class), Egg::RESOURCE_NAME);
     }
 

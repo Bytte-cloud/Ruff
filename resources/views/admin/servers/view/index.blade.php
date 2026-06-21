@@ -42,10 +42,18 @@
                                 <td><code>{{ $server->uuid }}</code></td>
                             </tr>
                             <tr>
-                                <td>Current Egg</td>
+                                <td>{{ $server->isVm() ? 'VPS Template' : 'Current Egg' }}</td>
                                 <td>
-                                    <a href="{{ route('admin.nests.view', $server->nest_id) }}">{{ $server->nest->name }}</a> ::
-                                    <a href="{{ route('admin.nests.egg.view', $server->egg_id) }}">{{ $server->egg->name }}</a>
+                                    @if($server->isVm())
+                                        @if($server->pup)
+                                            <a href="{{ route('admin.pups.view', $server->pup_id) }}">{{ $server->pup->name }}</a>
+                                        @else
+                                            <span class="label label-default">No Template</span>
+                                        @endif
+                                    @else
+                                        <a href="{{ route('admin.nests.view', $server->nest_id) }}">{{ $server->nest->name }}</a> ::
+                                        <a href="{{ route('admin.nests.egg.view', $server->egg_id) }}">{{ $server->egg->name }}</a>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
