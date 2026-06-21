@@ -20,6 +20,13 @@ class VpsServerFormRequest extends AdminFormRequest
         $rules['description'][] = 'nullable';
         $rules['pup_id'] = 'required|exists:pups,id';
 
+        // Cloud-init guest provisioning inputs. A password is auto-generated if
+        // left blank (unless SSH keys are supplied), so none are required here.
+        $rules['vm_user'] = 'sometimes|nullable|string|max:32';
+        $rules['vm_password'] = 'sometimes|nullable|string|max:255';
+        $rules['vm_ssh_keys'] = 'sometimes|nullable|string';
+        $rules['vm_hostname'] = 'sometimes|nullable|string|max:191';
+
         unset($rules['egg_id'], $rules['nest_id'], $rules['startup'], $rules['image']);
 
         return $rules;

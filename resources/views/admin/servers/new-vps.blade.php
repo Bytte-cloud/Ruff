@@ -121,6 +121,38 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header with-border">
+                    <h3 class="box-title">Guest Login (cloud-init)</h3>
+                </div>
+                <div class="box-body row">
+                    <div class="form-group col-sm-3">
+                        <label for="pVmUser">Username</label>
+                        <input type="text" id="pVmUser" name="vm_user" class="form-control" value="{{ old('vm_user') }}" placeholder="root" />
+                        <p class="small text-muted no-margin">Initial login user (default <code>root</code>).</p>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="pVmPassword">Password</label>
+                        <input type="text" id="pVmPassword" name="vm_password" class="form-control" value="{{ old('vm_password') }}" autocomplete="off" />
+                        <p class="small text-muted no-margin">Leave blank to auto-generate (shown once after creation).</p>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="pVmHostname">Hostname</label>
+                        <input type="text" id="pVmHostname" name="vm_hostname" class="form-control" value="{{ old('vm_hostname') }}" placeholder="vps-xxxxxxxx" />
+                        <p class="small text-muted no-margin">Guest hostname (defaults from the server UUID).</p>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label for="pVmSshKeys">SSH Public Keys</label>
+                        <textarea id="pVmSshKeys" name="vm_ssh_keys" rows="3" class="form-control" placeholder="ssh-ed25519 AAAA... (one key per line)">{{ old('vm_ssh_keys') }}</textarea>
+                        <p class="small text-muted no-margin">One public key per line. Supplying a key lets you leave the password blank.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header with-border">
                     <h3 class="box-title">Resource Management</h3>
                 </div>
 
