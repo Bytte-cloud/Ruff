@@ -31,31 +31,7 @@ import {
     ServerFolder,
     updateFolder,
 } from '@/api/account/folders';
-
-// Placeholder announcement/offer/blog content. These will be admin-managed later.
-const ANNOUNCEMENTS = [
-    {
-        tag: 'Offer',
-        cls: 'o',
-        title: '50% off your second server',
-        body: 'Deploy another game server this week and get half off the first month.',
-        offer: true,
-    },
-    {
-        tag: 'Announcement',
-        cls: 'a',
-        title: 'Scheduled maintenance',
-        body: 'EU-West nodes reboot Sunday 02:00–03:00 UTC. Expect brief downtime.',
-        offer: false,
-    },
-    {
-        tag: 'Blog',
-        cls: 'b',
-        title: 'One-click modpack installs',
-        body: 'Deploy CurseForge & Modrinth packs straight from the egg list.',
-        offer: false,
-    },
-];
+import getAnnouncements, { Announcement } from '@/api/getAnnouncements';
 
 export default ({ vps = false }: { vps?: boolean }) => {
     const { search } = useLocation();
@@ -82,6 +58,13 @@ export default ({ vps = false }: { vps?: boolean }) => {
     const { data: folders, mutate: mutateFolders } = useSWR<ServerFolder[]>(
         vps ? null : ['/api/client/account/folders', uuid],
         () => getFolders(),
+        { revalidateOnFocus: false }
+    );
+
+    // Admin-managed dashboard announcements; only shown in the game-server view.
+    const { data: announcements } = useSWR<Announcement[]>(
+        vps ? null : '/api/client/announcements',
+        () => getAnnouncements(),
         { revalidateOnFocus: false }
     );
 
@@ -181,18 +164,30 @@ export default ({ vps = false }: { vps?: boolean }) => {
         <>
             <FlashMessageRender byKey={'dashboard'} />
 
-            {!vps && (
+            {!vps && announcements && announcements.length > 0 && (
                 <div className={'news'}>
-                    {ANNOUNCEMENTS.map((a) => (
-                        <div key={a.title} className={`ann ${a.offer ? 'offer' : ''}`}>
-                            <span className={`tag ${a.cls}`}>{a.tag}</span>
-                            <h4>{a.title}</h4>
-                            <p>{a.body}</p>
-                            <span className={'more'}>
-                                {a.offer ? 'Claim offer' : 'Read more'} <FontAwesomeIcon icon={faArrowRight} />
-                            </span>
-                        </div>
-                    ))}
+                    {announcements.map((a, i) => {
+                        const inner = (
+                            <>
+                                <span className={`tag ${a.cls}`}>{a.tag}</span>
+                                <h4>{a.title}</h4>
+                                <p>{a.body}</p>
+                                <span className={'more'}>
+                                    {a.offer ? 'Claim offer' : 'Read more'} <FontAwesomeIcon icon={faArrowRight} />
+                                </span>
+                            </>
+                        );
+                        const className = `ann ${a.offer ? 'offer' : ''}`;
+                        return a.link ? (
+                            <a key={i} href={a.link} target={'_blank'} rel={'noreferrer'} className={className}>
+                                {inner}
+                            </a>
+                        ) : (
+                            <div key={i} className={className}>
+                                {inner}
+                            </div>
+                        );
+                    })}
                 </div>
             )}
 

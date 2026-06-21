@@ -192,6 +192,7 @@ return [
          * Application Service Providers...
          */
         Ruff\Providers\ActivityLogServiceProvider::class,
+        Ruff\Providers\AddonServiceProvider::class,
         Ruff\Providers\AppServiceProvider::class,
         Ruff\Providers\AuthServiceProvider::class,
         Ruff\Providers\BackupsServiceProvider::class,
