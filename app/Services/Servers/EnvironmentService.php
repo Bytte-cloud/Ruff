@@ -56,6 +56,16 @@ class EnvironmentService
             $variables->put($key, call_user_func($closure, $server));
         }
 
+        // VPS (QEMU) servers have no egg variables, so their cloud-init
+        // provisioning inputs (VM_PASSWORD, VM_SSH_KEYS, VM_USER, VM_HOSTNAME)
+        // are stored in vm_options. Surface them to the daemon as environment
+        // variables so it can build the guest login.
+        if (is_array($server->vm_options)) {
+            foreach ($server->vm_options as $key => $value) {
+                $variables->put($key, $value);
+            }
+        }
+
         return $variables->toArray();
     }
 

@@ -37,6 +37,7 @@ use Ruff\Exceptions\Http\Server\ServerStateConflictException;
  * @property int|null $nest_id
  * @property int|null $egg_id
  * @property int|null $pup_id
+ * @property array|null $vm_options
  * @property string|null $environment_type
  * @property string $startup
  * @property string $image
@@ -197,6 +198,7 @@ class Server extends Model
         'nest_id' => 'integer',
         'egg_id' => 'integer',
         'pup_id' => 'integer',
+        'vm_options' => 'array',
         'database_limit' => 'integer',
         'allocation_limit' => 'integer',
         'backup_limit' => 'integer',

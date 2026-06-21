@@ -6,6 +6,7 @@ use Ruff\Models\Pup;
 use Ruff\Models\Node;
 use Illuminate\View\View;
 use Ruff\Models\Location;
+use Illuminate\Support\Str;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
 use Ruff\Http\Controllers\Controller;
@@ -81,10 +82,53 @@ class CreateVpsServerController extends Controller
         $data['nest_id'] = null;
         $data['skip_scripts'] = true;
 
+        // Assemble the cloud-init provisioning inputs the daemon needs. The daemon
+        // refuses to build a VM without a login, so if neither a password nor SSH
+        // keys were supplied we generate a password and surface it to the admin.
+        $vmOptions = array_filter([
+            'VM_USER' => $this->cleanInput($data['vm_user'] ?? null),
+            'VM_SSH_KEYS' => $this->cleanInput($data['vm_ssh_keys'] ?? null),
+            'VM_HOSTNAME' => $this->cleanInput($data['vm_hostname'] ?? null),
+        ], fn ($v) => !is_null($v));
+
+        $password = $this->cleanInput($data['vm_password'] ?? null);
+        $generatedPassword = null;
+        if (is_null($password) && !isset($vmOptions['VM_SSH_KEYS'])) {
+            $password = Str::password(16, true, true, false, false);
+            $generatedPassword = $password;
+        }
+        if (!is_null($password)) {
+            $vmOptions['VM_PASSWORD'] = $password;
+        }
+
+        $data['vm_options'] = $vmOptions;
+        unset($data['vm_user'], $data['vm_password'], $data['vm_ssh_keys'], $data['vm_hostname']);
+
         $server = $this->creationService->handle($data);
 
-        $this->alert->success(trans('admin/server.alerts.server_created'))->flash();
+        if (!is_null($generatedPassword)) {
+            $this->alert->success(
+                'VPS created. Generated <strong>' . e($vmOptions['VM_USER'] ?? 'root') . '</strong> password: <code>'
+                . e($generatedPassword) . '</code> — save it now, it is not shown again.'
+            )->flash();
+        } else {
+            $this->alert->success(trans('admin/server.alerts.server_created'))->flash();
+        }
 
         return new RedirectResponse('/admin/servers/view/' . $server->id);
+    }
+
+    /**
+     * Trim a free-text input, returning null when it is empty.
+     */
+    private function cleanInput(?string $value): ?string
+    {
+        if (is_null($value)) {
+            return null;
+        }
+
+        $value = trim($value);
+
+        return $value === '' ? null : $value;
     }
 }

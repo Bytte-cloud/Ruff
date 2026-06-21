@@ -167,6 +167,7 @@ class ServerCreationService
             'nest_id' => Arr::get($data, 'nest_id'),
             'egg_id' => Arr::get($data, 'egg_id'),
             'pup_id' => Arr::get($data, 'pup_id'),
+            'vm_options' => Arr::get($data, 'vm_options'),
             'startup' => Arr::get($data, 'startup'),
             'image' => Arr::get($data, 'image'),
             'database_limit' => Arr::get($data, 'database_limit') ?? 0,
